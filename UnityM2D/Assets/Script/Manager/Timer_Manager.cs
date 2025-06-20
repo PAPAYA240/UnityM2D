@@ -10,7 +10,7 @@ public class Timer_Manager : MonoBehaviour
     public int Wave { get; private set; }
     public bool IsRunning { get; private set; }
 
-    private int Timer = 30;
+    private int Timer = 5;
 
     private void Start()
     {

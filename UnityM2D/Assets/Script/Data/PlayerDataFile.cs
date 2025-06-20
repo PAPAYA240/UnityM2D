@@ -46,25 +46,25 @@ public class PlayerInfo
     public string promotion;
 }
 
-[Serializable, XmlRoot("ArrayOfPlayerData")]
-public class PlayerDataLoader : ILoader<int, PlayerInfo>
-{
-    [XmlElement("PlayerInfo")]
-    public List<PlayerInfo> _characterDatas = new List<PlayerInfo>();
+//[Serializable, XmlRoot("ArrayOfPlayerData")]
+//public class PlayerDataLoader : ILoader<int, PlayerInfo>
+//{
+//    [XmlElement("PlayerInfo")]
+//    public List<PlayerInfo> _characterDatas = new List<PlayerInfo>();
 
-    public Dictionary<int, PlayerInfo> MakeDic()
-    {
-        Dictionary<int, PlayerInfo> dic = new Dictionary<int, PlayerInfo>();
+//    public Dictionary<int, PlayerInfo> MakeDic()
+//    {
+//        Dictionary<int, PlayerInfo> dic = new Dictionary<int, PlayerInfo>();
 
-        foreach (PlayerInfo data in _characterDatas)
-            dic.Add(data.ID, data);
+//        foreach (PlayerInfo data in _characterDatas)
+//            dic.Add(data.ID, data);
 
-        return dic;
-    }
+//        return dic;
+//    }
 
 
-    public bool Validate()
-    {
-        return true;
-    }
-}
+//    public bool Validate()
+//    {
+//        return true;
+//    }
+//}

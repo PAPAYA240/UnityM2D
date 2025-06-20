@@ -47,7 +47,8 @@ public class UI_Title : UI_Base
 
     void Setting_InGameUI()
     {
-        Managers.UIManager.ShowUI<UI_Base>("UI_EX");
+        GameObject playerGo = GameObject.Find("Player");
+        Managers.UIManager.ShowUI<UI_Slide>("UI_EX").RegisterInfo(UI_Slide.SlideTargetType.ExpBar);
         Managers.UIManager.ShowUI<UI_Folder>("UI_Folder");
         Managers.UIManager.ShowUI<UI_Timer>("UI_Timer");
     }

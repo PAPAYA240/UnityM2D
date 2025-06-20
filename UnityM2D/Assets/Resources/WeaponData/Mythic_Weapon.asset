@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mythic_Weapon
   m_EditorClassIdentifier: 
   weaponName: Mythic_Weapon
-  weaponPrefab: {fileID: 947724547158924601, guid: b1ec6932b14b9024792ed842af87d3ab, type: 3}
+  weaponPrefab: {fileID: 947724547158924601, guid: 1b0be0e6494d6504dada3eeb7970d496, type: 3}
   weaponType: 5
   baseDamage: 10
   attackRange: 1.5

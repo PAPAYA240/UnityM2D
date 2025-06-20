@@ -65,16 +65,15 @@
     <Compile Include="Assets\Script\Controller\BaseController.cs" />
     <Compile Include="Assets\Script\Data\Weapon.cs" />
     <Compile Include="Assets\Script\Manager\Input_Manager.cs" />
+    <Compile Include="Assets\Script\Manager\ObjectPool_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Resource_Manager.cs" />
     <Compile Include="Assets\Script\UI\UI_Title.cs" />
     <Compile Include="Assets\Script\Data\WeaponStrategyFactory.cs" />
     <Compile Include="Assets\Script\Controller\PlayerController.cs" />
-    <Compile Include="Assets\Script\Manager\GameManager_Ex.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_Folder.cs" />
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
-    <Compile Include="Assets\Script\Manager\Data_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
     <Compile Include="Assets\Script\UI\UI_Slide.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_WeaponFolder.cs" />
@@ -86,6 +85,8 @@
     <Compile Include="Assets\Script\UI\UI_WeaponItem.cs" />
     <Compile Include="Assets\Script\Manager\Scene_Manager.cs" />
     <Compile Include="Assets\Script\Scene\BaseScene.cs" />
+    <Compile Include="Assets\Script\Controller\Weapon\Bullet.cs" />
+    <Compile Include="Assets\Script\Data\GameManager_Ex.cs" />
     <Compile Include="Assets\Script\Controller\Weapon\IAttackStrategy.cs" />
     <Compile Include="Assets\Script\UI\UI_Popup.cs" />
     <Compile Include="Assets\Script\Controller\EnemyController.cs" />

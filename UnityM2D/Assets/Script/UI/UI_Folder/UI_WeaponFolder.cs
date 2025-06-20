@@ -100,7 +100,7 @@ public class UI_WeaponFolder : UI_Base
     private bool IsLock()
     {
         if (bLock == true)
-            return false;
+            return true;
 
         if (Player == null)
             return false;

@@ -120,7 +120,6 @@ public class TurnManager
     {
         bool playerAlive = _turnOrder.Any(p => p is PlayerController && p.isAlive);
         bool anyEnemyAlive = _turnOrder.Any(p => p is EnemyController && p.isAlive);
-
         
         if (!playerAlive)
         {

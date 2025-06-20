@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
@@ -16,7 +17,11 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         ManaBar, // 필요하다면 추가
     }
 
-    [SerializeField]
+    enum Texts
+    {
+        Level_Text,
+    }
+
     private SlideTargetType slideType = SlideTargetType.HpBar; // 인스펙터에서 설정
 
     // Lerp 애니메이션에 사용할 변수
@@ -40,6 +45,8 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         if (base.Init() == false)
             return false;
 
+        BindText(typeof(Texts));
+
         // 슬라이더 컴포넌트 찾기
         slider = GetComponentInChildren<Slider>(true);
         if (slider == null)
@@ -59,13 +66,17 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
                 Debug.LogWarning($"UI_Slide: {ParentObject.transform.parent.name}에서 BaseController를 찾을 수 없습니다.");
             }
         }
-
+        SlideTargetType a = slideType;
         if (_currentSlideAnimationCoroutine != null) StopCoroutine(_currentSlideAnimationCoroutine);
         _currentSlideAnimationCoroutine = StartCoroutine(AnimateSliderValue());
 
         return true;
     }
 
+    public void RegisterInfo(SlideTargetType _slideType)
+    {
+        slideType = _slideType;
+    }
     public void SetTarget(GameObject _parent, BaseController baseCon, float animationDuration = 0.5f)
     {
         base.SetInfo(_parent, true); // UI_Base의 SetInfo 호출 (bUpdate는 여기서 true로 설정)
@@ -80,6 +91,7 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
                     slider.maxValue = _targetBaseController.State.MaxHp;
                     break;
                 case SlideTargetType.ExpBar:
+                    slider.maxValue = _targetBaseController.State.LevelCount;
                     break;
                     // 다른 타입 추가
             }
@@ -103,13 +115,15 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     private float GetCurrentTargetValue()
     {
         if (_targetBaseController == null || _targetBaseController.State == null)
-            return _currentDisplayedValue; // 유효하지 않으면 현재 표시 값 반환
+                return _currentDisplayedValue;
 
         switch (slideType)
         {
             case SlideTargetType.HpBar:
                 return _targetBaseController.State.Hp;
             case SlideTargetType.ExpBar:
+                UpdateLevel();
+                return _targetBaseController.State.LevelCount;
             default:
                 return _currentDisplayedValue;
         }
@@ -122,8 +136,12 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         {
             if (slider == null || _targetBaseController == null || _targetBaseController.State == null)
             {
-                yield return new WaitForSeconds(0.1f); // 잠시 기다렸다가 다시 시도
-                continue;
+                if (_targetBaseController == null || _targetBaseController.State == null)
+                    if ((_targetBaseController = GameObject.Find("Player").GetComponent<BaseController>()) == null)
+                    { 
+                        yield return new WaitForSeconds(0.1f); // 잠시 기다렸다가 다시 시도
+                        continue;
+                    }
             }
 
             float actualCurrentValue = GetCurrentTargetValue(); // BaseController에서 실제 현재 값
@@ -163,4 +181,12 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
             yield return null; // 다음 프레임까지 대기
         }
     }
+
+    void UpdateLevel()
+    {
+        if (slideType != SlideTargetType.ExpBar)
+            return;
+
+        GetText(Texts.Level_Text).text = string.Format($"LEVEL: {_targetBaseController.State.Level}");
+    }    
 }

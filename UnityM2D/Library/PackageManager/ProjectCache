@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638854351005356892
-    m_Hash: 1673232586
+      ticks: 638859307851336019
+    m_Hash: 3209007883
   m_LockFileStatus:
     m_FilePath: C:/Users/Naong/Documents/GitHub/UnityM2D/UnityM2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638854351016710880
-    m_Hash: 3869645967
+      ticks: 638859307851366555
+    m_Hash: 3990670658
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -1496,12 +1496,12 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 2.0.23
     minimumUnityVersion: 2019.4.25f1
-- packageId: com.unity.ide.vscode@1.2.3
+- packageId: com.unity.ide.vscode@1.2.5
   testable: 0
   isDirectDependency: 1
-  version: 1.2.3
+  version: 1.2.5
   source: 1
-  resolvedPath: C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\PackageCache\com.unity.ide.vscode@2d531209967f
+  resolvedPath: C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\PackageCache\com.unity.ide.vscode@82e68656b7bd
   assetPath: Packages/com.unity.ide.vscode
   name: com.unity.ide.vscode
   displayName: Visual Studio Code Editor
@@ -1561,13 +1561,13 @@ m_ResolvedPackages:
   entitlements:
     licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637394922300000000
+  datePublishedTicks: 637800255360000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
-    revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
+    url: https://github.com/Unity-Technologies/com.unity.ide.vscode.git
+    revision: b0740c80bfc2440527c317109f7c3d9100132722
     path: 
   unityLifecycle:
     version: 
@@ -1584,7 +1584,7 @@ m_ResolvedPackages:
   upmReserved: 
   assetStore:
     productId: 
-  fingerprint: 2d531209967f3faf1e5cc4a737631f87ddcefc31
+  fingerprint: 82e68656b7bdc5da8beb1fbaf1bb4ecf13456d51
   editorCompatibility:
     compatibilityLevel: 0
     minimumPackageVersion: 1.0.2

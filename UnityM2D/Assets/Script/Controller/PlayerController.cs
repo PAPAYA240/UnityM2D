@@ -99,8 +99,15 @@ public class PlayerController : BaseController
     protected override void Dead()
     {
         PlayerAnim = AnimState.Dead;
-        Managers.UIManager.ShowUI<UI_Base>("UI_Dead");
+        if (EquippedWeapon != null)
+            StartCoroutine(EquippedWeapon.DeadWeapon());
+
+        CancelInvoke(nameof(DeadUI));
+        Invoke(nameof(DeadUI), 1f);
     }
+
+    void DeadUI() => Managers.UIManager.ShowUI<UI_Base>("UI_Dead");
+
 
     #region Observer Timer
     private void HandleTimerExpired()

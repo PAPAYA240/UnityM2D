@@ -129,8 +129,10 @@ public class BaseController : Base, ITurnParticipant
             GameObject socketObject = GetObject(GameObjects.WeaponSocket).gameObject;
             GameObject WeaponModel = Instantiate(weaponData.weaponPrefab, socketObject.transform);
             if(EquippedWeapon == null)
+            {     
                 EquippedWeapon = WeaponModel.AddComponent<Weapon>();
-            EquippedWeapon.Init(weaponData, this, socketObject);
+                EquippedWeapon.Init(weaponData, this, socketObject);
+            }
         }
         else
         {
@@ -143,7 +145,9 @@ public class BaseController : Base, ITurnParticipant
 #region 데미지
     public void TakeDamage(int _amount)
     {
-        if(_amount < 0) _amount = 0;
+        if (MyAnimState == AnimState.Dead) return;
+
+        if (_amount < 0) _amount = 0;
         MyState.Hp -= _amount;
         if(MyState.Hp < 0) MyState.Hp = 0;
 
@@ -210,7 +214,7 @@ public class BaseController : Base, ITurnParticipant
 
              // 2. Target 데미지
              BaseController targetCon = _target.GetComponent<BaseController>();
-            targetCon.TakeDamage(State.AttackPower);
+             targetCon.TakeDamage(State.AttackPower);
 
             // 3. Position 재정립
             transform.position = targetPosition;
@@ -220,6 +224,8 @@ public class BaseController : Base, ITurnParticipant
         transform.position = finalTargetPosition;
         Debug.Log($"{gameObject.name}가 {_target.name}에 도착했습니다.");
     }
+
+
 
     public void ReactionWeapon()
     {

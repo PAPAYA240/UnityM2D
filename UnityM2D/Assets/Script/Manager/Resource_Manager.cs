@@ -47,7 +47,7 @@ public class Resource_Manager : MonoBehaviour
 
         return Instantiate(prefab, parent);
     }
-
+    
     public void Destroy(GameObject go)
     {
         if (go == null)
@@ -55,6 +55,4 @@ public class Resource_Manager : MonoBehaviour
 
         Object.Destroy(go);
     }
-
-
 }
