@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
             Console.WriteLine("Failed Load CurrentAttackStrategy : Weapon()");
 
         // 총알 저장
-        if( IsGun())
+        if(IsGun())
         {
             bulletprefab = Managers.Resource.Instantiate("WeaponPrefab/Bullet", this.transform);
             int bulletCount = 10;
@@ -130,7 +130,7 @@ public class Weapon : MonoBehaviour
         
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         
-        bulletScript.Fire();
+        StartCoroutine(bulletScript.Fire());
     }
 
     private bool IsGun()
@@ -166,6 +166,7 @@ public class Weapon : MonoBehaviour
 
             yield return null;
         }
+
         AutoFire();
         this.transform.position = attackTargetPosition;
 

@@ -137,7 +137,7 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
             if (slider == null || _targetBaseController == null || _targetBaseController.State == null)
             {
                 if (_targetBaseController == null || _targetBaseController.State == null)
-                    if ((_targetBaseController = GameObject.Find("Player").GetComponent<BaseController>()) == null)
+                    if ((_targetBaseController = GameObject.Find(Defines.strPlayerObject).GetComponent<BaseController>()) == null)
                     { 
                         yield return new WaitForSeconds(0.1f); // 잠시 기다렸다가 다시 시도
                         continue;

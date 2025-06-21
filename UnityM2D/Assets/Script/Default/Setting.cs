@@ -45,7 +45,6 @@ public static class Setting
                     return component;
             }
         }
-
         return null;
     }
 
@@ -57,5 +56,19 @@ public static class Setting
         return null;
     }
 
-   
+
+    public static List<GameObject> FindChildList(GameObject _parent, string targetChildName = null)
+    {
+        List<GameObject> foundChildren = new List<GameObject>();
+
+        foreach (Transform childTransform in _parent.transform)
+        {
+            if (childTransform.name == targetChildName)
+            {
+                foundChildren.Add(childTransform.gameObject); // GameObject로 변환하여 리스트에 추가
+            }
+        }
+
+        return foundChildren;
+    }
 }

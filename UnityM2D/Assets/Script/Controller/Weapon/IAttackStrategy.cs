@@ -37,7 +37,6 @@ public class BasicAttack : IAttackStrategy
             yield return new WaitForSeconds(0.3f);
 
             yield return Attacker.StartCoroutine(Attacker.AttacktoMove(_target));
-
         }
     }
  }
@@ -53,10 +52,6 @@ public class BasicAttack : IAttackStrategy
         {
             yield return new WaitForSeconds(0.3f);
             Attacker.ReactionWeapon();
-
-            BaseController Target = Targeter.GetComponent<BaseController>();
-            if (Target != null)
-                Target.TakeDamage(Attacker.State.AttackPower);
         }
         yield break;
     }
@@ -66,6 +61,16 @@ public class BasicAttack : IAttackStrategy
  {
      public IEnumerator ExecuteAttack(GameObject _attacker, GameObject _target)
      {
+        BaseController Attacker = _attacker.GetComponent<BaseController>();
+        BaseController Targeter = _target.GetComponent<BaseController>();
+
+        if (Attacker != null && Targeter != null)
+        {
+            yield return new WaitForSeconds(0.3f);
+            Attacker.ReactionWeapon();
+
+           Targeter.TakeDamage(Attacker.State.AttackPower);
+        }
         yield break;
     }
 }

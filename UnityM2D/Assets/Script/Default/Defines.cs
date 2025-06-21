@@ -1,8 +1,16 @@
+using System.ComponentModel.Design.Serialization;
 using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Defines
 {
+    public const string strEnemyObject = "@Enemy";
+    public const string strPlayerObject = "Player";
+    public const string strPlayerArea = "@PlayerArea";
+    public const string strEnemyArea = "@EnemyArea";
+    public const string strManagers = "@Managers";
+
+
     public enum Input
     {
         Click,
@@ -42,8 +50,13 @@ public class Defines
     public enum EnemyType
     {
         None,
-        Jombi,
-        MagicJombi,
+        Zombi,
+        Skeleton,
+
+        // ======= Boss Type ========== 
+        // TODO : Boss Type은 여기서부터 UI 순서대로 나열.
+        Zombi_Boss,
+        Skeleton_Boss,
     }
 
     public enum UIType
@@ -68,5 +81,4 @@ public class Defines
         Exp,
         Attackbility,
     }
-
 }

@@ -5,11 +5,11 @@ using static Defines;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class EnemyController : BaseController
 {
-    [SerializeField]
-    public EnemyType EnemyType;
+    public EnemyType EnemyType = EnemyType.Zombi;
 
     private Dictionary<AnimState, Action<Animator>> _animTable;
     private Dictionary<AnimState, Action<GameObject>> _moveTable;
@@ -17,6 +17,9 @@ public class EnemyController : BaseController
     public event Action<AnimState> OnStateChanged;
 
     private Vector3 SpawnPosition = new Vector3();
+
+    private Vector3 originScaled;
+    private const float upgradeScaled = 1f;
 
     public AnimState EnemyAnim
     {
@@ -43,22 +46,28 @@ public class EnemyController : BaseController
 
         EquipWeapon(WeaponType.None_Weapon);
 
-        TargetObject = GameObject.Find("Player");
+        TargetObject = GameObject.Find(strPlayerObject);
 
         if (rangeArea == null)
         {
             rangeArea = Managers.Resource.Instantiate("Prefab/Character/EnemyArea");
-            rangeArea.name = "@EnemyArea";
+            rangeArea.name = strEnemyArea;
         }
-        
+
+
+        Managers.TimerManager.OnTimeNext += HandleTimerExpired;
+
         // Load Enemy Spawn Position 
         GameObject spawnArea = Managers.Resource.Instantiate("Prefab/Character/EnemySpawnArea");
         this.transform.position = SpawnPosition = spawnArea.transform.position;
+        originScaled = spawnArea.transform.localScale;
+        // 스케일이 자꾸 1로 불러와짐
+
         Destroy(spawnArea);
 
         SettingAreaCollider();
 
-        return true;
+        return true; 
     }
 
     private void Update()
@@ -97,6 +106,49 @@ public class EnemyController : BaseController
         StartCoroutine(NextEnemy());
     }
 
+    // 다음 적
+    private void HandleTimerExpired()
+    {
+        // Scaled
+        if (EnemyType >= EnemyType.Zombi_Boss)
+            this.transform.localScale = new Vector3(upgradeScaled, upgradeScaled, 1);
+        else
+            this.transform.localScale = originScaled;
+    }
+
+    #region 애니메이터 적용
+    public RuntimeAnimatorController LoadAnimator(EnemyType _type)
+    {
+        string path = "";
+        switch (_type)
+        {
+            case Defines.EnemyType.Zombi_Boss:
+                path = "Prefab/Animation/Zombi_Boss/ZombiBossAnim"; 
+                break;
+            case Defines.EnemyType.Skeleton_Boss:
+                path = "Prefab/Animation/Skeleton_Boss/SkeletonBossAnim";
+                break;
+            default:
+                Debug.LogWarning($"EnemyType: {_type}에 대한 애니메이터 경로가 정의되지 않았습니다.");
+                return null;
+        }
+        return Resources.Load<RuntimeAnimatorController>(path);
+    }
+    public void ApplyAnimator(RuntimeAnimatorController controller)
+    {
+        if (myAnim != null && controller != null)
+        {
+            myAnim.runtimeAnimatorController = controller;
+            Debug.Log($"애니메이터 적용됨: {controller.name}");
+        }
+        else
+        {
+            if (myAnim == null) Debug.LogError("애니메이터를 적용할 수 없습니다: Animator 컴포넌트가 null입니다.");
+            if (controller == null) Debug.LogWarning("애니메이터를 적용할 수 없습니다: 제공된 컨트롤러가 null입니다.");
+        }
+    }
+
+    #endregion
     private IEnumerator NextEnemy()
     {
         yield return new WaitForSeconds(0.8f);
@@ -145,7 +197,7 @@ public class EnemyController : BaseController
     {
         _animTable = new()
         {
-            { AnimState.Idle, a =>{ a.SetBool( "bRun", false ); } },
+            { AnimState.Idle, a =>{ a.SetBool( "bRun", false ); a.SetBool( "bDead", false );} },
             { AnimState.Dead, a =>{ a.SetBool("bDead", true); } }
         };
 

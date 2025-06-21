@@ -36,7 +36,7 @@ public class UI_Title : UI_Base
         startAnim.SetBool("bStart", true);
         Managers.Scene.ChangeScene(Defines.Scene.InGame);
 
-        GameObject playerGo = GameObject.Find("Player");
+        GameObject playerGo = GameObject.Find(strPlayerObject);
         PlayerController playerController = playerGo.GetComponent<PlayerController>();
         playerController.PlayerAnim = AnimState.Run;
 
@@ -47,7 +47,7 @@ public class UI_Title : UI_Base
 
     void Setting_InGameUI()
     {
-        GameObject playerGo = GameObject.Find("Player");
+        GameObject playerGo = GameObject.Find(strPlayerObject);
         Managers.UIManager.ShowUI<UI_Slide>("UI_EX").RegisterInfo(UI_Slide.SlideTargetType.ExpBar);
         Managers.UIManager.ShowUI<UI_Folder>("UI_Folder");
         Managers.UIManager.ShowUI<UI_Timer>("UI_Timer");

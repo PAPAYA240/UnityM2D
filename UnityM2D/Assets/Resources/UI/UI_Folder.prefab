@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 651182479110235086}
   - component: {fileID: 3820365167017424265}
   m_Layer: 5
-  m_Name: Boss
+  m_Name: Boss_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,8 +977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.70004, y: -33.71}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -49.5, y: -35.605}
+  m_SizeDelta: {x: 492.4, y: 53.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1820848463436055758
 CanvasRenderer:
@@ -1216,7 +1216,6 @@ RectTransform:
   - {fileID: 5668092682755157788}
   - {fileID: 2459729547354785131}
   - {fileID: 2638474331251405438}
-  - {fileID: 9125741293353311809}
   m_Father: {fileID: 8291244973167622192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -2264,8 +2263,9 @@ GameObject:
   - component: {fileID: 5381271160579885207}
   - component: {fileID: 8692315077540130877}
   - component: {fileID: 7094783986961760027}
+  - component: {fileID: 684059196986256142}
   m_Layer: 5
-  m_Name: Boss_Skeleton
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2288,7 +2288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 498, y: -511}
+  m_AnchoredPosition: {x: 190.14, y: -159.46}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8692315077540130877
@@ -2329,6 +2329,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &684059196986256142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558946741357825494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7094783986961760027}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1570352352735062381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,12 +2521,12 @@ GameObject:
   - component: {fileID: 8222766497583979001}
   - component: {fileID: 4442160401365415337}
   m_Layer: 5
-  m_Name: Boss_Skeleton
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3320711440993567744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2500,7 +2544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190.13976, y: -159.45798}
+  m_AnchoredPosition: {x: 498, y: -512}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8222766497583979001
@@ -2671,7 +2715,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -291.844, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3196,8 +3240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.70004, y: -33.71}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -37.483, y: -35.605}
+  m_SizeDelta: {x: 516.43, y: 53.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7344696830052056266
 CanvasRenderer:
@@ -3543,8 +3587,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.70004, y: -33.71}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -62.349762, y: -29.669106}
+  m_SizeDelta: {x: 466.7004, y: 41.9182}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8922866345447512971
 CanvasRenderer:
@@ -4253,6 +4297,7 @@ RectTransform:
   - {fileID: 5658009647142123048}
   - {fileID: 4927944706341984462}
   - {fileID: 7500288637320470114}
+  - {fileID: 9125741293353311809}
   m_Father: {fileID: 8899186049958101608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -4904,7 +4949,7 @@ GameObject:
   - component: {fileID: 289234905450442412}
   - component: {fileID: 7048977306804949762}
   m_Layer: 5
-  m_Name: Text
+  m_Name: AttackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5120,7 +5165,7 @@ GameObject:
   - component: {fileID: 9068021320179474850}
   - component: {fileID: 1033298938645632810}
   m_Layer: 5
-  m_Name: Boss_Exp
+  m_Name: Boss_Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5846,12 +5891,12 @@ GameObject:
   - component: {fileID: 2257777414509775868}
   - component: {fileID: 5437155163393825651}
   m_Layer: 5
-  m_Name: Boss_Skeleton
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9115878518929144276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5869,7 +5914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.30005, y: -159.45789}
+  m_AnchoredPosition: {x: 810.30005, y: -512}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2257777414509775868
@@ -6847,8 +6892,9 @@ GameObject:
   - component: {fileID: 784357572231939004}
   - component: {fileID: 2401320974160693278}
   - component: {fileID: 1603223093867455408}
+  - component: {fileID: 3569648370339990871}
   m_Layer: 5
-  m_Name: Boss_Skeleton (1)
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6871,7 +6917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190.13974, y: -511}
+  m_AnchoredPosition: {x: 498.00003, y: -159.46002}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2401320974160693278
@@ -6912,6 +6958,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3569648370339990871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737672792137236809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1603223093867455408}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3820999464452810008
 GameObject:
   m_ObjectHideFlags: 0
@@ -7116,7 +7206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1584422274, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
+  m_Sprite: {fileID: 2018998915, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7388,8 +7478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.70004, y: -33.71}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -43.941193, y: -32.81202}
+  m_SizeDelta: {x: 503.5176, y: 48.204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5253282909868916150
 CanvasRenderer:
@@ -8057,7 +8147,7 @@ GameObject:
   - component: {fileID: 4972908360356081410}
   - component: {fileID: 1651254625391338548}
   m_Layer: 5
-  m_Name: Boss_Exp
+  m_Name: Boss_Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11733,12 +11823,12 @@ GameObject:
   - component: {fileID: 2835545633079695294}
   - component: {fileID: 1354210705273217856}
   m_Layer: 5
-  m_Name: Boss_Skeleton (2)
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6742564817545825961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11756,7 +11846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.30005, y: -511}
+  m_AnchoredPosition: {x: 810.30005, y: -159.46002}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2835545633079695294
@@ -12213,7 +12303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1584422274, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
+  m_Sprite: {fileID: 33490002, guid: d33598d781682e049a53a0a13104ef29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14980,12 +15070,12 @@ GameObject:
   - component: {fileID: 4628658518746809548}
   - component: {fileID: 1981047194150650591}
   m_Layer: 5
-  m_Name: Boss_Skeleton
+  m_Name: Boss_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &263040893862093582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15003,7 +15093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 498.00003, y: -159.45789}
+  m_AnchoredPosition: {x: 190.14, y: -512}
   m_SizeDelta: {x: 280.6667, y: 318.916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4628658518746809548
@@ -16356,7 +16446,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8899186049958101608}
+    m_TransformParent: {fileID: 2638474331251405438}
     m_Modifications:
     - target: {fileID: 1557804311350766597, guid: 654770b1e294f8b4a99816ed90c9a925, type: 3}
       propertyPath: m_Name
@@ -16428,7 +16518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3870805273317463660, guid: 654770b1e294f8b4a99816ed90c9a925, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -772
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 3870805273317463660, guid: 654770b1e294f8b4a99816ed90c9a925, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

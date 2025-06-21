@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Timer_Manager : MonoBehaviour
 {
-    // 이벤트를 정의하여 옵저버들이 구독하게 한다.
-    public event Action OnTimerExpired; // 타이머 만료 시 호출
+    public event Action OnTimeOver;
+    public event Action OnTimeNext;
 
     public float CurrentTimer { get; private set; }
     public int Wave { get; private set; }
     public bool IsRunning { get; private set; }
 
-    private int Timer = 5;
+    private int Timer = 30;
 
     private void Start()
     {
@@ -30,6 +30,7 @@ public class Timer_Manager : MonoBehaviour
     {
         CurrentTimer = Timer;
         IsRunning = false;
+        OnTimeNext?.Invoke(); 
     }
 
     public void UpdateTimer(float deltaTime)
@@ -42,13 +43,13 @@ public class Timer_Manager : MonoBehaviour
         {
             CurrentTimer = 0;
             IsRunning = false;
-            OnTimerExpired?.Invoke(); // 이벤트 발생
+            OnTimeOver?.Invoke(); 
         }
     }
 
     // 구독 해지 작업
     public void Dispose()
     {
-        OnTimerExpired = null;
+        OnTimeOver = null;
     }
 }

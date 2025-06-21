@@ -210,7 +210,8 @@ public class BaseController : Base, ITurnParticipant
             }
 
             // 1. 무기 반동
-            ReactionWeapon();
+            if(EquippedWeapon != null)
+                ReactionWeapon();
 
              // 2. Target 데미지
              BaseController targetCon = _target.GetComponent<BaseController>();

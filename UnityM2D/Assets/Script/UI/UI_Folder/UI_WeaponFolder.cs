@@ -47,27 +47,27 @@ public class UI_WeaponFolder : UI_Base
 
         MyLockObject = GetObject(GameObjects.UI_Lock);
 
-        GameObject PlayerObject = GameObject.Find("Player");
-        Player = PlayerObject.GetComponent<PlayerController>();
-
-        // === Weapon 세팅 ===
         CurrentWeaponFigure = 100;
-        // 가격
-        GetText(Texts.Cost_Text).text = String.Format($"{CurrentWeaponFigure * 10}");
-        // 다음 공격력
-        GetText(Texts.Attack_Text).text = String.Format($"{Player.State.AttackPower} >> {CurrentWeaponFigure}");
 
         return true;    
     }
 
-    public void SetInfo(WeaponType _statType, int _openFigure)
+    public void SetInfo(PlayerController _player, WeaponType _statType, int _openFigure)
     {
         Init();
 
+        Player = _player;
         weaponType = _statType;
         OpenWeaponLimit = _openFigure;
+
+        int _cnt = (int)weaponType - 1;
+        if(_cnt != 0)
+        { 
+            CurrentWeaponFigure = (_cnt * 700) + 100;
+            ChangeText(_cnt * 700);
+        }
     }
-    
+
     void OnUpgradeButtonClick()
     {
         if (IsLock())
@@ -85,16 +85,20 @@ public class UI_WeaponFolder : UI_Base
         Player.State.AttackPower = CurrentWeaponFigure;
         CurrentWeaponFigure = CurrentWeaponFigure + 100;
 
+        ChangeText(Player.State.AttackPower);
+        IsLock();
+    }
+
+    void ChangeText(int _currentPower)
+    {
         // 가격
         GetText(Texts.Cost_Text).text = String.Format($"{CurrentWeaponFigure * 10}");
         if (OpenWeaponLimit > CurrentWeaponFigure)
-            GetText(Texts.Attack_Text).text = String.Format($"{Player.State.AttackPower} >> {CurrentWeaponFigure}");
+            GetText(Texts.Attack_Text).text = String.Format($"{_currentPower} >> {CurrentWeaponFigure}");
         else
-        { 
+        {
             GetText(Texts.Attack_Text).text = String.Format($"{OpenWeaponLimit} ATTACK!");
         }
-
-        IsLock();
     }
 
     private bool IsLock()

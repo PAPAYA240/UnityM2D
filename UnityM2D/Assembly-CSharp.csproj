@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
+    <Compile Include="Assets\Script\UI\UI_Folder\UI_BossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Slide.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_WeaponFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Timer.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Script\Manager\UI_Manager.cs" />
     <Compile Include="Assets\Script\Default\Setting.cs" />
     <Compile Include="Assets\Script\Default\Defines.cs" />
+    <Compile Include="Assets\Script\UI\UI_CheckBossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_WeaponItem.cs" />
     <Compile Include="Assets\Script\Manager\Scene_Manager.cs" />
     <Compile Include="Assets\Script\Scene\BaseScene.cs" />

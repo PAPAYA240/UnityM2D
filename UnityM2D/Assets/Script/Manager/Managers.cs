@@ -44,9 +44,9 @@ public class Managers : MonoBehaviour
     {
         if(s_Instance == null)
         {
-            GameObject gameObject = GameObject.Find("@Managers");
+            GameObject gameObject = GameObject.Find(strManagers);
             if (gameObject == null)
-                gameObject = new GameObject { name = "@Managers" };
+                gameObject = new GameObject { name = strManagers };
 
             s_Instance = Setting.GetOrAddComponent<Managers>(gameObject);
             DontDestroyOnLoad(gameObject);

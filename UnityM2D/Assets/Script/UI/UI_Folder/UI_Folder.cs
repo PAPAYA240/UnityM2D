@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 using static Defines;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class UI_Folder : UI_Popup
 {
@@ -9,6 +12,7 @@ public class UI_Folder : UI_Popup
     {
         CostText,
         SpeedText,
+        AttackText,
     }
 
     enum ButtonType
@@ -23,6 +27,7 @@ public class UI_Folder : UI_Popup
         WeaponContent,
         Weapon_Item,
         BossContent,
+        Boss_Item,
         FixContent,
         ShopContent,
         WeaponTab,
@@ -41,8 +46,15 @@ public class UI_Folder : UI_Popup
 
 
     PlayTab TabType = PlayTab.None;
+    PlayerController Player = null;
 
-    List<UI_WeaponFolder> WeaponFolder = new List<UI_WeaponFolder>();
+    private List<UI_WeaponFolder> WeaponFolder = new List<UI_WeaponFolder>();
+    private List<UI_BossFolder> BossFolders = new List<UI_BossFolder>();
+
+    public EnemyController TargetEnemyController { get; private set; }
+    private UI_CheckBossFolder _checkBossFolderUI;
+    private EnemyType enemyType;
+
 
     void Start()
     {
@@ -69,27 +81,33 @@ public class UI_Folder : UI_Popup
         BindEvent(shopButtonGO, () => ChangeTab(PlayTab.Shop));
         ChangeTab(PlayTab.Weapon);
 
+        GameObject PlayerObject = GameObject.Find(strPlayerObject);
+        Player = PlayerObject.GetComponent<PlayerController>();
+        TargetEnemyController = GameObject.Find(strEnemyObject).GetComponent<EnemyController>();
+
+        // 하위 폴더 모음
         Register_WeaponFolder();
+        Register_BossFolder();
 
         return true;
  }
     void Update()
     {
+        GetText(TextType.AttackText).text = String.Format($"{Player.State.AttackPower}");
     }
 
-    void Register_WeaponFolder()
+    private void Register_WeaponFolder()
     {
         GameObject parent = GetObject(GameObjects.Weapon_Item);
 
         List<GameObject> childobj = new List<GameObject>();
-        childobj = FindChild(parent, "Weapon_Type");
+        childobj = Setting.FindChildList(parent, "Weapon_Type");
 
         for (int i = 0; i < childobj.Count; i++)
         {
             UI_WeaponFolder item = Setting.GetOrAddComponent<UI_WeaponFolder>(childobj[i].gameObject);
 
-
-            item.SetInfo((Defines.WeaponType) Defines.WeaponType.Basic_Weapon+ i, (i + 1) * 700);
+            item.SetInfo(Player, Defines.WeaponType.Basic_Weapon+ i, (i + 1) * 700);
 
             if (i > 0) WeaponFolder[i - 1].NextLockObject = item.MyLockObject;
 
@@ -97,7 +115,51 @@ public class UI_Folder : UI_Popup
         }
     }
 
-   
+   private void Register_BossFolder()
+   {
+        // 보스 몹 시작 UI
+        _checkBossFolderUI = Managers.UIManager.ShowUI<UI_CheckBossFolder>("UI_CheckBossFolder", this.gameObject.transform);
+        _checkBossFolderUI.gameObject.SetActive(false);
+
+        // 취소 버튼
+        Button noButton = Setting.FindChild<Button>(_checkBossFolderUI.gameObject, "No_Button", true);
+        Button yesButton = Setting.FindChild<Button>(_checkBossFolderUI.gameObject, "Yes_Button", true);
+        if (noButton != null)
+            BindEvent(noButton.gameObject, CancelButton);
+        if(yesButton != null)
+            BindEvent(yesButton.gameObject, AcceptanceButten);
+
+        GameObject parent = GetObject(GameObjects.Boss_Item);
+
+        List<GameObject> childobj = new List<GameObject>();
+        childobj = Setting.FindChildList(parent, "Boss_Type");
+
+        foreach (GameObject boss in childobj)
+        {
+            UI_BossFolder item = Setting.GetOrAddComponent<UI_BossFolder>(boss);
+            if (item != null)
+            {
+                item.SetInfo(
+                    (Defines.EnemyType)(boss.transform.GetSiblingIndex() + (int)Defines.EnemyType.Zombi_Boss),
+                    _checkBossFolderUI,
+                    TargetEnemyController 
+                );
+                BossFolders.Add(item); 
+            }
+        }
+    }
+    private void CancelButton()
+    {
+        if (_checkBossFolderUI != null)
+            _checkBossFolderUI.gameObject.SetActive(false);
+    }
+
+    public void AcceptanceButten()
+    {
+        if (_checkBossFolderUI != null)
+            _checkBossFolderUI.gameObject.SetActive(false);
+    }
+
     public void ChangeTab(PlayTab _tab)
     {
         if (TabType == _tab)

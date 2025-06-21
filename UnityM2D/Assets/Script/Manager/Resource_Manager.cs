@@ -33,6 +33,8 @@ public class Resource_Manager : MonoBehaviour
             skeletons.Add(path, skeletonObj);
             return skeletonObj as T;
         }
+  
+
         return Resources.Load<T>(path);
 	}
 

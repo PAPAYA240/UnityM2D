@@ -36,7 +36,7 @@ public class Base : MonoBehaviour
     /// <summary>
     /// enum에 정의된 이름을 기준으로 현재 게임 오브젝트의 자식에서 원하는 타입의 컴포넌트를 찾아 바인딩합니다.
     /// </summary>
-    protected void BindByEnum<T>(Type enumType) where T : UnityEngine.Object
+    private void BindByEnum<T>(Type enumType) where T : UnityEngine.Object
     {
         // enum의 모든 값을 가져옵니다.
         Array enumValues = Enum.GetValues(enumType);
@@ -66,7 +66,7 @@ public class Base : MonoBehaviour
     /// <summary>
     /// 바인딩된 UI 오브젝트를 enum 키를 통해 가져옵니다.
     /// </summary>
-    protected T GetByEnum<T>(Enum key) where T : UnityEngine.Object
+    private T GetByEnum<T>(Enum key) where T : UnityEngine.Object
     {
         if (_uiObjects.TryGetValue(key, out UnityEngine.Object obj))
             return obj as T;
@@ -79,21 +79,6 @@ public class Base : MonoBehaviour
     protected TextMeshProUGUI GetText(Enum _enum) { return GetByEnum<TextMeshProUGUI>(_enum); }
     protected Button GetButton(Enum _enum) { return GetByEnum<Button>(_enum); }
     protected Image GetImage(Enum _enum) { return GetByEnum<Image>(_enum); }
-
-    protected List<GameObject> FindChild(GameObject _parent, string targetChildName)
-    {
-        List<GameObject> foundChildren = new List<GameObject>();
-
-        foreach (Transform childTransform in _parent.transform)
-        {
-            if (childTransform.name == targetChildName)
-            {
-                foundChildren.Add(childTransform.gameObject); // GameObject로 변환하여 리스트에 추가
-            }
-        }
-
-        return foundChildren;
-    }
 
     public static void BindEvent(GameObject go, Action action, Defines.Input type = Defines.Input.Click)
     {

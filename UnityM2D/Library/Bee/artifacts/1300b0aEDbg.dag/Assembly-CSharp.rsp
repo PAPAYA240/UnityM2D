@@ -475,6 +475,8 @@
 "Assets/Script/Manager/UI_Manager.cs"
 "Assets/Script/Scene/BaseScene.cs"
 "Assets/Script/UI/UI_Base.cs"
+"Assets/Script/UI/UI_CheckBossFolder.cs"
+"Assets/Script/UI/UI_Folder/UI_BossFolder.cs"
 "Assets/Script/UI/UI_Folder/UI_Folder.cs"
 "Assets/Script/UI/UI_Folder/UI_WeaponFolder.cs"
 "Assets/Script/UI/UI_Popup.cs"

@@ -56,20 +56,20 @@ public class PlayerController : BaseController
         EquipWeapon(WeaponType.Basic_Weapon);
 
         // 옵저버 Timer 등록
-        Managers.TimerManager.OnTimerExpired += HandleTimerExpired;
+        Managers.TimerManager.OnTimeOver += HandleTimerExpired;
 
         // 몬스터 생성
-        TargetObject = GameObject.Find("@Enemy");
+        TargetObject = GameObject.Find(strEnemyObject);
         if (TargetObject == null)
         { 
             TargetObject = Managers.Resource.Instantiate("Prefab/Character/Enemy");
-            TargetObject.name = "@Enemy";
+            TargetObject.name = strEnemyObject;
         }
 
         if (rangeArea == null)
         {
             rangeArea = Managers.Resource.Instantiate("Prefab/Character/PlayerArea");
-            rangeArea.name = "@PlayerArea";
+            rangeArea.name = strPlayerArea;
         }
 
         // 콜라이더
@@ -119,7 +119,7 @@ public class PlayerController : BaseController
     void OnDisable()
     {
         if (Managers.TimerManager != null)
-            Managers.TimerManager.OnTimerExpired -= HandleTimerExpired;
+            Managers.TimerManager.OnTimeOver -= HandleTimerExpired;
     }
     #endregion
 
