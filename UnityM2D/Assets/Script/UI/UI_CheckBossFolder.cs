@@ -1,9 +1,14 @@
 using UnityEngine;
+using static Defines;
+
+// 변수명 변경 완료 
 
 public class UI_CheckBossFolder : UI_Base
 {
-    public EnemyController TargetEnemyController { get; set; }
-    private RuntimeAnimatorController _pendingLoadAnim;
+    public EnemyController targetEnemyController { get; set; }
+    public EnemyType enemyType { get; private set; }
+    private RuntimeAnimatorController pendingLoadAnim;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -22,11 +27,18 @@ public class UI_CheckBossFolder : UI_Base
         if (gameObject.activeInHierarchy)
             return;
 
-        if (TargetEnemyController != null && _pendingLoadAnim != null)
+        if (targetEnemyController != null && pendingLoadAnim != null)
         {
-            TargetEnemyController.ApplyAnimator(_pendingLoadAnim); 
+            targetEnemyController.ApplyAnimator(pendingLoadAnim); 
         }
-
-        _pendingLoadAnim = null;
+        pendingLoadAnim = null;
     }
+
+    // Boss 창 열 때 정보 넘기기
+    public void ActiveCheckBossFolder(EnemyType _enemy, bool _active = true)
+    {
+        this.gameObject.SetActive(_active);
+        enemyType = _enemy;
+    }
+
 }

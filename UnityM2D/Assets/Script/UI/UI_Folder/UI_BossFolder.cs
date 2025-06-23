@@ -54,13 +54,14 @@ public class UI_BossFolder : UI_Base
     void OnSelectBossClick()
     {
         if(_checkBossFolderUI != null)
-            _checkBossFolderUI.gameObject.SetActive(true);
+            _checkBossFolderUI.ActiveCheckBossFolder(bossType);
     }
 
     protected void OnDisable()
     {
         Managers.TimerManager.OnTimeNext -= HandleTimerExpired;
     }
+
     // 타이머 만료 시
     private void HandleTimerExpired()
     {
@@ -71,7 +72,6 @@ public class UI_BossFolder : UI_Base
         {
             TargetEnemyController.ApplyAnimator(_pendingLoadAnim); // EnemyController의 메소드 호출
         }
-
         _pendingLoadAnim = null; // 적용 후 보류 중인 애니메이터 초기화
     }
 

@@ -96,6 +96,7 @@ public class UI_Folder : UI_Popup
         GetText(TextType.AttackText).text = String.Format($"{Player.State.AttackPower}");
     }
 
+    #region Weapon Folder
     private void Register_WeaponFolder()
     {
         GameObject parent = GetObject(GameObjects.Weapon_Item);
@@ -114,8 +115,10 @@ public class UI_Folder : UI_Popup
             WeaponFolder.Add(item);
         }
     }
+    #endregion
 
-   private void Register_BossFolder()
+    #region Boss Folder
+    private void Register_BossFolder()
    {
         // 보스 몹 시작 UI
         _checkBossFolderUI = Managers.UIManager.ShowUI<UI_CheckBossFolder>("UI_CheckBossFolder", this.gameObject.transform);
@@ -148,6 +151,7 @@ public class UI_Folder : UI_Popup
             }
         }
     }
+
     private void CancelButton()
     {
         if (_checkBossFolderUI != null)
@@ -158,7 +162,11 @@ public class UI_Folder : UI_Popup
     {
         if (_checkBossFolderUI != null)
             _checkBossFolderUI.gameObject.SetActive(false);
+
+        TargetEnemyController.NextEnemyType = _checkBossFolderUI.enemyType;
     }
+    #endregion
+
 
     public void ChangeTab(PlayTab _tab)
     {
