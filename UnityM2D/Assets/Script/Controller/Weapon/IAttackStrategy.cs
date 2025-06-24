@@ -69,7 +69,7 @@ public class BasicAttack : IAttackStrategy
             yield return new WaitForSeconds(0.3f);
             Attacker.ReactionWeapon();
 
-           Targeter.TakeDamage(Attacker.State.AttackPower);
+           Targeter.TakeDamage(Attacker.data.AttackPower);
         }
         yield break;
     }

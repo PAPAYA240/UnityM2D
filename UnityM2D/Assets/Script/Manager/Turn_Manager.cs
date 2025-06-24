@@ -6,7 +6,6 @@ public interface ITurnParticipant
     void OnTurnStart();
     void OnTurnEnd();
     bool isAlive { get; } // 살아있는지 여부를 반환
-    string Name { get; }  // 디버깅을 위한 이름 (선택적)
 }
 
 public class TurnManager
@@ -38,7 +37,6 @@ public class TurnManager
         if (!_turnOrder.Contains(participant)) // 중복 등록 방지
         {
             _turnOrder.Add(participant);
-            Debug.Log($"[TurnManager] 참여자 등록: {participant.Name}");
         }
     }
 
@@ -91,7 +89,6 @@ public class TurnManager
         }
         else
         {
-            Debug.LogWarning("[TurnManager] 알 수 없는 턴 참여자입니다: " + currentParticipant.Name);
             EndCurrentTurn(); 
             return;
         }

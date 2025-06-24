@@ -6,47 +6,49 @@ using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections;
 using UnityEngine.Rendering;
+using UnityEngine.InputSystem.XR;
+
+
 
 public class EnemyController : BaseController
 {
-    private EnemyType EnemyType = EnemyType.Zombi;
-    public EnemyType NextEnemyType = EnemyType.Zombi;
-
-    private Dictionary<AnimState, Action<Animator>> _animTable;
-    private Dictionary<AnimState, Action<GameObject>> _moveTable;
-
-    public event Action<AnimState> OnStateChanged;
+    #region 변수
+    public EnemyType NextEnemyType = EnemyType.Zombi; // 다음 Enemy 미리 예약
 
     private Vector3 SpawnPosition = new Vector3();
-
     private Vector3 originScaled;
     private const float upgradeScaled = 1f;
 
+    // WaitForSeconds
     const float waitDeadEnemy = 1f;
     const float waitChangeEnemy = 0.6f;
 
-    public AnimState EnemyAnim
+    // ============ 정보 ============ 
+    public MonsterData CurrentCharacterData { get; private set; }
+
+    private CharacterManager<MonsterData> monsterDataManager = new CharacterManager<MonsterData>();
+
+    protected override ICharacterManager GetCharacterDataManager()
     {
-        get => MyAnimState;
-        set
-        {
-            MyAnimState = value;
-            _animTable[MyAnimState].Invoke(myAnim);
-            OnStateChanged?.Invoke(MyAnimState);
-        }
+        return monsterDataManager;
     }
+    public MonsterData monsterData => data as MonsterData;
+    #endregion
 
     private void Start() => Init();
+
 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
+        LoadData(EnemyType.Skeleton);
+
         // 애니메이션
         myAnim = GetComponent<Animator>();
         SettingAnimation();
-        EnemyAnim = AnimState.Idle;
+        AnimState = AnimState.Idle;
 
         EquipWeapon(WeaponType.None_Weapon);
 
@@ -94,7 +96,7 @@ public class EnemyController : BaseController
 
     protected override void Dead()
     {
-        EnemyAnim = AnimState.Dead;
+        AnimState = AnimState.Dead;
 
         StartCoroutine(NextEnemy());
     }
@@ -116,7 +118,7 @@ public class EnemyController : BaseController
             Vector3 startPosition = transform.position;
             Vector3 targetPosition = SpawnPosition;
 
-            float duration = MyState.Speed * 0.07f;
+            float duration = monsterData.Speed * 0.07f;
 
             float elapsedTime = 0f;
 
@@ -141,21 +143,20 @@ public class EnemyController : BaseController
 
     private IEnumerator ChangeEnemy()
     {
-        // 1. 애니메이션 리로드
-        LoadAnimator();
+        if (NextEnemyType != monsterData.enemyType)
+             LoadAnimator();
+
+        // 3. 데이터 로드 및 리소스 가져오기
+        LoadData(NextEnemyType);
 
         // 2. 스케일 변경
-        if (EnemyType >= EnemyType.Zombi_Boss)
+        if (monsterData.enemyType >= EnemyType.Zombi_Boss)
             this.transform.localScale = new Vector3(upgradeScaled, upgradeScaled, 1);
         else
             this.transform.localScale = originScaled;
 
-        // 3. 데이터 로드 및 리소스 가져오기
-        State.Hp = State.MaxHp;
+        AnimState = AnimState.Idle;
 
-        EnemyAnim = AnimState.Idle;
-
-        // 4. EnemyArea 위치 가져오기
         SettingAreaCollider();
 
         yield break;
@@ -163,36 +164,33 @@ public class EnemyController : BaseController
     #endregion
 
     #region 애니메이터 적용
-    public RuntimeAnimatorController LoadAnimator()
+    private void LoadData(EnemyType _type)
     {
-        if (NextEnemyType == EnemyType)
-            return null;
-        EnemyType = NextEnemyType;
-
-        string path = "";
-        switch (EnemyType)
-        {
-            case Defines.EnemyType.Zombi_Boss:
-                path = "Prefab/Animation/Zombi_Boss/ZombiBossAnim";
-                break;
-            case Defines.EnemyType.Skeleton_Boss:
-                path = "Prefab/Animation/Skeleton_Boss/SkeletonBossAnim";
-                break;
-            default:
-                Debug.LogWarning($"EnemyType: {EnemyType}에 대한 애니메이터 경로가 정의되지 않았습니다.");
-                return null;
-        }
-        RuntimeAnimatorController loadedController = Resources.Load<RuntimeAnimatorController>(path);
-        myAnim.runtimeAnimatorController = loadedController;
-
-        return Resources.Load<RuntimeAnimatorController>(path);
+        Managers.DataManager.Enemys.TryGetValue(String.Format($"{_type}"), out MonsterData myData);
+        monsterDataManager.Data = myData;
     }
-    public void ApplyAnimator(RuntimeAnimatorController controller)
+
+    private RuntimeAnimatorController LoadAnimator()
+    {
+        RuntimeAnimatorController loadedController;
+        if (monsterData.myAnimControllerPath != null)
+        {
+            loadedController = Resources.Load<RuntimeAnimatorController>(monsterData.myAnimControllerPath);
+            ApplyAnimator(loadedController);
+        }
+        else
+        {
+            loadedController = null;
+            Debug.LogWarning("Failed Load Animation Controller : EnemyController()");
+        }
+    
+        return loadedController;
+    }
+    private void ApplyAnimator(RuntimeAnimatorController controller)
     {
         if (myAnim != null && controller != null)
         {
             myAnim.runtimeAnimatorController = controller;
-            Debug.Log($"애니메이터 적용됨: {controller.name}");
         }
         else
         {
@@ -222,12 +220,12 @@ public class EnemyController : BaseController
     #region 움직임
     private void Move()
     {
-        transform.position = Managers.TransformManager.MoveToTarget(transform.position, RunAreaPosition, MyState.Speed);
+        transform.position = Managers.TransformManager.MoveToTarget(transform.position, RunAreaPosition, data.Speed);
     }
 
     private void Attack()
     {
-        transform.position = Managers.TransformManager.MoveToTarget(transform.position, TargetObject.transform.position, MyState.Speed);
+        transform.position = Managers.TransformManager.MoveToTarget(transform.position, TargetObject.transform.position, data.Speed);
     }
     #endregion
 }

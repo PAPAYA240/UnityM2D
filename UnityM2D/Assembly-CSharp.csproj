@@ -61,9 +61,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\Entity\MstItemEntity.cs" />
     <Compile Include="Assets\Script\UI\UI_Base.cs" />
     <Compile Include="Assets\Script\Controller\BaseController.cs" />
     <Compile Include="Assets\Script\Data\Weapon.cs" />
+    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\ExcelAsset\MstItems.cs" />
     <Compile Include="Assets\Script\Manager\Input_Manager.cs" />
     <Compile Include="Assets\Script\Manager\ObjectPool_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Resource_Manager.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
+    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\Example.cs" />
+    <Compile Include="Assets\Script\Manager\Data_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_BossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Slide.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Assets\Script\Scene\BaseScene.cs" />
     <Compile Include="Assets\Script\Controller\Weapon\Bullet.cs" />
     <Compile Include="Assets\Script\Data\GameManager_Ex.cs" />
+    <Compile Include="Assets\Resources\Data\DataTransformer.cs" />
     <Compile Include="Assets\Script\Controller\Weapon\IAttackStrategy.cs" />
     <Compile Include="Assets\Script\UI\UI_Popup.cs" />
     <Compile Include="Assets\Script\Controller\EnemyController.cs" />
@@ -103,6 +108,7 @@
     <None Include="Assets\Spine\version.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
+    <None Include="Assets\Resources\Data\EnemyData.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -112,12 +118,14 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Resources\Data\PlayerData.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
@@ -1359,9 +1367,17 @@
       <Project>{E3EC63A1-C19B-DAFF-7CCB-086DFFA874ED}</Project>
       <Name>spine-unity-examples-editor</Name>
     </ProjectReference>
+    <ProjectReference Include="ExcelImporter.csproj">
+      <Project>{B415F095-3EC6-1D6D-BD89-C775A15A9F6D}</Project>
+      <Name>ExcelImporter</Name>
+    </ProjectReference>
     <ProjectReference Include="spine-unity.csproj">
       <Project>{D728B8C3-05F1-D549-55BD-DF6720ACE37C}</Project>
       <Name>spine-unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="ExcelImporter.Editor.csproj">
+      <Project>{FDA36125-4D92-EC54-0286-6EA3635F7710}</Project>
+      <Name>ExcelImporter.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="spine-csharp.csproj">
       <Project>{959FFF17-2FC4-3770-B606-D756E97EEC2C}</Project>

@@ -93,7 +93,7 @@ public class UI_Folder : UI_Popup
  }
     void Update()
     {
-        GetText(TextType.AttackText).text = String.Format($"{Player.State.AttackPower}");
+        GetText(TextType.AttackText).text = String.Format($"{Player.data.AttackPower}");
     }
 
     #region Weapon Folder

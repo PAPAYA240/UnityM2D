@@ -65,14 +65,14 @@ public class UI_BossFolder : UI_Base
     // 타이머 만료 시
     private void HandleTimerExpired()
     {
-        if (gameObject.activeInHierarchy)
-            return;
+        //if (gameObject.activeInHierarchy)
+        //    return;
 
-        if (TargetEnemyController != null && _pendingLoadAnim != null)
-        {
-            TargetEnemyController.ApplyAnimator(_pendingLoadAnim); // EnemyController의 메소드 호출
-        }
-        _pendingLoadAnim = null; // 적용 후 보류 중인 애니메이터 초기화
+        //if (TargetEnemyController != null && _pendingLoadAnim != null)
+        //{
+        //    TargetEnemyController.ApplyAnimator(_pendingLoadAnim); // EnemyController의 메소드 호출
+        //}
+        //_pendingLoadAnim = null; // 적용 후 보류 중인 애니메이터 초기화
     }
 
 

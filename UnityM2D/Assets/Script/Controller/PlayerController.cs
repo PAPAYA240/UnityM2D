@@ -10,31 +10,21 @@ using static Defines;
 
 public class PlayerController : BaseController
 {
+    #region 변수
     enum PlayerText
     {
         None,
         StateText,
     }
 
-    public JobType JobType;
-    
-    private Dictionary<AnimState, Action<Animator>> _animTable;
-    private Dictionary<AnimState, Action<GameObject>> _moveTable;
-
-    // observer : Action만 이용
-    public event Action<AnimState> OnStateChanged;
-
-
-    public AnimState PlayerAnim
+    // ============ 정보 ============ 
+    private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
+    protected override ICharacterManager GetCharacterDataManager()
     {
-        get => MyAnimState;
-        set
-        {
-            MyAnimState = value;
-            _animTable[MyAnimState].Invoke(myAnim);
-            OnStateChanged?.Invoke(MyAnimState);
-        }
+        return playerDataManager;
     }
+    public PlayerData playerData => data as PlayerData;
+    #endregion
 
     private void Start() => Init();
 
@@ -43,11 +33,12 @@ public class PlayerController : BaseController
         if (base.Init() == false)
             return false;
 
+        LoadData(JobType.Knight);
+
         // 애니메이션
         myAnim = GetComponent<Animator>();
         SettingAnimation();
-        PlayerAnim = AnimState.Idle;
-        JobType = JobType.Knight;
+        AnimState = AnimState.Idle;
 
         // Text
         BindText(typeof(PlayerText));
@@ -98,7 +89,7 @@ public class PlayerController : BaseController
 
     protected override void Dead()
     {
-        PlayerAnim = AnimState.Dead;
+        AnimState = AnimState.Dead;
         if (EquippedWeapon != null)
             StartCoroutine(EquippedWeapon.DeadWeapon());
 
@@ -108,12 +99,17 @@ public class PlayerController : BaseController
 
     void DeadUI() => Managers.UIManager.ShowUI<UI_Base>("UI_Dead");
 
+    void LoadData(JobType _type)
+    {
+        Managers.DataManager.Players.TryGetValue("Player", out PlayerData _data);
+        playerDataManager.Data = _data;
+    }
 
     #region Observer Timer
     private void HandleTimerExpired()
     {
         Debug.Log("PlayerController: 타이머가 만료되었습니다! 플레이어가 사망합니다.");
-        TakeDamage(State.MaxHp);
+        TakeDamage(playerData.MaxHp);
     }
 
     void OnDisable()

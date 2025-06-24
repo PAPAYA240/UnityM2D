@@ -77,7 +77,7 @@ public class Defines
     }
     public enum StatType
     {
-        MaxHp,
+        MaxHp ,
         Exp,
         Attackbility,
     }

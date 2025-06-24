@@ -132,6 +132,11 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -define:UNITY_EDITOR_ONLY_COMPILATION
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/ICSharpCode.SharpZipLib.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OOXML.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXml4Net.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXmlFormats.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AccessibilityModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AdaptivePerformanceModule.dll"
@@ -393,6 +398,8 @@
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Assembly-CSharp.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/ExcelImporter.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/ExcelImporter.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/PPv2URPConverters.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/PsdPlugin.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-csharp.ref.dll"

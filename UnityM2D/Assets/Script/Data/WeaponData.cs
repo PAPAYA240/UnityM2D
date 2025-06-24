@@ -9,7 +9,7 @@ public class WeaponData : ScriptableObject
     public string weaponName = "무기 이름";
     public GameObject weaponPrefab;
 
-    public Defines.WeaponType weaponType;
+    public WeaponType weaponType;
     // 어떤 공격 전략을 사용할 것인가?
     [Header("Attack Strategy Settings")]
     public IAttackStrategy attackStrategyType; 

@@ -74,18 +74,18 @@ public class UI_WeaponFolder : UI_Base
             return;
 
         int costText = CurrentWeaponFigure * 10;
-        if (Player.State.Money < costText)
+        if (Player.data.Money < costText)
         {
             Console.WriteLine("돈이 부족합니다.");
-            Console.WriteLine($"Mony : { Player.State.Money }");
+            Console.WriteLine($"Mony : { Player.data.Money }");
             return;
         }
 
-        Player.State.Money -= costText;
-        Player.State.AttackPower = CurrentWeaponFigure;
+        Player.data.Money -= costText;
+        Player.data.AttackPower = CurrentWeaponFigure;
         CurrentWeaponFigure = CurrentWeaponFigure + 100;
 
-        ChangeText(Player.State.AttackPower);
+        ChangeText(Player.data.AttackPower);
         IsLock();
     }
 
@@ -109,7 +109,7 @@ public class UI_WeaponFolder : UI_Base
         if (Player == null)
             return false;
 
-        if (OpenWeaponLimit <= Player.State.AttackPower)
+        if (OpenWeaponLimit <= Player.data.AttackPower)
         {
             if (NextLockObject != null)
                 NextLockObject.SetActive(false);
@@ -121,7 +121,6 @@ public class UI_WeaponFolder : UI_Base
             GetText(Texts.Upgrade).text = String.Format("CLEAR!");
 
             bLock = true;
-
             return true; 
         }
 

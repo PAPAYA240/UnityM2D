@@ -83,15 +83,15 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         _targetBaseController = baseCon;
         _animationDuration = animationDuration;
 
-        if (slider != null && _targetBaseController != null && _targetBaseController.State != null)
+        if (slider != null && _targetBaseController != null && _targetBaseController.data != null)
         {
             switch (slideType)
             {
                 case SlideTargetType.HpBar:
-                    slider.maxValue = _targetBaseController.State.MaxHp;
+                    slider.maxValue = _targetBaseController.data.MaxHp;
                     break;
                 case SlideTargetType.ExpBar:
-                    slider.maxValue = _targetBaseController.State.LevelCount;
+                    slider.maxValue = _targetBaseController.data.LevelCount;
                     break;
                     // 다른 타입 추가
             }
@@ -114,16 +114,16 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     // 슬라이더의 현재 목표 값을 가져오는 헬퍼 함수
     private float GetCurrentTargetValue()
     {
-        if (_targetBaseController == null || _targetBaseController.State == null)
+        if (_targetBaseController == null || _targetBaseController.data == null)
                 return _currentDisplayedValue;
 
         switch (slideType)
         {
             case SlideTargetType.HpBar:
-                return _targetBaseController.State.Hp;
+                return _targetBaseController.data.Hp;
             case SlideTargetType.ExpBar:
                 UpdateLevel();
-                return _targetBaseController.State.LevelCount;
+                return _targetBaseController.data.LevelCount;
             default:
                 return _currentDisplayedValue;
         }
@@ -134,9 +134,9 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     {
         while (true) // 게임이 활성화되어 있는 동안 계속 실행
         {
-            if (slider == null || _targetBaseController == null || _targetBaseController.State == null)
+            if (slider == null || _targetBaseController == null || _targetBaseController.data == null)
             {
-                if (_targetBaseController == null || _targetBaseController.State == null)
+                if (_targetBaseController == null || _targetBaseController.data == null)
                     if ((_targetBaseController = GameObject.Find(Defines.strPlayerObject).GetComponent<BaseController>()) == null)
                     { 
                         yield return new WaitForSeconds(0.1f); // 잠시 기다렸다가 다시 시도
@@ -187,6 +187,6 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         if (slideType != SlideTargetType.ExpBar)
             return;
 
-        GetText(Texts.Level_Text).text = string.Format($"LEVEL: {_targetBaseController.State.Level}");
+        GetText(Texts.Level_Text).text = string.Format($"LEVEL: {_targetBaseController.data.Level}");
     }    
 }

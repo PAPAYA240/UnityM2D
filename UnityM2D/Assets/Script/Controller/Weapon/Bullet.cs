@@ -28,7 +28,7 @@ public class Bullet : Base
             Vector3 startPos = transform.position;
             Vector3 endPos = EnemyCon.transform.position;
 
-            float duration = PlayerCon.State.AttackSpeed * 0.03f;
+            float duration = PlayerCon.data.AttackSpeed * 0.03f;
 
             float elapsedTime = 0f;
             while (elapsedTime < duration)
@@ -45,7 +45,7 @@ public class Bullet : Base
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-           EnemyCon.TakeDamage(PlayerCon.State.AttackPower);
+           EnemyCon.TakeDamage(PlayerCon.data.AttackPower);
 
             Managers.ObjectPoolManager.ReturnObject(this.gameObject);
         }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMonsterData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <MonsterData Name="Zombi" myAnimControllerPath="Prefab/Animation/Zombi_Default/ZombiAnim" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Zombi">
+    <name />
+    <hideFlags>None</hideFlags>
+  </MonsterData>
+  <MonsterData Name="Zombi_Boss" myAnimControllerPath="Prefab/Animation/Zombi_Boss/ZombiBossAnim" Level="1" LevelCount="0" Hp="300" MaxHp="300" Hill="30" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Zombi_Boss">
+    <name />
+    <hideFlags>None</hideFlags>
+  </MonsterData>
+  <MonsterData Name="Skeleton" myAnimControllerPath="Prefab/Animation/Skeleton_Default/SkeletonAnim" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Skeleton">
+    <name />
+    <hideFlags>None</hideFlags>
+  </MonsterData>
+  <MonsterData Name="Skeleton_Boss" myAnimControllerPath="Prefab/Animation/Skeleton_Boss/SkeletonBossAnim" Level="1" LevelCount="0" Hp="600" MaxHp="600" Hill="50" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Skeleton_Boss">
+    <name />
+    <hideFlags>None</hideFlags>
+  </MonsterData>
+</ArrayOfMonsterData>

@@ -24,14 +24,14 @@ public class UI_CheckBossFolder : UI_Base
     }
     private void HandleTimerExpired()
     {
-        if (gameObject.activeInHierarchy)
-            return;
+        //if (gameObject.activeInHierarchy)
+        //    return;
 
-        if (targetEnemyController != null && pendingLoadAnim != null)
-        {
-            targetEnemyController.ApplyAnimator(pendingLoadAnim); 
-        }
-        pendingLoadAnim = null;
+        //if (targetEnemyController != null && pendingLoadAnim != null)
+        //{
+        //    targetEnemyController.ApplyAnimator(pendingLoadAnim); 
+        //}
+        //pendingLoadAnim = null;
     }
 
     // Boss 창 열 때 정보 넘기기

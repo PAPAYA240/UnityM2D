@@ -134,6 +134,11 @@
 -define:TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/ICSharpCode.SharpZipLib.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OOXML.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXml4Net.dll"
+-r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXmlFormats.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AccessibilityModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AdaptivePerformanceModule.dll"

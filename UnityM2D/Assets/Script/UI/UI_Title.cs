@@ -38,7 +38,7 @@ public class UI_Title : UI_Base
 
         GameObject playerGo = GameObject.Find(strPlayerObject);
         PlayerController playerController = playerGo.GetComponent<PlayerController>();
-        playerController.PlayerAnim = AnimState.Run;
+        playerController.AnimState = AnimState.Run;
 
         Setting_InGameUI();
 
