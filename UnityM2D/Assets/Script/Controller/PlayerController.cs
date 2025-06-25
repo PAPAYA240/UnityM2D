@@ -1,30 +1,30 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Spine;
-using Spine.Unity;
-using Unity.Mathematics;
 using UnityEngine;
+
 using static Defines;
 
 public class PlayerController : BaseController
 {
     #region 변수
+    // ============ Eume ============ 
     enum PlayerText
     {
         None,
         StateText,
     }
 
-    // ============ 정보 ============ 
+
+    // ============ Player Information ============ 
     private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
+  
+    public PlayerData playerData => data as PlayerData;
     protected override ICharacterManager GetCharacterDataManager()
     {
         return playerDataManager;
     }
-    public PlayerData playerData => data as PlayerData;
     #endregion
+
 
     private void Start() => Init();
 
@@ -33,48 +33,49 @@ public class PlayerController : BaseController
         if (base.Init() == false)
             return false;
 
+        if (!InitBind())
+            Debug.Log("Failed Bind : PlayerController()");
+
+        if (!InitAnimation())
+            Debug.Log("Failed Animation : PlayerController()");
+
+        if (!InitReigster())
+            Debug.Log("Failed Reigster : EnemyController");
+
         LoadData(JobType.Knight);
 
-        // 애니메이션
-        myAnim = GetComponent<Animator>();
-        SettingAnimation();
-        AnimState = AnimState.Idle;
-
-        // Text
-        BindText(typeof(PlayerText));
-
-        // Weapon
         EquipWeapon(WeaponType.Basic_Weapon);
 
-        // 옵저버 Timer 등록
-        Managers.TimerManager.OnTimeOver += HandleTimerExpired;
-
-        // 몬스터 생성
-        TargetObject = GameObject.Find(strEnemyObject);
-        if (TargetObject == null)
-        { 
-            TargetObject = Managers.Resource.Instantiate("Prefab/Character/Enemy");
-            TargetObject.name = strEnemyObject;
-        }
-
-        if (rangeArea == null)
-        {
-            rangeArea = Managers.Resource.Instantiate("Prefab/Character/PlayerArea");
-            rangeArea.name = strPlayerArea;
-        }
-
-        // 콜라이더
-        SettingAreaCollider();
+        Managers.TimerManager.OnTimeOver += HandleTimerOver;
+        Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
         return true;
     }
 
+
     private void Update()
     {
-        _moveTable[MyAnimState].Invoke(TargetObject);
+        if(TargetObject != null)
+            moveTable[MyAnimState].Invoke(TargetObject);
     }
+
+    #region Change State
+    private void HandleTimerEndWave()
+    {
+        // TODO : 웨이브가 끝났다면
+        if (playerDataManager.LevelCount >= playerDataManager.LevelCountMax)
+            playerDataManager.LevelCountMax = 300;
+        else
+        {
+            EnemyController enemy = TargetObject.GetComponent<EnemyController>();
+            if (enemy != null)
+                playerDataManager.Level += enemy.data.LevelCount;
+        }
+    }
+
     public override void OnTurnStart()  
     {
+        // 한 턴을 시작했을 떄
         if (TargetObject == null)
             return;
 
@@ -84,8 +85,8 @@ public class PlayerController : BaseController
 
      public override void OnTurnEnd() 
      {
-        Managers.TurnManager.EndCurrentTurn();
-    }
+        // (한 번의 공격)한 턴을 마쳤을 때
+     }
 
     protected override void Dead()
     {
@@ -98,15 +99,7 @@ public class PlayerController : BaseController
     }
 
     void DeadUI() => Managers.UIManager.ShowUI<UI_Base>("UI_Dead");
-
-    void LoadData(JobType _type)
-    {
-        Managers.DataManager.Players.TryGetValue("Player", out PlayerData _data);
-        playerDataManager.Data = _data;
-    }
-
-    #region Observer Timer
-    private void HandleTimerExpired()
+    private void HandleTimerOver()
     {
         Debug.Log("PlayerController: 타이머가 만료되었습니다! 플레이어가 사망합니다.");
         TakeDamage(playerData.MaxHp);
@@ -115,13 +108,28 @@ public class PlayerController : BaseController
     void OnDisable()
     {
         if (Managers.TimerManager != null)
-            Managers.TimerManager.OnTimeOver -= HandleTimerExpired;
+        {   
+            Managers.TimerManager.OnTimeOver -= HandleTimerOver;
+            Managers.TimerManager.OnTimeNext -= HandleTimerEndWave;
+        }
     }
     #endregion
 
+    #region Load Change Player
+    void LoadData(JobType _type)
+    {
+        if(playerDataManager.Data == null)
+            playerDataManager.Data = new PlayerData();
+
+        playerData.jobType = _type;
+        playerDataManager.ChangeData(playerData);
+    }
+    #endregion
+
+    #region Animation
     protected override void SettingAnimation()
     {
-        _animTable = new()
+        animTable = new()
         {
             { AnimState.Idle, a =>{ a.SetBool( "bRun", false ); } },
             { AnimState.Run, a =>{ a.SetBool("bRun", true); } },
@@ -129,7 +137,7 @@ public class PlayerController : BaseController
             { AnimState.Dead, a =>{ a.SetBool("bDead", true); } }
         };
 
-        _moveTable = new Dictionary<AnimState, Action<GameObject>>
+        moveTable = new Dictionary<AnimState, Action<GameObject>>
         {
             { AnimState.Idle, (target) => { } },
             { AnimState.Run, (target) => ReturnToPosition() }, 
@@ -137,4 +145,52 @@ public class PlayerController : BaseController
             { AnimState.Dead, (target) => { } },
         };
     }
+    #endregion
+
+    #region Initialize
+    private bool InitAnimation()
+    {
+        myAnim = GetComponent<Animator>();
+        if (myAnim == null)
+            return false;
+
+        // # Animation Setting 후 State 교체해야 합니다.
+        SettingAnimation(); 
+
+        AnimState = AnimState.Idle;
+
+        return true;
+    }
+
+    private bool InitReigster()
+    {
+        // 몬스터 생성
+        TargetObject = GameObject.Find(strEnemyObject);
+        if (TargetObject == null)
+        {
+            TargetObject = Managers.Resource.Instantiate(strEnemyPath);
+            TargetObject.name = strEnemyObject;
+        }
+
+        if (rangeArea == null)
+        {
+            rangeArea = Managers.Resource.Instantiate(strPlayerAreaPath);
+            rangeArea.name = strPlayerArea;
+        }
+
+        if (rangeArea == null && rangeArea == null)
+            return false;
+
+        SettingAreaCollider();
+
+        return true;
+    }
+
+    private bool InitBind()
+    {
+        BindText(typeof(PlayerText));
+
+        return true;
+    }
+    #endregion
 }

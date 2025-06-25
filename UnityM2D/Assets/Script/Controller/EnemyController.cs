@@ -1,72 +1,50 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using static Defines;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.GraphicsBuffer;
 using System.Collections;
-using UnityEngine.Rendering;
-using UnityEngine.InputSystem.XR;
 
+using static Defines;
 
 
 public class EnemyController : BaseController
 {
     #region 변수
-    public EnemyType NextEnemyType = EnemyType.Zombi; // 다음 Enemy 미리 예약
-
-    private Vector3 SpawnPosition = new Vector3();
-    private Vector3 originScaled;
-    private const float upgradeScaled = 1f;
-
-    // WaitForSeconds
-    const float waitDeadEnemy = 1f;
-    const float waitChangeEnemy = 0.6f;
-
-    // ============ 정보 ============ 
+    // ======== Enemy Information ========
+    public EnemyType    convertedEnemyType = EnemyType.Zombi;
     public MonsterData CurrentCharacterData { get; private set; }
-
     private CharacterManager<MonsterData> monsterDataManager = new CharacterManager<MonsterData>();
-
+    public MonsterData monsterData => data as MonsterData;
     protected override ICharacterManager GetCharacterDataManager()
     {
         return monsterDataManager;
     }
-    public MonsterData monsterData => data as MonsterData;
+
+    // ======== Check Point ========
+    private Vector3         spawnPosition = new Vector3();
+    private Vector3         originScaled;
+    private const float     upgradeScaled = 1f;
+
+    // ======== WaitForSeconds ========
+    const float waitDeadEnemy = 1f;
+    const float waitChangeEnemy = 0.6f;
     #endregion
 
     private void Start() => Init();
-
 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
-        LoadData(EnemyType.Skeleton);
+        if (!InitAnimation())
+            Debug.Log("Failed Animation : EnemyController");
 
-        // 애니메이션
-        myAnim = GetComponent<Animator>();
-        SettingAnimation();
-        AnimState = AnimState.Idle;
+        if(!InitReigster())
+            Debug.Log("Failed Reigster : EnemyController");
+
+        LoadData(EnemyType.Zombi);
 
         EquipWeapon(WeaponType.None_Weapon);
-
-        TargetObject = GameObject.Find(strPlayerObject);
-        originScaled = this.transform.localScale;
-
-        if (rangeArea == null)
-        {
-            rangeArea = Managers.Resource.Instantiate("Prefab/Character/EnemyArea");
-            rangeArea.name = strEnemyArea;
-        }
-
-        // Load Enemy Spawn Position 
-        GameObject spawnArea = Managers.Resource.Instantiate("Prefab/Character/EnemySpawnArea");
-        this.transform.position = SpawnPosition = spawnArea.transform.position;
-        Destroy(spawnArea);
-
-        SettingAreaCollider();
 
         Managers.TimerManager.OnTimeNext += HandleTimerNext;
 
@@ -76,11 +54,13 @@ public class EnemyController : BaseController
     private void Update()
     {
         if(Managers.Scene.CurrentSceneType == Defines.Scene.InGame)
-             _moveTable[MyAnimState].Invoke(TargetObject);
+             moveTable[MyAnimState].Invoke(TargetObject);
     }
 
+    #region Change State
     public override void OnTurnStart()
     {
+        // 타이머 시작 순간의 공간
         if (TargetObject == null)
             return;
 
@@ -91,32 +71,37 @@ public class EnemyController : BaseController
 
     public override void OnTurnEnd()
     {
-        Managers.TurnManager.EndCurrentTurn();
+        // 타이머 종료 순간의 공간
     }
 
     protected override void Dead()
     {
         AnimState = AnimState.Dead;
 
+        PlayerController player = TargetObject.GetComponent<PlayerController>();
+        if(player != null)
+            player.data.LevelCount += monsterDataManager.Level;
+
         StartCoroutine(NextEnemy());
     }
+    #endregion
 
-    // 다음 적 변경 시
+    #region Load Change Enemy
     private void HandleTimerNext()
     {
+        // 다음 적 변경 시 사용할 공간
     }
 
-    #region Enemy 변경
     private IEnumerator NextEnemy()
     {
         yield return new WaitForSeconds(waitDeadEnemy);
         const float stopDistance = 0.1f;
 
         // 1. Start Spawn으로 돌아가기
-        while (Vector3.Distance(transform.position, SpawnPosition) > stopDistance)
+        while (Vector3.Distance(transform.position, spawnPosition) > stopDistance)
         {
             Vector3 startPosition = transform.position;
-            Vector3 targetPosition = SpawnPosition;
+            Vector3 targetPosition = spawnPosition;
 
             float duration = monsterData.Speed * 0.07f;
 
@@ -132,7 +117,7 @@ public class EnemyController : BaseController
             transform.position = targetPosition;
             yield return null;
         }
-        transform.position = SpawnPosition;
+        transform.position = spawnPosition;
 
         StartCoroutine(ChangeEnemy());
 
@@ -143,13 +128,8 @@ public class EnemyController : BaseController
 
     private IEnumerator ChangeEnemy()
     {
-        if (NextEnemyType != monsterData.enemyType)
-             LoadAnimator();
+        LoadData(convertedEnemyType);
 
-        // 3. 데이터 로드 및 리소스 가져오기
-        LoadData(NextEnemyType);
-
-        // 2. 스케일 변경
         if (monsterData.enemyType >= EnemyType.Zombi_Boss)
             this.transform.localScale = new Vector3(upgradeScaled, upgradeScaled, 1);
         else
@@ -163,11 +143,26 @@ public class EnemyController : BaseController
     }
     #endregion
 
-    #region 애니메이터 적용
+    #region Animation
     private void LoadData(EnemyType _type)
     {
-        Managers.DataManager.Enemys.TryGetValue(String.Format($"{_type}"), out MonsterData myData);
-        monsterDataManager.Data = myData;
+        if(monsterDataManager.Data == null)
+        { 
+            monsterDataManager.Data = new MonsterData();
+        }
+
+        bool bChangeAnim = false;
+        if (convertedEnemyType != monsterData.enemyType)
+        {
+            bChangeAnim = true;
+            monsterData.enemyType = convertedEnemyType;
+        }
+
+        // # ChangeData() 사용 전에 꼭 다음 type으로 monsterData.enemyType 세팅할 것
+        monsterDataManager.ChangeData(monsterData);
+
+        if(bChangeAnim == true)
+            LoadAnimator();
     }
 
     private RuntimeAnimatorController LoadAnimator()
@@ -200,14 +195,14 @@ public class EnemyController : BaseController
     }
     protected override void SettingAnimation()
     {
-        _animTable = new()
+        animTable = new()
         {
             { AnimState.Idle, a =>{ a.SetBool( "bRun", false ); a.SetBool( "bDead", false );} },
              { AnimState.Run, a =>{ a.SetBool("bRun", true); } },
             { AnimState.Dead, a =>{ a.SetBool("bDead", true); } }
         };
 
-        _moveTable = new Dictionary<AnimState, Action<GameObject>>
+        moveTable = new Dictionary<AnimState, Action<GameObject>>
         {
              { AnimState.Idle, (target) => { Move(); } },
             { AnimState.Run, (target) => ReturnToPosition() },
@@ -226,6 +221,44 @@ public class EnemyController : BaseController
     private void Attack()
     {
         transform.position = Managers.TransformManager.MoveToTarget(transform.position, TargetObject.transform.position, data.Speed);
+    }
+    #endregion
+
+    #region Initialize
+    private bool InitAnimation()
+    {
+        myAnim = GetComponent<Animator>();
+        if (myAnim == null)
+            return false;
+
+        SettingAnimation();
+
+        AnimState = AnimState.Idle;
+
+        return true;
+    }
+
+    private bool InitReigster()
+    {
+        // Enemy Info
+        TargetObject = GameObject.Find(strPlayerObject);
+        originScaled = this.transform.localScale;
+
+        // Enemy Area
+        rangeArea = Managers.Resource.Instantiate(strEnemyAreaPath);
+        if(rangeArea == null) 
+            return false;
+        rangeArea.name = strEnemyArea;
+
+        GameObject spawnArea = Managers.Resource.Instantiate(strEnemySpawnAreaPath);
+        if(spawnArea == null)
+            return false;
+        this.transform.position = spawnPosition = spawnArea.transform.position;
+        Destroy(spawnArea);
+
+        SettingAreaCollider();
+
+        return true;
     }
     #endregion
 }

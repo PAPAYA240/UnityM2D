@@ -14,7 +14,6 @@ public class UI_Folder : UI_Popup
         SpeedText,
         AttackText,
     }
-
     enum ButtonType
     {
         Weapon_Button,
@@ -43,6 +42,7 @@ public class UI_Folder : UI_Popup
         Boss,
         Shop
     }
+
 
 
     PlayTab TabType = PlayTab.None;
@@ -124,14 +124,6 @@ public class UI_Folder : UI_Popup
         _checkBossFolderUI = Managers.UIManager.ShowUI<UI_CheckBossFolder>("UI_CheckBossFolder", this.gameObject.transform);
         _checkBossFolderUI.gameObject.SetActive(false);
 
-        // 취소 버튼
-        Button noButton = Setting.FindChild<Button>(_checkBossFolderUI.gameObject, "No_Button", true);
-        Button yesButton = Setting.FindChild<Button>(_checkBossFolderUI.gameObject, "Yes_Button", true);
-        if (noButton != null)
-            BindEvent(noButton.gameObject, CancelButton);
-        if(yesButton != null)
-            BindEvent(yesButton.gameObject, AcceptanceButten);
-
         GameObject parent = GetObject(GameObjects.Boss_Item);
 
         List<GameObject> childobj = new List<GameObject>();
@@ -152,19 +144,6 @@ public class UI_Folder : UI_Popup
         }
     }
 
-    private void CancelButton()
-    {
-        if (_checkBossFolderUI != null)
-            _checkBossFolderUI.gameObject.SetActive(false);
-    }
-
-    public void AcceptanceButten()
-    {
-        if (_checkBossFolderUI != null)
-            _checkBossFolderUI.gameObject.SetActive(false);
-
-        TargetEnemyController.NextEnemyType = _checkBossFolderUI.enemyType;
-    }
     #endregion
 
 

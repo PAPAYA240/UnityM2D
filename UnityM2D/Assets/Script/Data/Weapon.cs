@@ -22,10 +22,11 @@ public class Weapon : MonoBehaviour
     private float fireInterval = 0.1f;
     bool bMove = false;
 
-    
+    Coroutine currentCoroutine = null;
+
     public void Init(WeaponData _data, BaseController _owner, GameObject _weaponSoket)
     {
-        if(_data == null || _owner == null)
+        if (_data == null || _owner == null)
         {
             Console.WriteLine("Failed Init : Weapon()");
             return;
@@ -36,11 +37,11 @@ public class Weapon : MonoBehaviour
         name = MyData.weaponName;
 
         CurrentAttackStrategy = WeaponStrategyFactor.CreateStrategy(MyData);
-        if(CurrentAttackStrategy == null)
+        if (CurrentAttackStrategy == null)
             Console.WriteLine("Failed Load CurrentAttackStrategy : Weapon()");
 
         // 총알 저장
-        if(IsGun())
+        if (IsGun())
         {
             bulletprefab = Managers.Resource.Instantiate("WeaponPrefab/Bullet", this.transform);
             int bulletCount = 10;
@@ -127,9 +128,9 @@ public class Weapon : MonoBehaviour
             return;
 
         GameObject bullet = Managers.ObjectPoolManager.GetObjectKey(bulletprefab, transform.position, transform.rotation);
-        
+
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        
+
         StartCoroutine(bulletScript.Fire());
     }
 
@@ -151,14 +152,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public IEnumerator ReactionWeapon()
+    private IEnumerator ReactionWeapon()
     {
         // == 공격하기 == 
         Vector3 originPos = this.transform.position;
         Vector3 attackTargetPosition = originPos + new Vector3(AttackDist, 0, 0);
-        float attackDuration = MyData.reactionTime.x; 
+        float attackDuration = MyData.reactionTime.x;
         float attackElapsedTime = 0f;
-        while(attackElapsedTime < attackDuration)
+        while (attackElapsedTime < attackDuration)
         {
             float t = attackElapsedTime / attackDuration;
             this.transform.position = Vector3.Lerp(originPos, attackTargetPosition, t);
@@ -170,20 +171,42 @@ public class Weapon : MonoBehaviour
         AutoFire();
         this.transform.position = attackTargetPosition;
 
-
         // == 돌아가기 == 
         Vector3 returnStartPos = this.transform.position;
-       float returnDuration = MyData.reactionTime.y;
+        float returnDuration = MyData.reactionTime.y;
 
         float returnElapsedTime = 0f;
-        while(returnElapsedTime < returnDuration)
+        while (returnElapsedTime < returnDuration)
         {
             float t = returnElapsedTime / returnDuration;
-            transform.position = Vector3.Lerp(returnStartPos, WeaponSocket.transform.position, t); 
+            transform.position = Vector3.Lerp(returnStartPos, WeaponSocket.transform.position, t);
             returnElapsedTime += Time.deltaTime;
             yield return null;
         }
         this.transform.position = WeaponSocket.transform.position;
+        currentCoroutine = null;
     }
 
+    public void OperateWeapon()
+    {
+        currentCoroutine = StartCoroutine(ReactionWeapon());
+    }
+
+    private void OnDisable()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
+        }
+    }
 }

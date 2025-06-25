@@ -1,44 +1,51 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using static Defines;
 
 // 변수명 변경 완료 
 
 public class UI_CheckBossFolder : UI_Base
 {
-    public EnemyController targetEnemyController { get; set; }
-    public EnemyType enemyType { get; private set; }
     private RuntimeAnimatorController pendingLoadAnim;
+
+    Action _onClickYesButton;
+
+    enum Buttons
+    {
+        No_Button,
+        Yes_Button
+    }
 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
+        // 취소 버튼
 
-        Managers.TimerManager.OnTimeNext += HandleTimerExpired;
+        BindButton(typeof(Buttons));
+
+        BindEvent(GetButton(Buttons.No_Button).gameObject, CancelButton);
+        BindEvent(GetButton(Buttons.Yes_Button).gameObject, AcceptanceButten);
 
         return true;
     }
-    protected void OnDisable() 
+    private void CancelButton()
     {
-        Managers.TimerManager.OnTimeNext -= HandleTimerExpired;
+         gameObject.SetActive(false);
     }
-    private void HandleTimerExpired()
-    {
-        //if (gameObject.activeInHierarchy)
-        //    return;
 
-        //if (targetEnemyController != null && pendingLoadAnim != null)
-        //{
-        //    targetEnemyController.ApplyAnimator(pendingLoadAnim); 
-        //}
-        //pendingLoadAnim = null;
+    public void AcceptanceButten()
+    {
+        gameObject.SetActive(false);
+
+        _onClickYesButton.Invoke();
     }
 
     // Boss 창 열 때 정보 넘기기
-    public void ActiveCheckBossFolder(EnemyType _enemy, bool _active = true)
+    public void ActiveCheckBossFolder(Action _invoke, bool _active = true)
     {
+        _onClickYesButton = _invoke;
         this.gameObject.SetActive(_active);
-        enemyType = _enemy;
     }
-
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfPlayerData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <PlayerData Name="Player" myAnimControllerPath="Prefab/Animation/Player/PlayerAnim.controller" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" jobType="Knight">
+  <PlayerData Name="Player" myAnimControllerPath="Prefab/Animation/Player/PlayerAnim.controller" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" jobType="Knight" LevelCountMax="100">
     <name />
     <hideFlags>None</hideFlags>
   </PlayerData>

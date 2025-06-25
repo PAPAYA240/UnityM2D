@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class Defines
 {
+    // NAME
     public const string strEnemyObject = "@Enemy";
     public const string strPlayerObject = "Player";
     public const string strPlayerArea = "@PlayerArea";
     public const string strEnemyArea = "@EnemyArea";
     public const string strManagers = "@Managers";
+
+    // UI NAME
+    public const string CreateHpBar = "UI_HP";
+
+    // PATH : Enemy
+    public const string strEnemyPath = "Prefab/Character/Enemy";
+    public const string strEnemyAreaPath = "Prefab/Character/EnemyArea";
+    public const string strEnemySpawnAreaPath = "Prefab/Character/EnemySpawnArea";
+
+    // PATH : Player
+    public const string strPlayerAreaPath = "Prefab/Character/PlayerArea";
 
 
     public enum Input

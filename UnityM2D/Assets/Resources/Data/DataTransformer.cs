@@ -65,6 +65,7 @@ public class DataTransformer : EditorWindow
                 AttackSpeed = int.Parse(row[11]),
                 Speed = int.Parse(row[12]),
                 jobType = (JobType)Enum.Parse(typeof(JobType), row[13], ignoreCase: true),
+                LevelCountMax =  int.Parse(row[14]),
             };
             playerDatas.Add(playerData);
         }

@@ -28,13 +28,12 @@ public class TurnManager
     public TurnManager()
     {
         _turnOrder = new List<ITurnParticipant>();
-        CurrentTurnState = TurnState.Ready; // 초기 상태는 Ready
+        CurrentTurnState = TurnState.Ready; 
     }
 
-    // 전투 시작 전에 모든 참여자를 등록합니다.
     public void RegisterParticipant(ITurnParticipant participant)
     {
-        if (!_turnOrder.Contains(participant)) // 중복 등록 방지
+        if (!_turnOrder.Contains(participant)) 
         {
             _turnOrder.Add(participant);
         }
@@ -89,21 +88,23 @@ public class TurnManager
         }
         else
         {
-            EndCurrentTurn(); 
+            currentParticipant.OnTurnEnd();
+            EndCurrentTurn();
             return;
         }
 
         currentParticipant.OnTurnStart();
+
         CurrentTurnState = TurnState.WaitingForAction; 
     }
 
-    // 턴이 종료되었음을 알리는 메서드 (PlayerController나 EnemyController에서 호출)
     public void EndCurrentTurn()
     {
         if (CurrentTurnState == TurnState.CombatEnd) 
             return;
 
         CurrentTurnState = TurnState.TurnEnd; 
+
         Debug.Log("[TurnManager] 턴 종료.");
 
         _currentParticipantIndex = (_currentParticipantIndex + 1) % _turnOrder.Count;
@@ -137,13 +138,12 @@ public class TurnManager
         return false; // 아직 전투 중
     }
 
-    // 전투 종료 처리
     private void EndCombat()
     {
         CurrentTurnState = TurnState.CombatEnd;
         Debug.Log("[TurnManager] --- 전투 종료! ---");
 
-        // 필요한 경우, 전투 종료 후 UI 표시, 레벨 클리어 처리 등
+        // TODO : 필요한 경우, 전투 종료 후 UI 표시, 레벨 클리어 처리 등
     }
 
     // 다음 행동할 수 있는 참여자를 찾음
@@ -155,11 +155,10 @@ public class TurnManager
             ITurnParticipant participant = _turnOrder[_currentParticipantIndex];
             if (participant.isAlive)
             {
-                return participant; // 살아있는 참여자를 찾으면 반환
+                return participant; 
             }
-            // 다음 인덱스로 이동 (이미 순환 계산됨)
             _currentParticipantIndex = (_currentParticipantIndex + 1) % _turnOrder.Count;
         }
-        return null; // 모든 참여자가 죽었거나 더 이상 행동할 참여자가 없음
+        return null; 
     }
 }

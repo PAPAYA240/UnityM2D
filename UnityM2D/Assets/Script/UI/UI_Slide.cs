@@ -14,7 +14,7 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         None,
         HpBar,
         ExpBar,
-        ManaBar, // 필요하다면 추가
+        ManaBar, 
     }
 
     enum Texts
@@ -22,18 +22,14 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         Level_Text,
     }
 
-    private SlideTargetType slideType = SlideTargetType.HpBar; // 인스펙터에서 설정
+    private SlideTargetType slideType = SlideTargetType.HpBar; 
 
-    // Lerp 애니메이션에 사용할 변수
-    private float _currentDisplayedValue; // 현재 슬라이더에 표시되고 있는 값
-    private float _targetValue;           // 슬라이더가 도달해야 할 목표 값
-    private float _animationTimer;        // 애니메이션 타이머
-    private float _animationDuration = 0.5f; // 애니메이션 지속 시간 (조정 가능)
+    private float _currentDisplayedValue; 
+    private float _targetValue;  
+    private float _animationTimer;     
+    private float _animationDuration = 0.5f;
 
-    private Coroutine _currentSlideAnimationCoroutine; // 중복 애니메이션 방지
-
-    // 이 슬라이더가 추적할 BaseController 인스턴스를 직접 참조하도록 변경
-    // SetInfo를 통해 외부에서 주입받는 방식이 가장 깔끔합니다.
+    private Coroutine _currentSlideAnimationCoroutine; 
     private BaseController _targetBaseController;
 
     void Start()
@@ -67,7 +63,8 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
             }
         }
         SlideTargetType a = slideType;
-        if (_currentSlideAnimationCoroutine != null) StopCoroutine(_currentSlideAnimationCoroutine);
+        if (_currentSlideAnimationCoroutine != null) 
+            StopCoroutine(_currentSlideAnimationCoroutine);
         _currentSlideAnimationCoroutine = StartCoroutine(AnimateSliderValue());
 
         return true;
@@ -79,7 +76,7 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     }
     public void SetTarget(GameObject _parent, BaseController baseCon, float animationDuration = 0.5f)
     {
-        base.SetInfo(_parent, true); // UI_Base의 SetInfo 호출 (bUpdate는 여기서 true로 설정)
+        base.SetInfo(_parent, true); 
         _targetBaseController = baseCon;
         _animationDuration = animationDuration;
 
@@ -93,9 +90,9 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
                 case SlideTargetType.ExpBar:
                     slider.maxValue = _targetBaseController.data.LevelCount;
                     break;
-                    // 다른 타입 추가
+         
             }
-            // 초기 슬라이더 값 설정
+
             _currentDisplayedValue = GetCurrentTargetValue();
             _targetValue = _currentDisplayedValue;
             slider.value = _currentDisplayedValue;
@@ -111,7 +108,6 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         }
     }
 
-    // 슬라이더의 현재 목표 값을 가져오는 헬퍼 함수
     private float GetCurrentTargetValue()
     {
         if (_targetBaseController == null || _targetBaseController.data == null)
@@ -120,6 +116,7 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         switch (slideType)
         {
             case SlideTargetType.HpBar:
+                slider.maxValue = _targetBaseController.data.MaxHp;
                 return _targetBaseController.data.Hp;
             case SlideTargetType.ExpBar:
                 UpdateLevel();
@@ -129,31 +126,28 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         }
     }
 
-    // 슬라이더 값을 부드럽게 업데이트하는 코루틴
     private IEnumerator AnimateSliderValue()
     {
-        while (true) // 게임이 활성화되어 있는 동안 계속 실행
+        while (true)
         {
             if (slider == null || _targetBaseController == null || _targetBaseController.data == null)
             {
                 if (_targetBaseController == null || _targetBaseController.data == null)
                     if ((_targetBaseController = GameObject.Find(Defines.strPlayerObject).GetComponent<BaseController>()) == null)
                     { 
-                        yield return new WaitForSeconds(0.1f); // 잠시 기다렸다가 다시 시도
+                        yield return new WaitForSeconds(0.1f); 
                         continue;
                     }
             }
 
-            float actualCurrentValue = GetCurrentTargetValue(); // BaseController에서 실제 현재 값
+            float actualCurrentValue = GetCurrentTargetValue(); 
 
-            // 실제 값이 현재 표시값과 다르면 애니메이션 시작
-            if (Mathf.Abs(_currentDisplayedValue - actualCurrentValue) > 0.01f) // 부동 소수점 오차 감안
+            if (Mathf.Abs(_currentDisplayedValue - actualCurrentValue) > 0.01f) 
             {
-                // 목표 값이 변경되었을 때 애니메이션 타이머 리셋 및 시작 값 갱신
                 if (_targetValue != actualCurrentValue)
                 {
                     _animationTimer = 0f;
-                    _targetValue = actualCurrentValue; // 새로운 목표 값 설정
+                    _targetValue = actualCurrentValue; 
                 }
 
                 _animationTimer += Time.deltaTime;
@@ -161,24 +155,22 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
                 t = Mathf.Clamp01(t);
 
                 _currentDisplayedValue = Mathf.Lerp(_currentDisplayedValue, _targetValue, t);
-                slider.value = _currentDisplayedValue; // 슬라이더에 현재 표시 값을 할당
+                slider.value = _currentDisplayedValue; 
 
-                // 애니메이션이 거의 끝나면 정확히 목표 값으로 설정하여 정밀도 문제 방지
-                if (t >= 1.0f - float.Epsilon) // t가 거의 1에 도달했을 때
+                if (t >= 1.0f - float.Epsilon) 
                 {
                     _currentDisplayedValue = _targetValue;
                     slider.value = _currentDisplayedValue;
-                    _animationTimer = 0f; // 타이머 리셋
+                    _animationTimer = 0f; 
                 }
             }
-            else // 실제 값과 표시 값이 같으면 애니메이션 중지 (정확한 값으로 설정)
+            else 
             {
                 _currentDisplayedValue = actualCurrentValue;
                 slider.value = _currentDisplayedValue;
-                _animationTimer = 0f; // 타이머 리셋
+                _animationTimer = 0f; 
             }
-
-            yield return null; // 다음 프레임까지 대기
+            yield return null;
         }
     }
 

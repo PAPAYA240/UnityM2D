@@ -3,6 +3,7 @@ using UnityEngine;
 using static Defines;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class CharacterData : ScriptableObject
@@ -42,6 +43,9 @@ public class PlayerData : CharacterData
 {
 	[XmlAttribute]
     public JobType jobType;
+
+	[XmlAttribute]
+    public int LevelCountMax = 100;
 }
 
 [System.Serializable]
@@ -63,6 +67,7 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
     T _gameData;
 
     public T Data { get { return _gameData; } set { _gameData = value; } }
+  
     public CharacterData GetCurrentCharacterData()
     {
         return _gameData; // T는 CharacterData의 자식이므로 안전하게 업캐스팅
@@ -80,41 +85,53 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
             Debug.LogError($"Attempted to set incompatible data type {data.GetType().Name} to CharacterManager<{typeof(T).Name}>.");
     }
 
-    public void ChangeData()
+    public void ChangeData(T data)
     {
-        if (_gameData is PlayerData otherPlayerData)
-            PlayerCopyFrom(JobType.Knight);
-        else if (_gameData is MonsterData otherMonsterData)
-            EnemyCopyFrom(EnemyType.Zombi);
+        if (data is PlayerData otherPlayerData)
+        {
+            PlayerCopyFrom(otherPlayerData);
+        }
+        else if (data is MonsterData otherMonsterData)
+        {
+            EnemyCopyFrom(otherMonsterData);
+        }
     }
-    protected void CopyFrom(CharacterData other)
+    protected void CopyFrom(CharacterData _origin)
     {
-        if (other == null) return;
-        _gameData.Name = other.Name;
-        _gameData.myAnimControllerPath = other.myAnimControllerPath;
-        _gameData.Level = other.Level;
-        _gameData.LevelCount = other.LevelCount;
-        _gameData.Hp = other.Hp;
-        _gameData.MaxHp = other.MaxHp;
-        _gameData.Hill = other.Hill;
-        _gameData.Exp = other.Exp;
-        _gameData.AttackPower = other.AttackPower;
-        _gameData.Money = other.Money;
-        _gameData.BulletSpeed = other.BulletSpeed;
-        _gameData.AttackSpeed = other.AttackSpeed;
-        _gameData.Speed = other.Speed;
-    }
-
-    public void PlayerCopyFrom(JobType _type)
-    {
-        Managers.DataManager.Players.TryGetValue(String.Format($"{_type}"), out PlayerData myData);
-        CopyFrom(myData);
+        if (_origin == null) return;
+        _gameData.Name = _origin.Name;
+        _gameData.myAnimControllerPath = _origin.myAnimControllerPath;
+        _gameData.Level = _origin.Level;
+        _gameData.LevelCount = _origin.LevelCount;
+        _gameData.Hp = _origin.Hp;
+        _gameData.MaxHp = _origin.MaxHp;
+        _gameData.Hill = _origin.Hill;
+        _gameData.Exp = _origin.Exp;
+        _gameData.AttackPower = _origin.AttackPower;
+        _gameData.Money = _origin.Money;
+        _gameData.BulletSpeed = _origin.BulletSpeed;
+        _gameData.AttackSpeed = _origin.AttackSpeed;
+        _gameData.Speed = _origin.Speed;
     }
 
-    public void EnemyCopyFrom(EnemyType _type)
+    public void PlayerCopyFrom(PlayerData _data)
     {
-        Managers.DataManager.Enemys.TryGetValue(String.Format($"{_type}"), out MonsterData myData);
-        CopyFrom(myData);
+        Managers.DataManager.Players.TryGetValue(String.Format($"Player"), out PlayerData originData);
+
+        _data.jobType = originData.jobType;
+
+        _data.LevelCountMax = originData.LevelCountMax;
+
+        CopyFrom(originData);
+    }
+
+    public void EnemyCopyFrom(MonsterData _data)
+    {
+        Managers.DataManager.Enemys.TryGetValue(String.Format($"{_data.enemyType}"), out MonsterData originData);
+
+        _data.enemyType = originData.enemyType;
+
+        CopyFrom(originData);
     }
 
     #region Getter Setter
@@ -140,6 +157,17 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
     {
         get { return _gameData?.LevelCount ?? 0; }
         set { if (_gameData != null) _gameData.LevelCount = value; }
+    }
+
+    public int LevelCountMax
+    {
+        get { return LevelCountMax;  }
+        set 
+        { 
+            LevelCountMax = Level * value;
+            LevelCount = 0;
+            Level += 1;
+         }
     }
 
     public int Hp

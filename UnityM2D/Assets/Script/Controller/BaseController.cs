@@ -1,74 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Spine.Unity;
-using static Defines;
 using System;
-using Unity.IO.LowLevel.Unsafe;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.CullingGroup;
-using UnityEditor.Experimental.GraphView;
-using System.Resources;
-using UnityEngine.EventSystems;
 
-
+using static Defines;
 
 public abstract  class BaseController : Base, ITurnParticipant
 {
-    // 공격 전략
-    protected Weapon EquippedWeapon = null;
-    protected GameObject TargetObject = null;
-
-    // 캐릭터 정보
-    protected virtual CharacterManager<CharacterData> Data() { return null;  }
-    protected Animator myAnim;
-    protected AnimState MyAnimState = AnimState.None;
-
-    public bool isAlive => IsAlive();
-
-    protected Dictionary<AnimState, Action<Animator>> _animTable;
-    protected Dictionary<AnimState, Action<GameObject>> _moveTable;
-
-    public event Action<AnimState> OnStateChanged;
-
-    // ============ 정보 ============ 
-    protected ICharacterManager characterDataManager;
-    protected abstract ICharacterManager GetCharacterDataManager();
-
-    // 데이터를 가져올 때는 ICharacterManager를 통해 CharacterData로 받습니다.
-    public CharacterData data => characterDataManager?.GetCurrentCharacterData();
-
-
-
-    public AnimState AnimState
-    {
-        get => MyAnimState;
-        set
-        {
-            MyAnimState = value;
-            _animTable[MyAnimState].Invoke(myAnim);
-            OnStateChanged?.Invoke(MyAnimState);
-        }
-    }
-
-    // Run Area
-    protected GameObject rangeArea;
-    protected BoxCollider2D rangeCollider;
-    protected Vector3 RunAreaPosition;
-
-    // 공격 초
-    const float StartWaitSeconds = 0.3f;
-    const float AttackWaitSeconds = 0.2f;
-    const float ReturnWaitSeconds = 0.6f;
-
-    const float AttackOffset = 0.5f;
-    
+    #region Value
     enum GameObjects
     {
         None,
         WeaponSocket,
         HP_Position,
     }
+
+    // ============ Strategy Attack ============
+    protected Weapon EquippedWeapon = null;
+    protected GameObject TargetObject = null;
+
+    // ============ Character Information ============
+    protected virtual CharacterManager<CharacterData> Data() { return null;  }
+    public bool isAlive => IsAlive();
+
+    protected Animator myAnim = null;
+    protected AnimState MyAnimState = AnimState.None;
+
+    protected Dictionary<AnimState, Action<Animator>> animTable = null;
+    protected Dictionary<AnimState, Action<GameObject>> moveTable = null;
+    public event Action<AnimState> OnStateChanged = null;
+
+    // ============ Load Character Info ============ 
+    protected ICharacterManager characterDataManager;
+    protected abstract ICharacterManager GetCharacterDataManager();
+    public CharacterData data => characterDataManager?.GetCurrentCharacterData();
+
+    // ============ const Area ============ 
+    protected GameObject rangeArea = null;
+    protected BoxCollider2D rangeCollider = null;
+    protected Vector3 RunAreaPosition;
+
+    // ======== Seconds ========
+    const float waitStartAttack = 0.3f;
+    const float waitOnAttack = 0.2f;
+    const float waitEndAttack = 0.6f;
+    const float AttackOffset = 0.5f;
+
+    // ======== getter/setter ========
+    public AnimState AnimState
+    {
+        get => MyAnimState;
+        set
+        {
+            MyAnimState = value;
+            animTable[MyAnimState].Invoke(myAnim);
+            OnStateChanged?.Invoke(MyAnimState);
+        }
+    }
+    #endregion
 
     public override bool Init()
     {
@@ -77,20 +66,20 @@ public abstract  class BaseController : Base, ITurnParticipant
 
         characterDataManager = GetCharacterDataManager();
 
-        myAnim = GetComponent<Animator>();
-        BindObject(typeof(GameObjects));
+        if (!InitBind())
+            Debug.Log("Failed Bind : BaseController");
 
-        UI_Base HpUI = Managers.UIManager.ShowUI<UI_Slide>("UI_HP", GetObject(GameObjects.HP_Position).gameObject.transform);
-        HpUI.SetInfo(GetObject(GameObjects.HP_Position).gameObject, true);
+        if (!InitUI())
+            Debug.Log("Failed UI : BaseController");
 
-        Managers.TurnManager.RegisterParticipant(this); // 공격 등록
-
+        // 전투 참여자 등록
+        Managers.TurnManager.RegisterParticipant(this);
 
         return true;
     }
 
 
-#region 데미지
+    #region Attack
     public void TakeDamage(int _amount)
     {
         if (MyAnimState == AnimState.Dead) return;
@@ -103,21 +92,10 @@ public abstract  class BaseController : Base, ITurnParticipant
             Dead();
     }
 
-    #endregion
-
-    #region 움직임 패턴
-    // 죽음
-    protected virtual void Dead() { }
-
-    // 생존 여부
-    private bool IsAlive()
-    {
-        return data.Hp > 0;
-    }
-
-    // 공격 시작
     protected virtual IEnumerator Attack(GameObject _target)
     {
+        // 공격 시작 시 호출할 함수
+
         if (!IsAlive())
             yield break;
 
@@ -126,52 +104,57 @@ public abstract  class BaseController : Base, ITurnParticipant
 
         if (EquippedWeapon != null)
             yield return StartCoroutine(EquippedWeapon.PerformAttack(this.gameObject, _target));
-
-        else
-            yield break;
     }
 
     protected IEnumerator ExecuteTurnAttack()
     {
-        yield return new WaitForSeconds(StartWaitSeconds);
+        yield return new WaitForSeconds(waitStartAttack);
 
         // 몬스터에게 다가가는 시간
         yield return StartCoroutine(Attack(TargetObject));
 
         // 공격 중인 시간
-        yield return new WaitForSeconds(AttackWaitSeconds);
+        yield return new WaitForSeconds(waitOnAttack);
 
         MyAnimState = AnimState.Run;
         // 돌아서는 시간 
-        yield return new WaitForSeconds(ReturnWaitSeconds);
+        yield return new WaitForSeconds(waitEndAttack);
 
         Managers.TurnManager.EndCurrentTurn();
     }
 
-    // 근접 공격
-    public virtual IEnumerator AttacktoMove(GameObject _target)
+    #endregion
+
+    #region State
+    protected virtual void Dead() { }
+
+    private bool IsAlive()
+    {
+        return data.Hp > 0;
+    }
+
+    /// <summary>
+    /// 근접 공격 시 수행할 함수
+    /// </summary>
+    public virtual IEnumerator PerformMelleAttack(GameObject _target)
     {
         if (_target == null)
-            yield break; 
+            yield break;
 
-        const float stopDistance = 0.1f; 
-
-        Debug.Log($"{gameObject.name}가 {_target.name}에게 이동을 시작합니다.");
-
-        // 위치 조절
         Vector3 finalTargetPosition = new Vector3();
-        if (transform.position.x > _target.transform.position.x) 
+        if (transform.position.x > _target.transform.position.x)
             finalTargetPosition = _target.transform.position + new Vector3(AttackOffset, 0, 0);
         else
             finalTargetPosition = _target.transform.position - new Vector3(AttackOffset, 0, 0);
 
+        const float stopDistance = 0.1f;
         while (Vector3.Distance(transform.position, finalTargetPosition) > stopDistance)
         {
             Vector3 startPosition = transform.position;
             Vector3 targetPosition = finalTargetPosition;
 
-            float duration = data.AttackSpeed * 0.03f; 
-                                        
+            float duration = data.AttackSpeed * 0.03f;
+
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
@@ -182,31 +165,21 @@ public abstract  class BaseController : Base, ITurnParticipant
                 yield return null;
             }
 
-            // 1. 무기 반동
-            if(EquippedWeapon != null)
-                ReactionWeapon();
+            ReactionWeapon();
 
-             // 2. Target 데미지
-             BaseController targetCon = _target.GetComponent<BaseController>();
-             targetCon.TakeDamage(data.AttackPower);
+            BaseController targetCon = _target.GetComponent<BaseController>();
+            if (targetCon != null)
+                targetCon.TakeDamage(data.AttackPower);
 
-            // 3. Position 재정립
             transform.position = targetPosition;
-            yield return null; 
+            yield return null;
         }
-
         transform.position = finalTargetPosition;
-        Debug.Log($"{gameObject.name}가 {_target.name}에 도착했습니다.");
     }
 
-
-
-    public void ReactionWeapon()
-    {
-         if (EquippedWeapon != null)
-             StartCoroutine(EquippedWeapon.ReactionWeapon());
-    }
-    // 제자리로 돌아가기
+    /// <summary>
+    /// 호출 시 지정된 자리로 돌아갈 함수
+    /// </summary>
     protected void ReturnToPosition()
     {
         transform.position = Managers.TransformManager.MoveToTarget(transform.position, RunAreaPosition, data.AttackSpeed);
@@ -214,28 +187,7 @@ public abstract  class BaseController : Base, ITurnParticipant
 
     #endregion
 
-    #region 세팅
-    virtual public void OnTurnStart() { }
-
-    virtual public void OnTurnEnd() { }
-
-
-    protected virtual void SettingAnimation() { }
-
-    // 캐릭터 자체를 변경 시
-    protected void ChangeCharacterInfo(string _characterType)
-    {
-        //CharacterData CD = Managers.CharacterLoader.GetCharacterData(_characterType);
-        //if(CD == null)
-        //{
-        //    Debug.LogWarning("Faield Load CharacterData : BaseController()");
-        //    return;
-        //}
-
-        //data = CD;
-    }
-
-    // 무기 변경
+    #region Weapon
     public void EquipWeapon(WeaponType _weaponType)
     {
         WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
@@ -266,8 +218,24 @@ public abstract  class BaseController : Base, ITurnParticipant
             Console.WriteLine("Failed Load Weapon Prefab : Basecontroller()");
             EquippedWeapon = null;
         }
+    }
 
-    } 
+    /// <summary>
+    /// 호출 시 무기에 반동을 줄 함수
+    /// </summary>
+    public void ReactionWeapon()
+    {
+        if (EquippedWeapon != null)
+            EquippedWeapon.OperateWeapon();
+    }
+    #endregion
+
+    #region 세팅
+    virtual public void OnTurnStart() { }
+
+    virtual public void OnTurnEnd() { }
+
+    protected virtual void SettingAnimation() { }
 
     protected void SettingAreaCollider()
     {
@@ -289,4 +257,22 @@ public abstract  class BaseController : Base, ITurnParticipant
     }
     #endregion
 
+    #region Initialize
+    private bool InitUI()
+    {
+        UI_Base HpUI = Managers.UIManager.ShowUI<UI_Slide>(CreateHpBar, GetObject(GameObjects.HP_Position).gameObject.transform);
+        if (HpUI == null)
+            return false;
+        HpUI.SetInfo(GetObject(GameObjects.HP_Position).gameObject, true);
+        return true;
+
+    }
+    
+    private bool InitBind()
+    {
+        BindObject(typeof(GameObjects));
+
+        return true;
+    }
+    #endregion
 }

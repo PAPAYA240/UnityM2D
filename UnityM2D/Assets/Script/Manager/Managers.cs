@@ -41,6 +41,8 @@ public class Managers : MonoBehaviour
     
     public static WeaponLoader WeaponLoader { get { return s_WeaponLoader; } }
     
+    public static float PlayTime { get; set; }
+
 
     void Start()
     {
@@ -68,6 +70,7 @@ public class Managers : MonoBehaviour
     private void Update()
     {
         s_TimerManager.UpdateTimer(Time.deltaTime);
+        PlayTime += Time.deltaTime;
     }
 
 }
