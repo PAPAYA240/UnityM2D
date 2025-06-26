@@ -28,6 +28,7 @@ public class UI_Folder : UI_Popup
         BossContent,
         Boss_Item,
         FixContent,
+        Fix_Item,
         ShopContent,
         WeaponTab,
         FixTab,
@@ -43,23 +44,19 @@ public class UI_Folder : UI_Popup
         Shop
     }
 
-
-
     PlayTab TabType = PlayTab.None;
     PlayerController Player = null;
 
-    private List<UI_WeaponFolder> WeaponFolder = new List<UI_WeaponFolder>();
-    private List<UI_BossFolder> BossFolders = new List<UI_BossFolder>();
+    private List<UI_WeaponFolder> weaponFolder = new List<UI_WeaponFolder>();
+    private List<UI_BossFolder> bossFolder = new List<UI_BossFolder>();
+    private List<UI_FixFolder> fixFolder = new List<UI_FixFolder>();
 
     public EnemyController TargetEnemyController { get; private set; }
     private UI_CheckBossFolder _checkBossFolderUI;
     private EnemyType enemyType;
 
 
-    void Start()
-    {
-        Init();
-    }
+    void Start() => Init();
 
     public override bool Init()
     {
@@ -88,6 +85,7 @@ public class UI_Folder : UI_Popup
         // 하위 폴더 모음
         Register_WeaponFolder();
         Register_BossFolder();
+        Register_FixFolder();
 
         return true;
  }
@@ -110,11 +108,29 @@ public class UI_Folder : UI_Popup
 
             item.SetInfo(Player, Defines.WeaponType.Basic_Weapon+ i, (i + 1) * 700);
 
-            if (i > 0) WeaponFolder[i - 1].NextLockObject = item.MyLockObject;
+            if (i > 0) weaponFolder[i - 1].NextLockObject = item.MyLockObject;
 
-            WeaponFolder.Add(item);
+            weaponFolder.Add(item);
         }
     }
+
+    private void Register_FixFolder()
+    {
+        GameObject parent = GetObject(GameObjects.Fix_Item);
+
+        List<GameObject> childobj = new List<GameObject>();
+        childobj = Setting.FindChildList(parent, "Fix_Type");
+
+        for (int i = 0; i < childobj.Count; i++)
+        {
+            UI_FixFolder item = Setting.GetOrAddComponent<UI_FixFolder>(childobj[i].gameObject);
+
+            item.SetInfo((FixType) i + 1);
+
+            fixFolder.Add(item);
+        }
+    }
+
     #endregion
 
     #region Boss Folder
@@ -139,7 +155,7 @@ public class UI_Folder : UI_Popup
                     _checkBossFolderUI,
                     TargetEnemyController 
                 );
-                BossFolders.Add(item); 
+                bossFolder.Add(item); 
             }
         }
     }

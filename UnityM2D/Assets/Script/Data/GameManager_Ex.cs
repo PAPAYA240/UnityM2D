@@ -161,12 +161,21 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
 
     public int LevelCountMax
     {
-        get { return LevelCountMax;  }
+        get 
+        {
+            if (_gameData is PlayerData otherPlayerData)
+                return otherPlayerData.LevelCountMax;
+            else
+                return 0;
+        }
         set 
-        { 
-            LevelCountMax = Level * value;
-            LevelCount = 0;
-            Level += 1;
+        {
+            if (_gameData is PlayerData otherPlayerData)
+            {
+                otherPlayerData.LevelCountMax = Level * value;
+                LevelCount = 0;
+                Level += 1;
+            }
          }
     }
 

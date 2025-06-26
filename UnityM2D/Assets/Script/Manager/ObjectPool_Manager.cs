@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class ObjectPool_Manager : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class ObjectPool_Manager : MonoBehaviour
             obj.GetOrAddComponent<T>();
             obj.SetActive(false);
             objectQueue.Enqueue(obj);
+
             // 매핑 추가
             prefabMap[obj] = prefab;
         }

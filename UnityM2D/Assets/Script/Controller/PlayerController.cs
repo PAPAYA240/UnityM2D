@@ -17,7 +17,8 @@ public class PlayerController : BaseController
 
     // ============ Player Information ============ 
     private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
-  
+    Skill[] PlayerSkills;
+
     public PlayerData playerData => data as PlayerData;
     protected override ICharacterManager GetCharacterDataManager()
     {
@@ -25,7 +26,7 @@ public class PlayerController : BaseController
     }
     #endregion
 
-
+    
     private void Start() => Init();
 
     public override bool Init()
@@ -46,6 +47,10 @@ public class PlayerController : BaseController
 
         EquipWeapon(WeaponType.Basic_Weapon);
 
+        PlayerSkills = new Skill[(int)FixType.End_Fix];
+        BomberSkill bomberSkill = new BomberSkill();
+        bomberSkill.Init();
+        PlayerSkills[(int)FixType.Bomber_Fix] = bomberSkill;
         Managers.TimerManager.OnTimeOver += HandleTimerOver;
         Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
@@ -55,8 +60,23 @@ public class PlayerController : BaseController
 
     private void Update()
     {
+        data.Money = 10000000; // 디버그용
+
         if(TargetObject != null)
             moveTable[MyAnimState].Invoke(TargetObject);
+    }
+
+
+    public bool UseSkill(FixType _skillType)
+    {
+        if (PlayerSkills[(int)_skillType] == null)
+            return false;
+
+        EnemyController enemy = TargetObject.GetComponent<EnemyController>();
+        if(enemy != null)
+            PlayerSkills[(int)_skillType].ExecuteSkill(this, enemy);
+        else return false;
+        return true;
     }
 
     #region Change State
@@ -64,12 +84,16 @@ public class PlayerController : BaseController
     {
         // TODO : 웨이브가 끝났다면
         if (playerDataManager.LevelCount >= playerDataManager.LevelCountMax)
-            playerDataManager.LevelCountMax = 300;
+        {
+            ui_LevelUp.gameObject.SetActive(true);
+            ui_LevelUp.transform.position = this.transform.position;
+            playerDataManager.LevelCountMax = 300; 
+        }
         else
         {
             EnemyController enemy = TargetObject.GetComponent<EnemyController>();
             if (enemy != null)
-                playerDataManager.Level += enemy.data.LevelCount;
+                playerDataManager.LevelCount += enemy.data.LevelCount;
         }
     }
 
@@ -161,7 +185,7 @@ public class PlayerController : BaseController
 
         return true;
     }
-
+    UI_Base ui_LevelUp = null;
     private bool InitReigster()
     {
         // 몬스터 생성
@@ -181,6 +205,14 @@ public class PlayerController : BaseController
         if (rangeArea == null && rangeArea == null)
             return false;
 
+        ui_LevelUp = Managers.UIManager.ShowUI<UI_Base>("UI_LevelUp");
+        if (ui_LevelUp == null)
+            return false;
+        else
+        { 
+            ui_LevelUp.gameObject.SetActive(false); 
+        }
+       
         SettingAreaCollider();
 
         return true;

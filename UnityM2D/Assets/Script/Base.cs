@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class Base : MonoBehaviour
+public abstract class Base : MonoBehaviour
 {
     // Enum 키로 dictionary 정의
     protected Dictionary<Enum, UnityEngine.Object> _uiObjects = new Dictionary<Enum, UnityEngine.Object>();
@@ -47,7 +47,7 @@ public class Base : MonoBehaviour
             T obj = null;
 
             // 타입에 따라 GameObject와 그 외 컴포넌트 검색 분기
-             if (typeof(T) == typeof(GameObject))
+            if (typeof(T) == typeof(GameObject))
                 obj = Setting.FindChild(gameObject, name, true) as T;
             else
                 obj = Setting.FindChild<T>(gameObject, name, true);
@@ -104,4 +104,5 @@ public class Base : MonoBehaviour
                 break;
         }
     }
+  
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Collections;
 
 using static Defines;
+using System.Linq;
+using Mono.Cecil;
 
 
 public class EnemyController : BaseController
@@ -119,11 +121,64 @@ public class EnemyController : BaseController
         }
         transform.position = spawnPosition;
 
+        // 변경 방식
+        SelectEnemy();
+
         StartCoroutine(ChangeEnemy());
 
         yield return new WaitForSeconds(waitChangeEnemy);
 
         Managers.TimerManager.StartTimer();
+    }
+
+    const int allowanceCnt = 3;
+    int overlapCnt = 0;
+    int prevCnt = 0;
+
+    void SelectEnemy()
+    {
+        if(convertedEnemyType == EnemyType.None)
+        {
+            int selectInt = UnityEngine.Random.Range((int)EnemyType.Zombi, (int)EnemyType.Zombi_Boss);
+            convertedEnemyType = (EnemyType)selectInt;
+
+            if (prevCnt == selectInt)
+                ++overlapCnt;
+            else
+                overlapCnt = 0;
+            prevCnt = selectInt;
+
+            if(overlapCnt >= allowanceCnt)
+            {
+                while(selectInt == prevCnt)
+                    selectInt = UnityEngine.Random.Range((int)EnemyType.Zombi, (int)EnemyType.Zombi_Boss);
+
+                prevCnt = selectInt;
+                overlapCnt = 0;
+            }
+
+        }
+    }
+
+    private List<T> GetNotDuplicateRandomList_HashSet<T>(IList<T> list, int count)
+    {
+        HashSet<T> hashSet = new HashSet<T>(list);
+        List<T> uniqueList = hashSet.ToList();
+        List<T> result = new List<T>();
+        int n = uniqueList.Count;
+
+        // count > n => error!
+
+        for (int i = 0; i < count; i++)
+        {
+            int r = UnityEngine.Random.Range(i, n);
+            T temp = uniqueList[i];
+            uniqueList[i] = uniqueList[r];
+            uniqueList[r] = temp;
+            result.Add(uniqueList[i]);
+        }
+
+        return result;
     }
 
     private IEnumerator ChangeEnemy()
@@ -153,16 +208,18 @@ public class EnemyController : BaseController
 
         bool bChangeAnim = false;
         if (convertedEnemyType != monsterData.enemyType)
-        {
             bChangeAnim = true;
-            monsterData.enemyType = convertedEnemyType;
-        }
+
+        monsterData.enemyType = convertedEnemyType;
+        if (monsterData.enemyType == convertedEnemyType)
+            convertedEnemyType = EnemyType.None;
 
         // # ChangeData() 사용 전에 꼭 다음 type으로 monsterData.enemyType 세팅할 것
         monsterDataManager.ChangeData(monsterData);
 
         if(bChangeAnim == true)
             LoadAnimator();
+
     }
 
     private RuntimeAnimatorController LoadAnimator()

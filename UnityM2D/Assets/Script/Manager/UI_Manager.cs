@@ -7,7 +7,7 @@ using UnityEngine.Diagnostics;
 
 public class UI_Manager : MonoBehaviour
 {
-    int _order = -20;
+    int _order = 20;
 
     Stack<UI_Base> uiStack = new Stack<UI_Base>();
 

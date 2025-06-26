@@ -74,13 +74,9 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     {
         slideType = _slideType;
     }
-    public void SetTarget(GameObject _parent, BaseController baseCon, float animationDuration = 0.5f)
+    public void SetTarget(float animationDuration = 0.5f)
     {
-        base.SetInfo(_parent, true); 
-        _targetBaseController = baseCon;
-        _animationDuration = animationDuration;
-
-        if (slider != null && _targetBaseController != null && _targetBaseController.data != null)
+        if (slider != null)
         {
             switch (slideType)
             {
@@ -88,14 +84,11 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
                     slider.maxValue = _targetBaseController.data.MaxHp;
                     break;
                 case SlideTargetType.ExpBar:
-                    slider.maxValue = _targetBaseController.data.LevelCount;
+                    PlayerController player = _targetBaseController.GetComponent<PlayerController>();
+                    if(player != null)
+                        slider.maxValue = ((PlayerData)player.data).LevelCountMax;
                     break;
-         
             }
-
-            _currentDisplayedValue = GetCurrentTargetValue();
-            _targetValue = _currentDisplayedValue;
-            slider.value = _currentDisplayedValue;
         }
     }
 
@@ -113,10 +106,10 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         if (_targetBaseController == null || _targetBaseController.data == null)
                 return _currentDisplayedValue;
 
+        SetTarget();
         switch (slideType)
         {
             case SlideTargetType.HpBar:
-                slider.maxValue = _targetBaseController.data.MaxHp;
                 return _targetBaseController.data.Hp;
             case SlideTargetType.ExpBar:
                 UpdateLevel();

@@ -22,6 +22,7 @@ public class Defines
     // PATH : Player
     public const string strPlayerAreaPath = "Prefab/Character/PlayerArea";
 
+    public const string strBomberPath = "Prefab/Wepaon/Bomber";
 
     public enum Input
     {
@@ -70,14 +71,7 @@ public class Defines
         Zombi_Boss,
         Skeleton_Boss,
     }
-
-    public enum UIType
-    {
-        None,
-        Title,
-        Exp,
-    }
-
+  
     public enum WeaponType
     {
         None_Weapon,
@@ -87,10 +81,29 @@ public class Defines
         Epic_Weapon,
         Mythic_Weapon,
     }
+
+    public enum FixType
+    {
+        None_Fix,
+        Heal_Fix,
+        Bomber_Fix,
+        Speed_Fix,
+        a,
+        b,
+        End_Fix,
+    }
+
     public enum StatType
     {
         MaxHp ,
         Exp,
         Attackbility,
+    }
+
+    public enum UIType
+    {
+        None,
+        Title,
+        Exp,
     }
 }

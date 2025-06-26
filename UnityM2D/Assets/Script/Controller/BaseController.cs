@@ -18,6 +18,7 @@ public abstract  class BaseController : Base, ITurnParticipant
     // ============ Strategy Attack ============
     protected Weapon EquippedWeapon = null;
     protected GameObject TargetObject = null;
+    protected GameObject bomberObject = null;
 
     // ============ Character Information ============
     protected virtual CharacterManager<CharacterData> Data() { return null;  }
@@ -57,6 +58,16 @@ public abstract  class BaseController : Base, ITurnParticipant
             OnStateChanged?.Invoke(MyAnimState);
         }
     }
+
+    public BaseController GetOwner()
+    {
+        return this;
+    }
+
+    public GameObject GetTargetObject()
+    {
+        return TargetObject;
+    }
     #endregion
 
     public override bool Init()
@@ -71,6 +82,10 @@ public abstract  class BaseController : Base, ITurnParticipant
 
         if (!InitUI())
             Debug.Log("Failed UI : BaseController");
+
+        //bomberObject = Managers.Resource.Instantiate(strBomberPath, this.transform);
+        //const int bomberCnt = 10;
+        //Managers.ObjectPoolManager.CreatePool<Bomber>(bomberObject, bomberCnt);
 
         // 전투 참여자 등록
         Managers.TurnManager.RegisterParticipant(this);
