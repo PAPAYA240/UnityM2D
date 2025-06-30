@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
     private float AttackDist = 0.6f;
 
     private float Interp = 0.03f;
-    private float fireInterval = 0.1f;
     bool bMove = false;
 
     Coroutine currentCoroutine = null;

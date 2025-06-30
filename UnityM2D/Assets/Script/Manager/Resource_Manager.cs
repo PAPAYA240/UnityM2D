@@ -1,11 +1,9 @@
-using Spine.Unity;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Resource_Manager : MonoBehaviour
 {
 	public Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
-	public Dictionary<string, SkeletonDataAsset> skeletons = new Dictionary<string, SkeletonDataAsset>();
 
     public void Init()
     {
@@ -23,17 +21,6 @@ public class Resource_Manager : MonoBehaviour
             sprites.Add(path, spriteObj); 
             return spriteObj as T;
         }
-
-        else if(typeof(T) == typeof(SkeletonDataAsset))
-        {
-            if(skeletons.TryGetValue(path, out SkeletonDataAsset _skeletonData))
-                return _skeletonData as T; 
-
-            SkeletonDataAsset skeletonObj = Resources.Load<SkeletonDataAsset>(path);  
-            skeletons.Add(path, skeletonObj);
-            return skeletonObj as T;
-        }
-  
 
         return Resources.Load<T>(path);
 	}

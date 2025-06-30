@@ -61,12 +61,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Controller\PlayerSkill\Player_Ultimate.cs" />
     <Compile Include="Assets\Script\Weapon\Bomber.cs" />
-    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\Entity\MstItemEntity.cs" />
+    <Compile Include="Assets\Script\Controller\PlayerSkill\BomberMachine.cs" />
+    <Compile Include="Assets\Script\Manager\Particle_Manager.cs" />
     <Compile Include="Assets\Script\UI\UI_Base.cs" />
+    <Compile Include="Assets\Script\Controller\PlayerSkill\Skill.cs" />
     <Compile Include="Assets\Script\Controller\BaseController.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet.cs" />
-    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\ExcelAsset\MstItems.cs" />
     <Compile Include="Assets\Script\Manager\Input_Manager.cs" />
     <Compile Include="Assets\Script\Weapon\IAttackStrategy.cs" />
     <Compile Include="Assets\Script\Manager\ObjectPool_Manager.cs" />
@@ -79,17 +81,17 @@
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
-    <Compile Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Example\Scripts\Example.cs" />
-    <Compile Include="Assets\Script\Controller\BomberSkill.cs" />
     <Compile Include="Assets\Script\Manager\Data_Manager.cs" />
+    <Compile Include="Assets\Script\UI\UI_Folder\UI_UltimateButton.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
-    <Compile Include="Assets\Script\Controller\Skill.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_BossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_FixFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Slide.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_WeaponFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Timer.cs" />
+    <Compile Include="Assets\Script\Controller\PlayerSkill\Pet.cs" />
     <Compile Include="Assets\Script\Data\WeaponData.cs" />
+    <Compile Include="Assets\Script\UI\UI_Folder\UI_AdsFolder.cs" />
     <Compile Include="Assets\Script\Manager\UI_Manager.cs" />
     <Compile Include="Assets\Script\Default\Setting.cs" />
     <Compile Include="Assets\Script\Default\Defines.cs" />
@@ -99,7 +101,7 @@
     <Compile Include="Assets\Script\Scene\BaseScene.cs" />
     <Compile Include="Assets\Script\Data\GameManager_Ex.cs" />
     <Compile Include="Assets\Resources\Data\DataTransformer.cs" />
-    <Compile Include="Assets\Script\Controller\PlayerSkill.cs" />
+    <Compile Include="Assets\Script\Manager\AdsManager.cs" />
     <Compile Include="Assets\Script\UI\UI_Popup.cs" />
     <Compile Include="Assets\Script\Controller\EnemyController.cs" />
     <Compile Include="Assets\Script\Manager\Turn_Manager.cs" />
@@ -107,34 +109,46 @@
     <Compile Include="Assets\Bolt 2D JellyFarm VE2\ReadMe\Scripts\ReadmeVE2.cs" />
     <Compile Include="Assets\Script\Manager\Timer_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Transform_Manager.cs" />
+    <Compile Include="Assets\Vertical 2D Shooting BE4\ReadMe\Scripts\ReadmeBE4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\Spine\version.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\Resources\Data\EnemyData.xml" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-10.2.0_manifest.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Ump.iOS.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Resources\Data\PetData.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
+    <None Include="Assets\GoogleMobileAds\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\ProjectSettings\ProjectVersion.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Ump.Unity.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Ump.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Resources\Data\PlayerData.xml" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Ump.Android.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -604,6 +618,30 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump.Unity">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Ump.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Ump.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1364,33 +1402,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="spine-unity-examples.csproj">
-      <Project>{D7667161-A102-A9F6-9107-0DA712DDFE30}</Project>
-      <Name>spine-unity-examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity-examples-editor.csproj">
-      <Project>{E3EC63A1-C19B-DAFF-7CCB-086DFFA874ED}</Project>
-      <Name>spine-unity-examples-editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="ExcelImporter.csproj">
-      <Project>{B415F095-3EC6-1D6D-BD89-C775A15A9F6D}</Project>
-      <Name>ExcelImporter</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity.csproj">
-      <Project>{D728B8C3-05F1-D549-55BD-DF6720ACE37C}</Project>
-      <Name>spine-unity</Name>
-    </ProjectReference>
-    <ProjectReference Include="ExcelImporter.Editor.csproj">
-      <Project>{FDA36125-4D92-EC54-0286-6EA3635F7710}</Project>
-      <Name>ExcelImporter.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-csharp.csproj">
-      <Project>{959FFF17-2FC4-3770-B606-D756E97EEC2C}</Project>
-      <Name>spine-csharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity-editor.csproj">
-      <Project>{ADDC69B4-F564-D56A-3259-E9724227952E}</Project>
-      <Name>spine-unity-editor</Name>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{6B56E233-A37C-9E7A-7404-73878F598C13}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

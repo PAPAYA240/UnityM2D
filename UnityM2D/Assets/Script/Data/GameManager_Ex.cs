@@ -55,6 +55,14 @@ public class MonsterData : CharacterData
     public EnemyType enemyType; 
 
 }
+public class PetData : CharacterData
+{
+    [XmlAttribute]
+    public PetType petType;
+
+    [XmlAttribute]
+    public string prefab;
+}
 
 public interface ICharacterManager
 {
@@ -95,6 +103,10 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
         {
             EnemyCopyFrom(otherMonsterData);
         }
+        else if(data is PetData otherPetData)
+        {
+            PetCopyFrom(otherPetData);
+        }
     }
     protected void CopyFrom(CharacterData _origin)
     {
@@ -130,6 +142,16 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
         Managers.DataManager.Enemys.TryGetValue(String.Format($"{_data.enemyType}"), out MonsterData originData);
 
         _data.enemyType = originData.enemyType;
+
+        CopyFrom(originData);
+    }
+    public void PetCopyFrom(PetData _data)
+    {
+        Managers.DataManager.Pets.TryGetValue(String.Format($"{_data.petType}"), out PetData originData);
+
+        _data.petType = originData.petType;
+
+        _data.prefab = originData.prefab;
 
         CopyFrom(originData);
     }
@@ -178,7 +200,23 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
             }
          }
     }
-
+    public string Prefab
+    {
+        get
+        {
+            if (_gameData is PetData otherPlayerData)
+                return otherPlayerData.prefab;
+            else
+                return "";
+        }
+        set
+        {
+            if (_gameData is PetData otherPlayerData)
+            {
+                otherPlayerData.prefab = value;
+            }
+        }
+    }
     public int Hp
     {
         get { return _gameData?.Hp ?? 0; }
@@ -301,6 +339,28 @@ public class EnemyDataLoader : ILoader<string, MonsterData>
         Dictionary<string, MonsterData> dic = new Dictionary<string, MonsterData>();
 
         foreach (MonsterData data in _characterDatas)
+            dic.Add(data.Name, data);
+
+        return dic;
+    }
+
+    public bool Validate()
+    {
+        return true;
+    }
+}
+
+[Serializable, XmlRoot("ArrayOfPetData")]
+public class PetDataLoader : ILoader<string, PetData>
+{
+    [XmlElement("PetData")]
+    public List<PetData> _characterDatas = new List<PetData>();
+
+    public Dictionary<string, PetData> MakeDic()
+    {
+        Dictionary<string, PetData> dic = new Dictionary<string, PetData>();
+
+        foreach (PetData data in _characterDatas)
             dic.Add(data.Name, data);
 
         return dic;

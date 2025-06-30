@@ -30,6 +30,7 @@ public class DataTransformer : EditorWindow
     {
         ParsePlayerData();
         ParseEnemyData();
+        ParsePetData();
     }
 
     static void ParsePlayerData()
@@ -116,6 +117,50 @@ public class DataTransformer : EditorWindow
 
         string xmlString = ToXML(EnemysDatas);
         File.WriteAllText($"{Application.dataPath}/Resources/Data/EnemyData.xml", xmlString);
+        AssetDatabase.Refresh();
+    }
+
+    static void ParsePetData()
+    {
+        List<PetData> petDatas = new List<PetData>();
+
+        #region ExcelData
+        string[] lines = Resources.Load<TextAsset>($"Data/Excel/PetData").text.Split("\n");
+
+        for (int y = 1; y < lines.Length; y++)
+        {
+            string[] row = lines[y].Replace("\r", "").Split(',');
+            if (row.Length == 0)
+                continue;
+            if (string.IsNullOrEmpty(row[0]))
+                continue;
+
+            PetData petData = new PetData()
+            {
+                Name = row[0],
+                myAnimControllerPath = row[1],
+                Level = int.Parse(row[2]),
+                LevelCount = int.Parse(row[3]),
+
+                Hp = int.Parse(row[4]),
+                MaxHp = int.Parse(row[5]),
+                Hill = int.Parse(row[6]),
+                Exp = int.Parse(row[7]),
+                AttackPower = int.Parse(row[8]),
+                Money = int.Parse(row[9]),
+
+                BulletSpeed = int.Parse(row[10]),
+                AttackSpeed = int.Parse(row[11]),
+                Speed = int.Parse(row[12]),
+                petType = (PetType)Enum.Parse(typeof(PetType), row[13], ignoreCase: true),
+                prefab =  row[14],
+            };
+            petDatas.Add(petData);
+        }
+        #endregion
+
+        string xmlString = ToXML(petDatas);
+        File.WriteAllText($"{Application.dataPath}/Resources/Data/PetData.xml", xmlString);
         AssetDatabase.Refresh();
     }
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8565082937673501849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HP_Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3492068573424262744}
   - component: {fileID: 4706895266817901285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area
   m_TagString: Area
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783846604118596321}
   - component: {fileID: 3398601722134646628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792994172695165035}
   - component: {fileID: 2639669897720576134}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeaponSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6699343923741283200}
   - component: {fileID: 5793071446618348298}
   - component: {fileID: 4362168015461582320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -415,7 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14e6b02836fc047883920a63168bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JobType: 1
 --- !u!95 &4362168015461582320
 Animator:
   serializedVersion: 7

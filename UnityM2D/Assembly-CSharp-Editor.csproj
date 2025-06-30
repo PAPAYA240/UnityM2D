@@ -62,7 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Bolt 2D JellyFarm VE2\ReadMe\Scripts\Editor\ReadmeEditorVE2.cs" />
+    <Compile Include="Assets\Vertical 2D Shooting BE4\ReadMe\Scripts\Editor\ReadmeEditorBE4.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\Editor\ReadmeEditorVE3.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.IOSResolver.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.PackageManagerResolver.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.VersionHandlerImpl.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.186_manifest.txt" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.JarResolver.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -561,24 +570,12 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Editor\NPOI\Net20\NPOI.OOXML.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Editor\NPOI\Net20\NPOI.OpenXmlFormats.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Editor\NPOI\Net20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
@@ -593,16 +590,8 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="NPOI">
-      <HintPath>Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Editor\NPOI\Net20\NPOI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>Assets\Asset\unity-excel-importer-master\unity-excel-importer-master\Assets\ExcelImporter\Editor\NPOI\Net20\NPOI.OpenXml4Net.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -611,6 +600,50 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.VersionHandlerImpl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.IOSResolver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.JarResolver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump.Unity">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Ump.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.PackageManagerResolver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Ump">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Ump.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1395,33 +1428,9 @@
       <Project>{19CB813D-9391-2951-DD83-DEC04534E4BB}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="spine-unity-examples.csproj">
-      <Project>{D7667161-A102-A9F6-9107-0DA712DDFE30}</Project>
-      <Name>spine-unity-examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity-examples-editor.csproj">
-      <Project>{E3EC63A1-C19B-DAFF-7CCB-086DFFA874ED}</Project>
-      <Name>spine-unity-examples-editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="ExcelImporter.csproj">
-      <Project>{B415F095-3EC6-1D6D-BD89-C775A15A9F6D}</Project>
-      <Name>ExcelImporter</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity.csproj">
-      <Project>{D728B8C3-05F1-D549-55BD-DF6720ACE37C}</Project>
-      <Name>spine-unity</Name>
-    </ProjectReference>
-    <ProjectReference Include="ExcelImporter.Editor.csproj">
-      <Project>{FDA36125-4D92-EC54-0286-6EA3635F7710}</Project>
-      <Name>ExcelImporter.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-csharp.csproj">
-      <Project>{959FFF17-2FC4-3770-B606-D756E97EEC2C}</Project>
-      <Name>spine-csharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity-editor.csproj">
-      <Project>{ADDC69B4-F564-D56A-3259-E9724227952E}</Project>
-      <Name>spine-unity-editor</Name>
+    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
+      <Project>{6B56E233-A37C-9E7A-7404-73878F598C13}</Project>
+      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

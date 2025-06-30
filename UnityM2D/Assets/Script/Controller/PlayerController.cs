@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +18,9 @@ public class PlayerController : BaseController
 
     // ============ Player Information ============ 
     private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
-    Skill[] PlayerSkills;
-
     public PlayerData playerData => data as PlayerData;
+    GameObject[] PlayerSkills;
+
     protected override ICharacterManager GetCharacterDataManager()
     {
         return playerDataManager;
@@ -47,10 +48,8 @@ public class PlayerController : BaseController
 
         EquipWeapon(WeaponType.Basic_Weapon);
 
-        PlayerSkills = new Skill[(int)FixType.End_Fix];
-        BomberSkill bomberSkill = new BomberSkill();
-        bomberSkill.Init();
-        PlayerSkills[(int)FixType.Bomber_Fix] = bomberSkill;
+        PlayerSkills = new GameObject[(int)FixType.End_Fix];
+        
         Managers.TimerManager.OnTimeOver += HandleTimerOver;
         Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
@@ -67,16 +66,40 @@ public class PlayerController : BaseController
     }
 
 
-    public bool UseSkill(FixType _skillType)
+    public IEnumerator UseSkill(FixType _skillType)
     {
         if (PlayerSkills[(int)_skillType] == null)
-            return false;
+        {
+            Install(_skillType);
+            yield break;
+        }
 
-        EnemyController enemy = TargetObject.GetComponent<EnemyController>();
-        if(enemy != null)
-            PlayerSkills[(int)_skillType].ExecuteSkill(this, enemy);
-        else return false;
-        return true;
+        bool usedSkill = false;
+        while(!usedSkill)
+        {
+            usedSkill = PlayerSkills[(int)_skillType].GetComponent<Skill>().ExecuteSkill(this.gameObject, TargetObject); 
+
+            yield return null;
+        }
+        yield break;
+    }
+
+    private void Install(FixType _skillType)
+    {
+        switch (_skillType)
+        {
+            case FixType.Pet_Fix:
+                break;
+
+            case FixType.Bomber_Fix:
+                GameObject bomberMachine = Managers.Resource.Instantiate("Prefab/Weapon/BomberMachine");
+                bomberMachine.AddComponent<BomberMachine>();
+                PlayerSkills[(int)FixType.Bomber_Fix] = bomberMachine;
+                break;
+
+            default:
+                break;
+        }
     }
 
     #region Change State
@@ -212,8 +235,8 @@ public class PlayerController : BaseController
         { 
             ui_LevelUp.gameObject.SetActive(false); 
         }
-       
-        SettingAreaCollider();
+
+        RunAreaPosition = SettingAreaCollider();
 
         return true;
     }

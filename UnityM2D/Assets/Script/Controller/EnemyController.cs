@@ -5,7 +5,6 @@ using System.Collections;
 
 using static Defines;
 using System.Linq;
-using Mono.Cecil;
 
 
 public class EnemyController : BaseController
@@ -192,7 +191,7 @@ public class EnemyController : BaseController
 
         AnimState = AnimState.Idle;
 
-        SettingAreaCollider();
+        RunAreaPosition = SettingAreaCollider();
 
         yield break;
     }
@@ -313,7 +312,7 @@ public class EnemyController : BaseController
         this.transform.position = spawnPosition = spawnArea.transform.position;
         Destroy(spawnArea);
 
-        SettingAreaCollider();
+        RunAreaPosition = SettingAreaCollider();
 
         return true;
     }

@@ -1,14 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml;
 using System.Xml.Serialization;
-using TMPro;
 using UnityEngine;
-using NUnit.Framework.Interfaces;
-using Spine;
 
 public interface ILoader<Key, Item>
 {
@@ -21,11 +14,13 @@ public class Data_Manager
    // public Dictionary<string, MonsterData> Stats { get; private set; }
     public Dictionary<string, PlayerData> Players { get; private set; }
     public Dictionary<string, MonsterData> Enemys { get; private set; }
+    public Dictionary<string, PetData> Pets { get; private set; }
 
     public void Init()
     {
-       Enemys = LoadXml<EnemyDataLoader, string, MonsterData>("EnemyData").MakeDic();
-       Players = LoadXml<PlayerDataLoader, string, PlayerData>("PlayerData").MakeDic();
+        Enemys = LoadXml<EnemyDataLoader, string, MonsterData>("EnemyData").MakeDic();
+        Players = LoadXml<PlayerDataLoader, string, PlayerData>("PlayerData").MakeDic();
+        Pets = LoadXml<PetDataLoader, string, PetData>("PetData").MakeDic();
     }
 
     private Item LoadSingleXml<Item>(string name)

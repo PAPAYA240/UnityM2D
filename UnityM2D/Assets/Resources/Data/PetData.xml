@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPetData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PetData Name="Slime" myAnimControllerPath="Prefab/Animation/Pet/Pet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="Slime" prefab="Prefab/Pet/Jelly0">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="PinkPet" myAnimControllerPath="Prefab/Animation/Pet/PinkPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="PinkPet" prefab="Prefab/Pet/Jelly1">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="GrapePet" myAnimControllerPath="Prefab/Animation/Pet/GrapePet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="GrapePet" prefab="Prefab/Pet/Jelly2">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="BearJellyPet" myAnimControllerPath="Prefab/Animation/Pet/BearJellyPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="BearJellyPet" prefab="Prefab/Pet/Jelly3">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="PuddingPet" myAnimControllerPath="Prefab/Animation/Pet/PuddingPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="PuddingPet" prefab="Prefab/Pet/Jelly4">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="BlackPet" myAnimControllerPath="Prefab/Animation/Pet/BlackPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="BlackPet" prefab="Prefab/Pet/Jelly5">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="CatFootPet" myAnimControllerPath="Prefab/Animation/Pet/CatFootPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="CatFootPet" prefab="Prefab/Pet/Jelly6">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="EarthwormPet" myAnimControllerPath="Prefab/Animation/Pet/EarthwormPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="EarthwormPet" prefab="Prefab/Pet/Jelly7">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="SharkPet" myAnimControllerPath="Prefab/Animation/Pet/SharkPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="SharkPet" prefab="Prefab/Pet/Jelly8">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="SushiPet" myAnimControllerPath="Prefab/Animation/Pet/SushiPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="SushiPet" prefab="Prefab/Pet/Jelly9">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="BottlePet" myAnimControllerPath="Prefab/Animation/Pet/BottlePet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="BottlePet" prefab="Prefab/Pet/Jelly10">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+  <PetData Name="EarthPet" myAnimControllerPath="Prefab/Animation/Pet/EarthPet" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" petType="EarthPet" prefab="Prefab/Pet/Jelly11">
+    <name />
+    <hideFlags>None</hideFlags>
+  </PetData>
+</ArrayOfPetData>

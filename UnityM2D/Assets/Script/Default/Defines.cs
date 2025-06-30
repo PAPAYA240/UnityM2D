@@ -1,6 +1,3 @@
-using System.ComponentModel.Design.Serialization;
-using Unity.Jobs.LowLevel.Unsafe;
-using UnityEngine;
 
 public class Defines
 {
@@ -72,6 +69,22 @@ public class Defines
         Skeleton_Boss,
     }
   
+    public enum PetType
+    {
+        Slime,
+        PinkPet,
+        GrapePet,
+        BearJellyPet,
+        PuddingPet,
+        BlackPet,
+        CatFootPet,
+        EarthwormPet,
+        SharkPet,
+        SushiPet,
+        BottlePet,
+        EarthPet,
+    }
+
     public enum WeaponType
     {
         None_Weapon,
@@ -85,10 +98,10 @@ public class Defines
     public enum FixType
     {
         None_Fix,
-        Heal_Fix,
+        Pet_Fix,
         Bomber_Fix,
         Speed_Fix,
-        a,
+        Ultimate_Fix,
         b,
         End_Fix,
     }

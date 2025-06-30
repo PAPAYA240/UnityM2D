@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 304551407549138247}
   - component: {fileID: 3231419569694205607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 6461191711059390810}
   - component: {fileID: 4450060311818744763}
   - component: {fileID: 4340715469828643076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adceeb9dfe68bc449b73e5397df94bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyType: 1
+  convertedEnemyType: 1
 --- !u!70 &4450060311818744763
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4461353934205805188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HP_Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}

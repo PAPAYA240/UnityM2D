@@ -58,18 +58,15 @@ public abstract  class BaseController : Base, ITurnParticipant
             OnStateChanged?.Invoke(MyAnimState);
         }
     }
-
     public BaseController GetOwner()
     {
         return this;
     }
-
     public GameObject GetTargetObject()
     {
         return TargetObject;
     }
     #endregion
-
     public override bool Init()
     {
         if (base.Init() == false)
@@ -82,10 +79,6 @@ public abstract  class BaseController : Base, ITurnParticipant
 
         if (!InitUI())
             Debug.Log("Failed UI : BaseController");
-
-        //bomberObject = Managers.Resource.Instantiate(strBomberPath, this.transform);
-        //const int bomberCnt = 10;
-        //Managers.ObjectPoolManager.CreatePool<Bomber>(bomberObject, bomberCnt);
 
         // 전투 참여자 등록
         Managers.TurnManager.RegisterParticipant(this);
@@ -252,10 +245,10 @@ public abstract  class BaseController : Base, ITurnParticipant
 
     protected virtual void SettingAnimation() { }
 
-    protected void SettingAreaCollider()
+    public Vector3 SettingAreaCollider()
     {
         if (rangeArea == null)
-            return;
+            return new Vector3();
 
         rangeArea.transform.position = new Vector3(0, 0, 0);
 
@@ -267,20 +260,27 @@ public abstract  class BaseController : Base, ITurnParticipant
         float maxX = bounds.max.x;
         float minY = bounds.min.y;
         float maxY = bounds.max.y;
-        RunAreaPosition.x = UnityEngine.Random.Range(minX, maxX);
-        RunAreaPosition.y = UnityEngine.Random.Range(minY, maxY);
+        Vector3 resultPos = new Vector3();
+        resultPos.x = UnityEngine.Random.Range(minX, maxX);
+        resultPos.y = UnityEngine.Random.Range(minY, maxY);
+        
+        return resultPos;
     }
     #endregion
 
     #region Initialize
     private bool InitUI()
     {
+        GameObject hpObj = GetObject(GameObjects.HP_Position);
+        if (hpObj == null)
+            return false;
+
         UI_Base HpUI = Managers.UIManager.ShowUI<UI_Slide>(CreateHpBar, GetObject(GameObjects.HP_Position).gameObject.transform);
         if (HpUI == null)
             return false;
+
         HpUI.SetInfo(GetObject(GameObjects.HP_Position).gameObject, true);
         return true;
-
     }
     
     private bool InitBind()

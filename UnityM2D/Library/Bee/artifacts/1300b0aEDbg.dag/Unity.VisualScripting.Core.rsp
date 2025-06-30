@@ -139,11 +139,17 @@
 -define:MODULE_PHYSICS_2D_EXISTS
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/ICSharpCode.SharpZipLib.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OOXML.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXml4Net.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXmlFormats.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.IOSResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.JarResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.PackageManagerResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.VersionHandlerImpl.dll"
+-r:"Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Common.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Core.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Ump.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Ump.Unity.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Unity.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AccessibilityModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AdaptivePerformanceModule.dll"

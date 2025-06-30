@@ -34,6 +34,7 @@ public class UI_Folder : UI_Popup
         FixTab,
         BossTab,
         ShopTab,
+        ShopItem,
     }
     public enum PlayTab
     {
@@ -50,6 +51,7 @@ public class UI_Folder : UI_Popup
     private List<UI_WeaponFolder> weaponFolder = new List<UI_WeaponFolder>();
     private List<UI_BossFolder> bossFolder = new List<UI_BossFolder>();
     private List<UI_FixFolder> fixFolder = new List<UI_FixFolder>();
+    private List<UI_AdsFolder> shopFolder = new List<UI_AdsFolder>();
 
     public EnemyController TargetEnemyController { get; private set; }
     private UI_CheckBossFolder _checkBossFolderUI;
@@ -63,19 +65,9 @@ public class UI_Folder : UI_Popup
         if (base.Init() == false)
             return false;
 
-        BindText(typeof(TextType));
-        BindButton(typeof(ButtonType));
-        BindObject(typeof(GameObjects));
+        if(!InitBind())
+            Debug.Log("Failed Bind : UI_Folder()");
 
-        GameObject weaponButtonGO = GetButton(ButtonType.Weapon_Button).gameObject;
-        GameObject FixButtonGO = GetButton(ButtonType.Fix_Button).gameObject;
-        GameObject BossButtonGO = GetButton(ButtonType.Boss_Button).gameObject;
-        GameObject shopButtonGO = GetButton(ButtonType.Shop_Button).gameObject;
-
-        BindEvent(weaponButtonGO, () => ChangeTab(PlayTab.Weapon));
-        BindEvent(FixButtonGO, () => ChangeTab(PlayTab.Fix));
-        BindEvent(BossButtonGO, () => ChangeTab(PlayTab.Boss));
-        BindEvent(shopButtonGO, () => ChangeTab(PlayTab.Shop));
         ChangeTab(PlayTab.Weapon);
 
         GameObject PlayerObject = GameObject.Find(strPlayerObject);
@@ -113,7 +105,9 @@ public class UI_Folder : UI_Popup
             weaponFolder.Add(item);
         }
     }
+    #endregion
 
+    #region Fix Folder
     private void Register_FixFolder()
     {
         GameObject parent = GetObject(GameObjects.Fix_Item);
@@ -130,7 +124,6 @@ public class UI_Folder : UI_Popup
             fixFolder.Add(item);
         }
     }
-
     #endregion
 
     #region Boss Folder
@@ -162,6 +155,22 @@ public class UI_Folder : UI_Popup
 
     #endregion
 
+    #region Ads Folder
+    private void Register_AdsFolder()
+    {
+        GameObject parent = GetObject(GameObjects.ShopItem);
+
+        List<GameObject> childobj = new List<GameObject>();
+        childobj = Setting.FindChildList(parent, "Ads_Type");
+
+        for (int i = 0; i < childobj.Count; i++)
+        {
+            UI_AdsFolder item = Setting.GetOrAddComponent<UI_AdsFolder>(childobj[i].gameObject);
+
+            shopFolder.Add(item);
+        }
+    }
+    #endregion
 
     public void ChangeTab(PlayTab _tab)
     {
@@ -192,4 +201,26 @@ public class UI_Folder : UI_Popup
                 break;
         }
     }
+
+    #region Initialize
+    private bool InitBind()
+    {
+        Managers.UIManager.ShowUI<UI_UltimateButton>("UI_UltimateButton", this.gameObject.transform);
+
+        BindText(typeof(TextType));
+        BindButton(typeof(ButtonType));
+        BindObject(typeof(GameObjects));
+
+        GameObject weaponButtonGO = GetButton(ButtonType.Weapon_Button).gameObject;
+        GameObject FixButtonGO = GetButton(ButtonType.Fix_Button).gameObject;
+        GameObject BossButtonGO = GetButton(ButtonType.Boss_Button).gameObject;
+        GameObject shopButtonGO = GetButton(ButtonType.Shop_Button).gameObject;
+
+        BindEvent(weaponButtonGO, () => ChangeTab(PlayTab.Weapon));
+        BindEvent(FixButtonGO, () => ChangeTab(PlayTab.Fix));
+        BindEvent(BossButtonGO, () => ChangeTab(PlayTab.Boss));
+        BindEvent(shopButtonGO, () => ChangeTab(PlayTab.Shop));
+        return true;
+    }
+    #endregion
 }

@@ -24,6 +24,8 @@ public class Managers : MonoBehaviour
     private static TurnManager s_TurnManager = new TurnManager();   
     private static ObjectPool_Manager s_ObjectPoolManager = new ObjectPool_Manager();
     private static Data_Manager s_DataManager = new Data_Manager(); 
+    private static Particle_Manager s_ParticleManager = new Particle_Manager(); 
+    private static AdsManager s_AdsManager = new AdsManager();  
 
     // Data Loader
     private static WeaponLoader s_WeaponLoader = new WeaponLoader();
@@ -38,9 +40,10 @@ public class Managers : MonoBehaviour
     public static TurnManager TurnManager { get { return s_TurnManager;  } }      
     public static ObjectPool_Manager ObjectPoolManager { get {return s_ObjectPoolManager; } }
     public static Data_Manager DataManager { get { return s_DataManager; } }   
-    
     public static WeaponLoader WeaponLoader { get { return s_WeaponLoader; } }
-    
+    public static Particle_Manager ParticleManager { get { return s_ParticleManager; } }    
+    public static AdsManager Ads {  get { return s_AdsManager; } }  
+
     public static float PlayTime { get; set; }
 
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3867040119830873105}
   - component: {fileID: 7970520361966620296}
   m_Layer: 5
-  m_Name: Hill_Hp
+  m_Name: Ads_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6167623186785475603}
   m_Father: {fileID: 7448056502317622012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -143,8 +144,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 927338625, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -8390244, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1959,7 +1960,7 @@ GameObject:
   - component: {fileID: 5155176847836042501}
   - component: {fileID: 468484325074222237}
   m_Layer: 5
-  m_Name: Speed_Upgrade
+  m_Name: Ads_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2037,7 +2038,7 @@ GameObject:
   - component: {fileID: 7697373774438795410}
   - component: {fileID: 3586862246366443391}
   m_Layer: 5
-  m_Name: Weapon_Name
+  m_Name: thisName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5500,6 +5501,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2886430686845721939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6167623186785475603}
+  - component: {fileID: 4167848467540262197}
+  - component: {fileID: 3673927571315836129}
+  m_Layer: 5
+  m_Name: Pet_Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6167623186785475603
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886430686845721939}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2282352626074458017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: 127.069, y: 125}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4167848467540262197
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886430686845721939}
+  m_CullTransparentMesh: 1
+--- !u!114 &3673927571315836129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886430686845721939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f4ba7a5e8b25ae241a6c94d4d6df858d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2906046171218164459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,7 +5695,7 @@ GameObject:
   - component: {fileID: 3289085282716900917}
   - component: {fileID: 6385549360344400357}
   m_Layer: 5
-  m_Name: Weapon_Name
+  m_Name: thisName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5808,7 +5884,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: '2000
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
   m_sharedMaterial: {fileID: -6188950702884510681, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
@@ -8213,7 +8291,7 @@ GameObject:
   - component: {fileID: 5578538277289025552}
   - component: {fileID: 7867955986699778897}
   m_Layer: 5
-  m_Name: Boss
+  m_Name: ShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9508,7 +9586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8209040839905014259}
   m_Layer: 5
-  m_Name: BossContent
+  m_Name: ShopContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12179,8 +12257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.70004, y: -33.71}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -45.399963, y: -33.71}
+  m_SizeDelta: {x: 484.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4911480730209515336
 CanvasRenderer:
@@ -12210,7 +12288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 >> 120
+  m_text: basic attacker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
   m_sharedMaterial: {fileID: -6188950702884510681, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
@@ -13019,7 +13097,7 @@ GameObject:
   - component: {fileID: 4064533409408989263}
   - component: {fileID: 8460982852799306078}
   m_Layer: 5
-  m_Name: Weapon_Name
+  m_Name: thisName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14445,7 +14523,7 @@ GameObject:
   - component: {fileID: 8566376402561240706}
   - component: {fileID: 5629463446439890793}
   m_Layer: 5
-  m_Name: Weapon_Name
+  m_Name: thisName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15795,7 +15873,7 @@ GameObject:
   - component: {fileID: 2329007535228097488}
   - component: {fileID: 3440032801408718280}
   m_Layer: 5
-  m_Name: Weapon_Name
+  m_Name: thisName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15848,7 +15926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Healing Amplification
+  m_text: Slime
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
   m_sharedMaterial: {fileID: -6188950702884510681, guid: 29e177049165e234ba32d67e282a1eac, type: 2}
@@ -15931,7 +16009,7 @@ GameObject:
   - component: {fileID: 1452291446338635284}
   - component: {fileID: 3791205698909297372}
   m_Layer: 5
-  m_Name: Coin_Shop
+  m_Name: Ads_Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

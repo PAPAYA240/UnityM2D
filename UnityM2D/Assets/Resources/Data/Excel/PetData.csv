@@ -1,0 +1,13 @@
+Name,myAnimController,Level,LevelCount,Hp,MaxHp,Hill,Exp,AttackPower,Money,BulletSpeed,AttackSpeed,Speed,PetType,prefab
+Slime,Prefab/Animation/Pet/Pet,1,0,100,100,10,0,10,100000,10,7,5,Slime,Prefab/Pet/Jelly0
+PinkPet,Prefab/Animation/Pet/PinkPet,1,0,100,100,10,0,10,100000,10,7,5,PinkPet,Prefab/Pet/Jelly1
+GrapePet,Prefab/Animation/Pet/GrapePet,1,0,100,100,10,0,10,100000,10,7,5,GrapePet,Prefab/Pet/Jelly2
+BearJellyPet,Prefab/Animation/Pet/BearJellyPet,1,0,100,100,10,0,10,100000,10,7,5,BearJellyPet,Prefab/Pet/Jelly3
+PuddingPet,Prefab/Animation/Pet/PuddingPet,1,0,100,100,10,0,10,100000,10,7,5,PuddingPet,Prefab/Pet/Jelly4
+BlackPet,Prefab/Animation/Pet/BlackPet,1,0,100,100,10,0,10,100000,10,7,5,BlackPet,Prefab/Pet/Jelly5
+CatFootPet,Prefab/Animation/Pet/CatFootPet,1,0,100,100,10,0,10,100000,10,7,5,CatFootPet,Prefab/Pet/Jelly6
+EarthwormPet,Prefab/Animation/Pet/EarthwormPet,1,0,100,100,10,0,10,100000,10,7,5,EarthwormPet,Prefab/Pet/Jelly7
+SharkPet,Prefab/Animation/Pet/SharkPet,1,0,100,100,10,0,10,100000,10,7,5,SharkPet,Prefab/Pet/Jelly8
+SushiPet,Prefab/Animation/Pet/SushiPet,1,0,100,100,10,0,10,100000,10,7,5,SushiPet,Prefab/Pet/Jelly9
+BottlePet,Prefab/Animation/Pet/BottlePet,1,0,100,100,10,0,10,100000,10,7,5,BottlePet,Prefab/Pet/Jelly10
+EarthPet,Prefab/Animation/Pet/EarthPet,1,0,100,100,10,0,10,100000,10,7,5,EarthPet,Prefab/Pet/Jelly11

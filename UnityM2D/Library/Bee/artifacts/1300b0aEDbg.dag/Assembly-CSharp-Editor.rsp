@@ -132,11 +132,17 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -define:UNITY_EDITOR_ONLY_COMPILATION
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/ICSharpCode.SharpZipLib.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OOXML.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXml4Net.dll"
--r:"Assets/Asset/unity-excel-importer-master/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXmlFormats.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.IOSResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.JarResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.PackageManagerResolver.dll"
+-r:"Assets/ExternalDependencyManager/Editor/1.2.186/Google.VersionHandlerImpl.dll"
+-r:"Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Common.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Core.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Ump.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Ump.Unity.dll"
+-r:"Assets/GoogleMobileAds/GoogleMobileAds.Unity.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AccessibilityModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.AdaptivePerformanceModule.dll"
@@ -398,15 +404,9 @@
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Assembly-CSharp.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/ExcelImporter.Editor.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/ExcelImporter.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/GoogleMobileAds.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/PPv2URPConverters.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/PsdPlugin.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-csharp.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-unity-editor.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-unity-examples-editor.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-unity-examples.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/spine-unity.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.2D.Animation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.2D.Animation.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.2D.Aseprite.Common.ref.dll"
@@ -477,6 +477,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.1.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Asset/Bolt 2D LittleWars VE3/ReadMe/Scripts/Editor/ReadmeEditorVE3.cs"
 "Assets/Bolt 2D JellyFarm VE2/ReadMe/Scripts/Editor/ReadmeEditorVE2.cs"
+"Assets/Vertical 2D Shooting BE4/ReadMe/Scripts/Editor/ReadmeEditorBE4.cs"
 -langversion:9.0
 /deterministic
 /optimize-

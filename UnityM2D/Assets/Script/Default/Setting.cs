@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 public static class Setting
 {
