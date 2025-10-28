@@ -77,11 +77,14 @@
     <Compile Include="Assets\Script\Data\WeaponStrategyFactory.cs" />
     <Compile Include="Assets\Script\Controller\PlayerController.cs" />
     <Compile Include="Assets\Script\Weapon\Weapon.cs" />
+    <Compile Include="Assets\Script\Controller\AirplaneController.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_Folder.cs" />
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
+    <Compile Include="Assets\Script\UI\UI_LevelUp.cs" />
     <Compile Include="Assets\Script\Manager\Data_Manager.cs" />
+    <Compile Include="Assets\Script\UI\UI_Dead.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_UltimateButton.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_BossFolder.cs" />
@@ -141,6 +144,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
+    <None Include="Assets\Resources\Data\AirplaneData.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Resources\Data\PlayerData.xml" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
@@ -604,6 +608,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.1.6f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@56bff8827a7e\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
@@ -612,24 +620,8 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Common">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="GoogleMobileAds">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Unity">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GoogleMobileAds.Core">
@@ -642,6 +634,18 @@
     </Reference>
     <Reference Include="GoogleMobileAds.Ump">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Ump.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

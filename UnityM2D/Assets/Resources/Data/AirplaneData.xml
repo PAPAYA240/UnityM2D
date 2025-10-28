@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAirplaneData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AirplaneData Name="Basic_Airplane" myAnimControllerPath="Prefab/Animation/Player/PlayerAnim.controller" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" airplaneType="Basic_Airplane" prefab="Prefab/Airplane/Basic_Airplane">
+    <name />
+    <hideFlags>None</hideFlags>
+  </AirplaneData>
+  <AirplaneData Name="Advance_Airplane" myAnimControllerPath="" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" airplaneType="Advance_Airplane" prefab="Prefab/Airplane/Advance_Airplane">
+    <name />
+    <hideFlags>None</hideFlags>
+  </AirplaneData>
+  <AirplaneData Name="Elite_Airplane" myAnimControllerPath="" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" airplaneType="Elite_Airplane" prefab="Prefab/Airplane/Elite_Airplane">
+    <name />
+    <hideFlags>None</hideFlags>
+  </AirplaneData>
+  <AirplaneData Name="Epic_Airplane" myAnimControllerPath="" Level="1" LevelCount="0" Hp="100" MaxHp="100" Hill="10" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" airplaneType="Epic_Airplane" prefab="Prefab/Airplane/Epic_Airplane">
+    <name />
+    <hideFlags>None</hideFlags>
+  </AirplaneData>
+</ArrayOfAirplaneData>

@@ -4,6 +4,9 @@ using static Defines;
 
 public class UI_Base : Base
 {
+    protected float LastProjectCoolTime = 30f;
+    protected float LastProjectTime = 0.0f;
+
     UIType uiType;
 
     protected bool bUpdate = false;
@@ -34,5 +37,17 @@ public class UI_Base : Base
     {
         ParentObject = _parent;
         bUpdate = _update;
+    }
+
+    protected float GetProjectWaitRatio()
+    {
+        float playTime = Managers.PlayTime;
+        float projectTime = LastProjectTime;
+
+        float ratio = 1.0f;
+        if (projectTime > 0 && projectTime < playTime)
+            ratio = (playTime - projectTime) / LastProjectCoolTime;
+
+        return ratio;
     }
 }

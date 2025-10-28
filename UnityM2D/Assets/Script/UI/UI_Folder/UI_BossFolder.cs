@@ -26,9 +26,6 @@ public class UI_BossFolder : UI_Base
     private UI_CheckBossFolder checkBossFolderUI;
     private RuntimeAnimatorController pendingLoadAnim;
 
-    float LastProjectCoolTime = 30f;
-    float LastProjectTime = 0.0f;
-
     // ======= getter/setter =======
     public RuntimeAnimatorController PendingLoadAnim
     {
@@ -70,18 +67,6 @@ public class UI_BossFolder : UI_Base
                 });
     }
 
-    float GetProjectWaitRatio()
-    {
-        float playTime = Managers.PlayTime;
-        float projectTime = LastProjectTime;
-
-        float ratio = 1.0f;
-        if (projectTime > 0 && projectTime < playTime)
-            ratio = (playTime - projectTime) / LastProjectCoolTime;
-
-        return ratio;
-    }
-
     public void SetInfo(Defines.EnemyType type, UI_CheckBossFolder checkFolderUI, EnemyController enemyController)
     {
         bossType = type;
@@ -97,10 +82,10 @@ public class UI_BossFolder : UI_Base
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
-        Button bossButton = GetButton(Buttons.Boss_Type);
+        GameObject bossButton = GetButton(Buttons.Boss_Type).gameObject;
         if (bossButton == null)
             return false;
-        BindEvent(bossButton.gameObject, OnSelectBossClick);
+        BindEvent(bossButton, OnSelectBossClick);
 
         return true;
     }

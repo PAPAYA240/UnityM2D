@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
 using static Defines;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class UI_Folder : UI_Popup
 {
@@ -78,11 +75,14 @@ public class UI_Folder : UI_Popup
         Register_WeaponFolder();
         Register_BossFolder();
         Register_FixFolder();
+        Register_AdsFolder();
 
         return true;
  }
     void Update()
     {
+        GetText(TextType.CostText).SetText(Player?.data.Money.ToString());
+
         GetText(TextType.AttackText).text = String.Format($"{Player.data.AttackPower}");
     }
 
@@ -166,7 +166,7 @@ public class UI_Folder : UI_Popup
         for (int i = 0; i < childobj.Count; i++)
         {
             UI_AdsFolder item = Setting.GetOrAddComponent<UI_AdsFolder>(childobj[i].gameObject);
-
+            item.SetInfo((UI_AdsFolder.RewardType)i);
             shopFolder.Add(item);
         }
     }

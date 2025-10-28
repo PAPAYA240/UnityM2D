@@ -14,9 +14,6 @@ public class UI_UltimateButton : UI_Base
         PetUltimate_Button,
     }
 
-    float LastProjectCoolTime = 20f;
-    float LastProjectTime = 0.0f;
-
     public override bool Init()
     {
         if (base.Init() == false)
@@ -32,18 +29,6 @@ public class UI_UltimateButton : UI_Base
     {
         float ratio = GetProjectWaitRatio();
         GetImage(Images.ProjectCoolTime).fillAmount = 1.0f - ratio;
-    }
-
-    float GetProjectWaitRatio()
-    {
-        float playTime = Managers.PlayTime;
-        float projectTime = LastProjectTime;
-
-        float ratio = 1.0f;
-        if (projectTime > 0 && projectTime < playTime)
-            ratio = (playTime - projectTime) / LastProjectCoolTime;
-
-        return ratio;
     }
 
     private void OnClickUltimateButton()

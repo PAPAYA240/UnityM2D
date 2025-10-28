@@ -1,6 +1,8 @@
+using GoogleMobileAds.Api;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 using static Defines;
@@ -53,13 +55,13 @@ public class PlayerController : BaseController
         Managers.TimerManager.OnTimeOver += HandleTimerOver;
         Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
+        data.Money = 1000; // 디버그용
         return true;
     }
 
 
     private void Update()
     {
-        data.Money = 10000000; // 디버그용
 
         if(TargetObject != null)
             moveTable[MyAnimState].Invoke(TargetObject);
@@ -108,8 +110,7 @@ public class PlayerController : BaseController
         // TODO : 웨이브가 끝났다면
         if (playerDataManager.LevelCount >= playerDataManager.LevelCountMax)
         {
-            ui_LevelUp.gameObject.SetActive(true);
-            ui_LevelUp.transform.position = this.transform.position;
+            _UILevelUp?.Invoke(1.5f);
             playerDataManager.LevelCountMax = 300; 
         }
         else
@@ -120,6 +121,7 @@ public class PlayerController : BaseController
         }
     }
 
+   
     public override void OnTurnStart()  
     {
         // 한 턴을 시작했을 떄
@@ -145,7 +147,7 @@ public class PlayerController : BaseController
         Invoke(nameof(DeadUI), 1f);
     }
 
-    void DeadUI() => Managers.UIManager.ShowUI<UI_Base>("UI_Dead");
+    void DeadUI() => Managers.UIManager.ShowUI<UI_Dead>("UI_Dead");
     private void HandleTimerOver()
     {
         Debug.Log("PlayerController: 타이머가 만료되었습니다! 플레이어가 사망합니다.");
@@ -208,7 +210,7 @@ public class PlayerController : BaseController
 
         return true;
     }
-    UI_Base ui_LevelUp = null;
+    UI_LevelUp _UILevelUp = null;
     private bool InitReigster()
     {
         // 몬스터 생성
@@ -228,13 +230,11 @@ public class PlayerController : BaseController
         if (rangeArea == null && rangeArea == null)
             return false;
 
-        ui_LevelUp = Managers.UIManager.ShowUI<UI_Base>("UI_LevelUp");
-        if (ui_LevelUp == null)
+         _UILevelUp = Managers.UIManager.ShowUI<UI_LevelUp>("UI_LevelUp");
+        if (_UILevelUp == null)
             return false;
         else
-        { 
-            ui_LevelUp.gameObject.SetActive(false); 
-        }
+            _UILevelUp.gameObject.SetActive(false); 
 
         RunAreaPosition = SettingAreaCollider();
 

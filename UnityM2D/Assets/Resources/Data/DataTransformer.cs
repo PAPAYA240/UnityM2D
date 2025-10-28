@@ -31,6 +31,7 @@ public class DataTransformer : EditorWindow
         ParsePlayerData();
         ParseEnemyData();
         ParsePetData();
+        ParseAirplaneData();
     }
 
     static void ParsePlayerData()
@@ -161,6 +162,50 @@ public class DataTransformer : EditorWindow
 
         string xmlString = ToXML(petDatas);
         File.WriteAllText($"{Application.dataPath}/Resources/Data/PetData.xml", xmlString);
+        AssetDatabase.Refresh();
+    }
+
+    static void ParseAirplaneData()
+    {
+        List<AirplaneData> airplaneDatas = new List<AirplaneData>();
+
+        #region ExcelData
+        string[] lines = Resources.Load<TextAsset>($"Data/Excel/AirplaneData").text.Split("\n");
+
+        for (int y = 1; y < lines.Length; y++)
+        {
+            string[] row = lines[y].Replace("\r", "").Split(',');
+            if (row.Length == 0)
+                continue;
+            if (string.IsNullOrEmpty(row[0]))
+                continue;
+
+            AirplaneData airplaneData = new AirplaneData()
+            {
+                Name = row[0],
+                myAnimControllerPath = row[1],
+                Level = int.Parse(row[2]),
+                LevelCount = int.Parse(row[3]),
+
+                Hp = int.Parse(row[4]),
+                MaxHp = int.Parse(row[5]),
+                Hill = int.Parse(row[6]),
+                Exp = int.Parse(row[7]),
+                AttackPower = int.Parse(row[8]),
+                Money = int.Parse(row[9]),
+
+                BulletSpeed = int.Parse(row[10]),
+                AttackSpeed = int.Parse(row[11]),
+                Speed = int.Parse(row[12]),
+                airplaneType = (AirplaneType)Enum.Parse(typeof(AirplaneType), row[13], ignoreCase: true),
+                prefab = row[14],
+            };
+            airplaneDatas.Add(airplaneData);
+        }
+        #endregion
+
+        string xmlString = ToXML(airplaneDatas);
+        File.WriteAllText($"{Application.dataPath}/Resources/Data/AirplaneData.xml", xmlString);
         AssetDatabase.Refresh();
     }
 

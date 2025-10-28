@@ -14,7 +14,9 @@ public class Bullet : Base
 
     public IEnumerator Fire()
     {
-        if(FindObject() == false)
+        yield return new WaitForSeconds(0.5f);
+
+        if (FindObject() == false)
         {
             Debug.LogWarning("Failed Load Player && Enemy : Bullet");
             yield break;

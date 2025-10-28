@@ -15,12 +15,14 @@ public class Data_Manager
     public Dictionary<string, PlayerData> Players { get; private set; }
     public Dictionary<string, MonsterData> Enemys { get; private set; }
     public Dictionary<string, PetData> Pets { get; private set; }
-
+    public Dictionary<string, AirplaneData> Airplanes { get; private set; }
+    
     public void Init()
     {
         Enemys = LoadXml<EnemyDataLoader, string, MonsterData>("EnemyData").MakeDic();
         Players = LoadXml<PlayerDataLoader, string, PlayerData>("PlayerData").MakeDic();
         Pets = LoadXml<PetDataLoader, string, PetData>("PetData").MakeDic();
+        Airplanes = LoadXml<AirplaneDataLoader, string, AirplaneData>("AirplaneData").MakeDic();
     }
 
     private Item LoadSingleXml<Item>(string name)

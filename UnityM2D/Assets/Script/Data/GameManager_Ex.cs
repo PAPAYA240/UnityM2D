@@ -63,6 +63,14 @@ public class PetData : CharacterData
     [XmlAttribute]
     public string prefab;
 }
+public class AirplaneData : CharacterData
+{
+    [XmlAttribute]
+    public AirplaneType airplaneType;
+
+    [XmlAttribute]
+    public string prefab;
+}
 
 public interface ICharacterManager
 {
@@ -107,6 +115,10 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
         {
             PetCopyFrom(otherPetData);
         }
+        else if(data is AirplaneData otherAirplaneData)
+        {
+            AirplaneCopyFrom(otherAirplaneData);
+        }
     }
     protected void CopyFrom(CharacterData _origin)
     {
@@ -150,6 +162,16 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
         Managers.DataManager.Pets.TryGetValue(String.Format($"{_data.petType}"), out PetData originData);
 
         _data.petType = originData.petType;
+
+        _data.prefab = originData.prefab;
+
+        CopyFrom(originData);
+    }
+    public void AirplaneCopyFrom(AirplaneData _data)
+    {
+        Managers.DataManager.Airplanes.TryGetValue(String.Format($"{_data.airplaneType}"), out AirplaneData originData);
+
+        _data.airplaneType = originData.airplaneType;
 
         _data.prefab = originData.prefab;
 
@@ -371,4 +393,26 @@ public class PetDataLoader : ILoader<string, PetData>
         return true;
     }
 }
+[Serializable, XmlRoot("ArrayOfAirplaneData")]
+public class AirplaneDataLoader : ILoader<string, AirplaneData>
+{
+    [XmlElement("AirplaneData")]
+    public List<AirplaneData> _characterDatas = new List<AirplaneData>();
+
+    public Dictionary<string, AirplaneData> MakeDic()
+    {
+        Dictionary<string, AirplaneData> dic = new Dictionary<string, AirplaneData>();
+
+        foreach (AirplaneData data in _characterDatas)
+            dic.Add(data.Name, data);
+
+        return dic;
+    }
+
+    public bool Validate()
+    {
+        return true;
+    }
+}
+
 #endregion

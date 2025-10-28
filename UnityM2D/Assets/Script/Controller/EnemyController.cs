@@ -31,7 +31,7 @@ public class EnemyController : BaseController
     #endregion
 
     private void Start() => Init();
-
+    UI_Base _uiCoin;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -48,6 +48,9 @@ public class EnemyController : BaseController
         EquipWeapon(WeaponType.None_Weapon);
 
         Managers.TimerManager.OnTimeNext += HandleTimerNext;
+        
+        _uiCoin = Managers.UIManager.ShowUI<UI_Base>("UI_Coin");
+        _uiCoin.gameObject.SetActive(false);
 
         return true; 
     }
@@ -83,10 +86,22 @@ public class EnemyController : BaseController
         if(player != null)
             player.data.LevelCount += monsterDataManager.Level;
 
+        StartCoroutine(DefeatedCoin());
         StartCoroutine(NextEnemy());
     }
     #endregion
 
+    // 몬스터 처치 시 코인 얻기
+    private IEnumerator DefeatedCoin()
+    {
+        _uiCoin.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        PlayerController player = TargetObject.GetComponent<PlayerController>();
+        if (player != null)
+            player.data.Money += 500; 
+        _uiCoin.gameObject.SetActive(false);
+
+    }
     #region Load Change Enemy
     private void HandleTimerNext()
     {

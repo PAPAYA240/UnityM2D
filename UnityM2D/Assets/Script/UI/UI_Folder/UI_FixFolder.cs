@@ -22,7 +22,7 @@ public class UI_FixFolder : UI_Base
     enum Images
     {
         Icon,
-        Pet_Icon,
+        Object_Icon,
     }
 
     FixType myFixType = FixType.None_Fix;
@@ -31,6 +31,7 @@ public class UI_FixFolder : UI_Base
     bool[] bOpenFix = new bool[(int)FixType.End_Fix];
     #endregion
     GameObject myPet = null;
+    GameObject myAirplane = null;
 
     private void Start() => Init();
     public override bool Init()
@@ -58,8 +59,8 @@ public class UI_FixFolder : UI_Base
                     myPet.AddComponent<Pet>();
                     break;
                 }
-                PetType dataType = myPet.GetComponent<Pet>().UpgradePet(Player);
-                Change_PetInformation(dataType);
+                PetType petNextData = myPet.GetComponent<Pet>().UpgradePet(Player);
+                Change_PetInformation(petNextData);
 
                 break;
 
@@ -69,6 +70,17 @@ public class UI_FixFolder : UI_Base
 
             case FixType.Ultimate_Fix:
                 StartCoroutine(Player.UseSkill(FixType.Ultimate_Fix));
+                break;
+
+            case FixType.Airplane_Fix:
+                if(myAirplane == null)
+                {
+                    myAirplane = Managers.Resource.Instantiate("Prefab/Airplane/Airplane");
+                    myAirplane.AddComponent<Airplane>();
+                    break;
+                }
+                AirplaneType airplaneNextData = myAirplane.GetComponent<Airplane>().UpgradeAirplane(Player);
+                Change_AirplaneInformation(airplaneNextData);
                 break;
 
             default:
@@ -83,7 +95,18 @@ public class UI_FixFolder : UI_Base
             return;
 
         GetText(Texts.Cost_Text).text = String.Format($"{originData.Money}");
-        GetImage(Images.Pet_Icon).sprite = Resources.Load<Sprite>(originData.prefab);
+        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(originData.prefab);
+        GetText(Texts.thisName).text = String.Format($"{originData.Name}");
+    }
+
+    private void Change_AirplaneInformation(AirplaneType _dataType)
+    {
+        Managers.DataManager.Airplanes.TryGetValue(String.Format($"{_dataType}"), out AirplaneData originData);
+        if (originData == null)
+            return;
+
+        GetText(Texts.Cost_Text).text = String.Format($"{originData.Money}");
+        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(originData.prefab);
         GetText(Texts.thisName).text = String.Format($"{originData.Name}");
     }
 

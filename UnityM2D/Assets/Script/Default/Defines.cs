@@ -15,6 +15,7 @@ public class Defines
     public const string strEnemyPath = "Prefab/Character/Enemy";
     public const string strEnemyAreaPath = "Prefab/Character/EnemyArea";
     public const string strEnemySpawnAreaPath = "Prefab/Character/EnemySpawnArea";
+    public const string strAirplaneSpawnAreaPath = "Prefab/Character/AirplaneArea";
 
     // PATH : Player
     public const string strPlayerAreaPath = "Prefab/Character/PlayerArea";
@@ -55,6 +56,14 @@ public class Defines
     {
         None,
         Knight,
+    }
+
+    public enum AirplaneType
+    {
+        Basic_Airplane,
+        Advance_Airplane,
+        Elite_Airplane,
+        Epic_Airplane,
     }
 
     public enum EnemyType
@@ -101,8 +110,8 @@ public class Defines
         Pet_Fix,
         Bomber_Fix,
         Speed_Fix,
+        Airplane_Fix,
         Ultimate_Fix,
-        b,
         End_Fix,
     }
 
