@@ -58,7 +58,7 @@ public class DataTransformer : EditorWindow
 
                 Hp = int.Parse(row[4]),
                 MaxHp = int.Parse(row[5]),
-                Hill = int.Parse(row[6]),
+                Heal = int.Parse(row[6]),
                 Exp = int.Parse(row[7]),
                 AttackPower = int.Parse(row[8]),
                 Money = int.Parse(row[9]),
@@ -102,7 +102,7 @@ public class DataTransformer : EditorWindow
 
                 Hp = int.Parse(row[4]),
                 MaxHp = int.Parse(row[5]),
-                Hill = int.Parse(row[6]),
+                Heal = int.Parse(row[6]),
                 Exp = int.Parse(row[7]),
                 AttackPower = int.Parse(row[8]),
                 Money = int.Parse(row[9]),
@@ -145,7 +145,7 @@ public class DataTransformer : EditorWindow
 
                 Hp = int.Parse(row[4]),
                 MaxHp = int.Parse(row[5]),
-                Hill = int.Parse(row[6]),
+                Heal = int.Parse(row[6]),
                 Exp = int.Parse(row[7]),
                 AttackPower = int.Parse(row[8]),
                 Money = int.Parse(row[9]),
@@ -189,7 +189,7 @@ public class DataTransformer : EditorWindow
 
                 Hp = int.Parse(row[4]),
                 MaxHp = int.Parse(row[5]),
-                Hill = int.Parse(row[6]),
+                Heal = int.Parse(row[6]),
                 Exp = int.Parse(row[7]),
                 AttackPower = int.Parse(row[8]),
                 Money = int.Parse(row[9]),

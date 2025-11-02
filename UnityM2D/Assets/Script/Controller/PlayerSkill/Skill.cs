@@ -8,17 +8,14 @@ public abstract class Skill : Base
 
     protected float _currentCooldown;
 
-    void Start()
-    {
-        Init();
-    }
+    void Start() => Init();
 
     public override bool Init()
     {
         if (_init)
             return false;
 
-        return _init = true;
+        return( _init = true);
     }
 
     public virtual void OnSkillUse(BaseController caster)
@@ -31,7 +28,8 @@ public abstract class Skill : Base
         if (_currentCooldown > 0)
         {
             _currentCooldown -= deltaTime;
-            if (_currentCooldown < 0) _currentCooldown = 0;
+            if (_currentCooldown < 0) 
+                _currentCooldown = 0;
         }
     }
     public abstract bool ExecuteSkill(GameObject _attacker, GameObject _targeter);

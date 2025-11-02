@@ -33,7 +33,7 @@ public class UI_FixFolder : UI_Base
     GameObject myPet = null;
     GameObject myAirplane = null;
 
-    private void Start() => Init();
+    private void Awake() => Init();
     public override bool Init()
     {
         if (base.Init() == false)
@@ -57,27 +57,28 @@ public class UI_FixFolder : UI_Base
                 {
                     myPet = Managers.Resource.Instantiate("Prefab/Pet/Pet");
                     myPet.AddComponent<Pet>();
-                    break;
                 }
                 PetType petNextData = myPet.GetComponent<Pet>().UpgradePet(Player);
                 Change_PetInformation(petNextData);
-
                 break;
 
             case FixType.Bomber_Fix:
                 StartCoroutine(Player.UseSkill(FixType.Bomber_Fix));
                 break;
 
-            case FixType.Ultimate_Fix:
-                StartCoroutine(Player.UseSkill(FixType.Ultimate_Fix));
+            case FixType.Heal_Fix:
+                if (Player.data.Heal >= Player.data.MaxHeal)
+                {
+                    Player.data.Heal = Player.data.MaxHeal;
+                    return;
+                }
+                Change_HealInformation();
                 break;
-
             case FixType.Airplane_Fix:
                 if(myAirplane == null)
                 {
                     myAirplane = Managers.Resource.Instantiate("Prefab/Airplane/Airplane");
                     myAirplane.AddComponent<Airplane>();
-                    break;
                 }
                 AirplaneType airplaneNextData = myAirplane.GetComponent<Airplane>().UpgradeAirplane(Player);
                 Change_AirplaneInformation(airplaneNextData);
@@ -94,9 +95,35 @@ public class UI_FixFolder : UI_Base
         if (originData == null)
             return;
 
-        GetText(Texts.Cost_Text).text = String.Format($"{originData.Money}");
-        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(originData.prefab);
-        GetText(Texts.thisName).text = String.Format($"{originData.Name}");
+        PetData data = Managers.PetLoader.GetPetDataByType(_dataType);
+        if (data == null)
+            return;
+
+        GetText(Texts.Cost_Text).text = String.Format($"{data.price}");
+        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(data.petPrefab);
+        GetText(Texts.thisName).text = String.Format($"{data.petName}");
+    }
+
+    int _Healprice = 500;
+    private void Change_HealInformation()
+    {
+        // 돈 빼고 시세 올리고
+        if (_Healprice > Player.data.Money)
+            return;
+        Player.data.Money -= _Healprice;
+        _Healprice += 500;
+
+        // 힐 추가해주고
+        int addHeal = 10;
+        Player.UpgradeHeal(addHeal);
+        GetText(Texts.Cnt_Text).text = String.Format($"{Player.data.Heal} >> {Player.data.Heal + addHeal}");
+
+       if (Player.data.Heal >= Player.data.MaxHeal)
+        {
+            Player.data.Heal = Player.data.MaxHeal;
+            GetText(Texts.Cnt_Text).text = String.Format($"{Player.data.Heal} >> MAX HEAL!");
+            GetText(Texts.Cost_Text).text = String.Format("MAX");
+        }
     }
 
     private void Change_AirplaneInformation(AirplaneType _dataType)
@@ -105,9 +132,13 @@ public class UI_FixFolder : UI_Base
         if (originData == null)
             return;
 
-        GetText(Texts.Cost_Text).text = String.Format($"{originData.Money}");
-        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(originData.prefab);
-        GetText(Texts.thisName).text = String.Format($"{originData.Name}");
+        AirplaneData data = Managers.AirplaneLoader.GetAirplaneDataByType(_dataType);
+        if (data == null)
+            return;
+
+        GetText(Texts.Cost_Text).text = String.Format($"{data.price}");
+        GetImage(Images.Object_Icon).sprite = Resources.Load<Sprite>(data.airplanePrefab);
+        GetText(Texts.thisName).text = String.Format($"{data.airplaneName}");
     }
 
     public void SetInfo(FixType _type)

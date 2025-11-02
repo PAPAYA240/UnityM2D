@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.UI;
 
-public class UI_Slide : UI_Base // UI_Base를 상속받음
+public class UI_Slide : UI_Base
 {
     private Slider slider;
 
-    public enum SlideTargetType // 어떤 값을 추적할지 명확히 정의
+    // 어떤 값을 추적할지 명확히 정의
+    public enum SlideTargetType 
     {
         None,
         HpBar,
@@ -32,10 +33,9 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
     private Coroutine _currentSlideAnimationCoroutine; 
     private BaseController _targetBaseController;
 
-    void Start()
-    {
-        Init();
-    }
+    private Vector3 _offsetPosition = new Vector3(0, -0.14f, 0);
+
+    void Start() => Init();
     public override bool Init()
     {
         if (base.Init() == false)
@@ -54,12 +54,12 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
         _currentDisplayedValue = slider.value;
         _targetValue = slider.value;
 
-        if (ParentObject != null && ParentObject.transform.parent != null)
+        if (_parentObject != null && _parentObject.transform.parent != null)
         {
-            _targetBaseController = ParentObject.transform.parent.gameObject.GetComponent<BaseController>();
+            _targetBaseController = _parentObject.transform.parent.gameObject.GetComponent<BaseController>();
             if (_targetBaseController == null)
             {
-                Debug.LogWarning($"UI_Slide: {ParentObject.transform.parent.name}에서 BaseController를 찾을 수 없습니다.");
+                Debug.LogWarning($"UI_Slide: {_parentObject.transform.parent.name}에서 BaseController를 찾을 수 없습니다.");
             }
         }
         SlideTargetType a = slideType;
@@ -95,9 +95,9 @@ public class UI_Slide : UI_Base // UI_Base를 상속받음
 
     void LateUpdate()
     {
-        if (bUpdate && ParentObject != null)
+        if (_bUpdate && _parentObject != null)
         {
-            slider.transform.position = Camera.main.WorldToScreenPoint(ParentObject.transform.position + offset);
+            slider.transform.position = Camera.main.WorldToScreenPoint(_parentObject.transform.position + _offsetPosition);
         }
     }
 

@@ -59,7 +59,8 @@ public class Bomber : Base
     private void Reset()
     {
         Managers.ObjectPoolManager.ReturnObject(this.gameObject);
-        StopCoroutine(startAttackCoroutine);
+        if(startAttackCoroutine != null)
+            StopCoroutine(startAttackCoroutine);
         timeElapsed = 0;
     }
 }

@@ -14,7 +14,6 @@ public class BackGroundScroll : MonoBehaviour
         rightPosX = length;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position -= new Vector3(Speed, 0, 0) * Time.deltaTime;

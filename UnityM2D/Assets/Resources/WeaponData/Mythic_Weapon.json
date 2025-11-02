@@ -1,0 +1,18 @@
+{
+  "weaponName": "Mythic Weapon",
+  "weaponPrefab": "WeaponPrefab/Mythic_Weapon",
+  "weaponType": "Basic_Weapon",
+  "attackStrategyType": "BasicAttack",
+  "baseDamage": 10,
+  "attackRange": 1.5,
+  "projectilePrefab": "WeaponPrefab/Bullet",
+  "projectileSpeed": 15.0,
+  "attackSpeed": 1.0,
+  "addedPrice": 800,
+  "addedAttack": 500,
+  "openWeaponLimit": 5000,
+  "reactionTime": {
+    "x": 0.1,
+    "y": 0.2
+  }
+}

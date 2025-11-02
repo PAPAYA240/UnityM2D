@@ -1,0 +1,100 @@
+{
+  "Pets": [
+    {
+      "petName": "Pet_Slime",
+      "petType": "Slime",
+      "damage": 10,
+      "duration": 10.0,
+      "price": 500,
+      "petPrefab": "Prefab/Pet/Jelly0"
+    },
+    {
+      "petName": "Pet_Pink",
+      "petType": "PinkPet",
+      "damage": 15,
+      "duration": 9.5,
+      "price": 750,
+      "petPrefab": "Prefab/Pet/Jelly1"
+    },
+    {
+      "petName": "Pet_Grape",
+      "petType": "GrapePet",
+      "damage": 20,
+      "duration": 9.0,
+      "price": 1000,
+      "petPrefab": "Prefab/Pet/Jelly2"
+    },
+    {
+      "petName": "Pet_BearJelly",
+      "petType": "BearJellyPet",
+      "damage": 25,
+      "duration": 8.5,
+      "price": 1250,
+      "petPrefab": "Prefab/Pet/Jelly3"
+    },
+    {
+      "petName": "Pet_Pudding",
+      "petType": "PuddingPet",
+      "damage": 30,
+      "duration": 8.0,
+      "price": 1500,
+      "petPrefab": "Prefab/Pet/Jelly4"
+    },
+    {
+      "petName": "Pet_Black",
+      "petType": "BlackPet",
+      "damage": 35,
+      "duration": 7.5,
+      "price": 1750,
+      "petPrefab": "Prefab/Pet/Jelly5"
+    },
+    {
+      "petName": "Pet_CatFoot",
+      "petType": "CatFootPet",
+      "damage": 40,
+      "duration": 7.0,
+      "price": 2000,
+      "petPrefab": "Prefab/Pet/Jelly6"
+    },
+    {
+      "petName": "Pet_Earthworm",
+      "petType": "EarthwormPet",
+      "damage": 45,
+      "duration": 6.5,
+      "price": 2250,
+      "petPrefab": "Prefab/Pet/Jelly7"
+    },
+    {
+      "petName": "Pet_Shark",
+      "petType": "SharkPet",
+      "damage": 50,
+      "duration": 6.0,
+      "price": 2500,
+      "petPrefab": "Prefab/Pet/Jelly8"
+    },
+    {
+      "petName": "Pet_Sushi",
+      "petType": "SushiPet",
+      "damage": 55,
+      "duration": 5.5,
+      "price": 2750,
+      "petPrefab": "Prefab/Pet/Jelly9"
+    },
+    {
+      "petName": "Pet_Bottle",
+      "petType": "BottlePet",
+      "damage": 60,
+      "duration": 5.0,
+      "price": 3000,
+      "petPrefab": "Prefab/Pet/Jelly10"
+    },
+    {
+      "petName": "Pet_Earth",
+      "petType": "EarthPet",
+      "damage": 65,
+      "duration": 4.5,
+      "price": 3250,
+      "petPrefab": "Prefab/Pet/Jelly11"
+    }
+  ]
+}

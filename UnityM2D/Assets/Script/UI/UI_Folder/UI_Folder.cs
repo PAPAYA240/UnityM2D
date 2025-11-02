@@ -69,7 +69,12 @@ public class UI_Folder : UI_Popup
 
         GameObject PlayerObject = GameObject.Find(strPlayerObject);
         Player = PlayerObject.GetComponent<PlayerController>();
-        TargetEnemyController = GameObject.Find(strEnemyObject).GetComponent<EnemyController>();
+        if (!Player)
+            return false;
+
+        TargetEnemyController = GameObject.Find(strEnemyObject)?.GetComponent<EnemyController>();
+        if (!TargetEnemyController)
+            return false;
 
         // 하위 폴더 모음
         Register_WeaponFolder();
@@ -98,9 +103,10 @@ public class UI_Folder : UI_Popup
         {
             UI_WeaponFolder item = Setting.GetOrAddComponent<UI_WeaponFolder>(childobj[i].gameObject);
 
-            item.SetInfo(Player, Defines.WeaponType.Basic_Weapon+ i, (i + 1) * 700);
+            item.SetInfo(Player, WeaponType.Basic_Weapon + i, (i + 1) * 10);
 
-            if (i > 0) weaponFolder[i - 1].NextLockObject = item.MyLockObject;
+            if (i > 0) 
+                weaponFolder[i - 1].NextLockObject = item.MyLockObject;
 
             weaponFolder.Add(item);
         }

@@ -1,0 +1,18 @@
+{
+  "weaponName": "Basic Weapon",
+  "weaponPrefab": "WeaponPrefab/Elite_Weapon",
+  "weaponType": "Elite_Weapon",
+  "attackStrategyType": "BasicAttack",
+  "baseDamage": 10,
+  "attackRange": 1.5,
+  "projectilePrefab": "WeaponPrefab/Bullet",
+  "projectileSpeed": 15.0,
+  "attackSpeed": 1.0,
+  "addedPrice": 500,
+  "addedAttack": 100,
+  "openWeaponLimit": 1000,
+  "reactionTime": {
+    "x": 0.1,
+    "y": 0.2
+  }
+}

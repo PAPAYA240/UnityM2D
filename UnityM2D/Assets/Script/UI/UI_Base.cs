@@ -4,21 +4,19 @@ using static Defines;
 
 public class UI_Base : Base
 {
+    #region Field
+    private UIType _uiType;
+    
     protected float LastProjectCoolTime = 30f;
     protected float LastProjectTime = 0.0f;
 
-    UIType uiType;
-
-    protected bool bUpdate = false;
-    protected GameObject ParentObject = null;
-
-    public Vector3 offset = new Vector3(0, -0.14f, 0); 
-
+    protected GameObject _parentObject;
     private RectTransform uiRectTransform;
-    private void Start()
-    {
-        Init();
-    }
+
+    protected bool _bUpdate = false;
+    #endregion
+
+    private void Start() =>Init();
     public override bool Init()
     {
         if (base.Init() == false)
@@ -27,16 +25,11 @@ public class UI_Base : Base
         return true;
     }
 
-    private void LateUpdate()
-    {
-      
-    }
-
     // 어떠한 객체에 UI를 붙일 것인가? 말 것인가?
     public void SetInfo(GameObject _parent, bool _update) 
     {
-        ParentObject = _parent;
-        bUpdate = _update;
+        _parentObject = _parent;
+        _bUpdate = _update;
     }
 
     protected float GetProjectWaitRatio()

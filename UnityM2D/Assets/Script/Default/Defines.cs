@@ -10,6 +10,7 @@ public class Defines
 
     // UI NAME
     public const string CreateHpBar = "UI_HP";
+    public const string strStartUI = "UI/Start_UI";
 
     // PATH : Enemy
     public const string strEnemyPath = "Prefab/Character/Enemy";
@@ -18,9 +19,19 @@ public class Defines
     public const string strAirplaneSpawnAreaPath = "Prefab/Character/AirplaneArea";
 
     // PATH : Player
+    public const string strPlayerPath = "Prefab/Character/Player";
     public const string strPlayerAreaPath = "Prefab/Character/PlayerArea";
 
+    // PATH : Pet
+    public const string strPetSpanwer = "Prefab/Pet/PetSpawner";
+
+    // PATH :Bullet
     public const string strBomberPath = "Prefab/Wepaon/Bomber";
+    public const string strBulletPath = "WeaponPrefab/Bullet";
+
+    // PATH : Object
+    public const string strCoinPath = "Prefab/Coin";
+    public const string strHealPath = "Prefab/HealPack";
 
     public enum Input
     {
@@ -109,7 +120,7 @@ public class Defines
         None_Fix,
         Pet_Fix,
         Bomber_Fix,
-        Speed_Fix,
+        Heal_Fix,
         Airplane_Fix,
         Ultimate_Fix,
         End_Fix,

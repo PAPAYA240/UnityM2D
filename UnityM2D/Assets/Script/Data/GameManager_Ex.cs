@@ -22,13 +22,15 @@ public class CharacterData : ScriptableObject
 	[XmlAttribute]
     public int MaxHp = 100;
 	[XmlAttribute]
-    public int Hill;
-	[XmlAttribute]
+    public int Heal;
+    [XmlAttribute]
+    public int MaxHeal = 150;
+    [XmlAttribute]
     public int Exp;
 	[XmlAttribute]
     public int AttackPower = 10;
 	[XmlAttribute]
-    public int Money = 1000000;
+    public int Money = 0;
 
 	[XmlAttribute]
     public int BulletSpeed = 10;
@@ -58,7 +60,17 @@ public class MonsterData : CharacterData
 public class PetData : CharacterData
 {
     [XmlAttribute]
+    public string petName;
+    [XmlAttribute]
     public PetType petType;
+    [XmlAttribute]
+    public int damage;
+    [XmlAttribute]
+    public float duration;
+    [XmlAttribute]
+    public int price;
+    [XmlAttribute]
+    public string petPrefab;
 
     [XmlAttribute]
     public string prefab;
@@ -67,6 +79,17 @@ public class AirplaneData : CharacterData
 {
     [XmlAttribute]
     public AirplaneType airplaneType;
+
+    [XmlAttribute]
+    public string airplaneName;
+    [XmlAttribute]
+    public int damage;
+    [XmlAttribute]
+    public float duration;
+    [XmlAttribute]
+    public int price;
+    [XmlAttribute]
+    public string airplanePrefab;
 
     [XmlAttribute]
     public string prefab;
@@ -129,7 +152,7 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
         _gameData.LevelCount = _origin.LevelCount;
         _gameData.Hp = _origin.Hp;
         _gameData.MaxHp = _origin.MaxHp;
-        _gameData.Hill = _origin.Hill;
+        _gameData.Heal = _origin.Heal;
         _gameData.Exp = _origin.Exp;
         _gameData.AttackPower = _origin.AttackPower;
         _gameData.Money = _origin.Money;
@@ -253,8 +276,8 @@ public class CharacterManager<T> : ICharacterManager where T : CharacterData
 
     public int Hill 
     {
-        get { return _gameData?.Hill ?? 0; }
-        set { if (_gameData != null) { _gameData.Hill = value; RefreshStatCollections(); } }
+        get { return _gameData?.Heal ?? 0; }
+        set { if (_gameData != null) { _gameData.Heal = value; RefreshStatCollections(); } }
     }
 
     public int Exp

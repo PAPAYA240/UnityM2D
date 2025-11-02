@@ -68,7 +68,7 @@ public class UI_AdsFolder : UI_Base
                 playerController.data.Hp = playerController.data.MaxHp;
                 break;
             case RewardType.Reward_Coin:
-                playerController.data.Money = rewardMoney;
+                playerController.data.Money += rewardMoney;
                 break;
         }
         LastProjectTime = Managers.PlayTime;

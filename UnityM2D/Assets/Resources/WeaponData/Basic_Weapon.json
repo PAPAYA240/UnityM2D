@@ -1,0 +1,18 @@
+{
+  "weaponName": "Basic Weapon",
+  "weaponPrefab": "WeaponPrefab/Basic_Weapon",
+  "weaponType": "Basic_Weapon",
+  "attackStrategyType": "BasicAttack",
+  "baseDamage": 10,
+  "attackRange": 1.5,
+  "projectilePrefab": null,
+  "projectileSpeed": 15.0,
+  "attackSpeed": 1.0,
+  "openWeaponLimit": 50,
+  "addedPrice": 100,
+  "addedAttack":  10,
+  "reactionTime": {
+    "x": 0.1,
+    "y": 0.2
+  }
+}

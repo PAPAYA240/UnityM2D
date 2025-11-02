@@ -1,0 +1,36 @@
+{
+  "Airplanes": [
+    {
+      "airplaneName": "Basic Airplane",
+      "airplaneType": "Basic_Airplane",
+      "duration": 10,
+      "damage" : 300,
+      "price": 2000,
+      "airplanePrefab": "Prefab/Airplane/Basic_Airplane"
+    },
+    {
+      "airplaneName": "Advance Airplane",
+      "airplaneType": "Advance_Airplane",
+      "duration": 8,
+      "damage": 450,
+      "price": 4000,
+      "airplanePrefab": "Prefab/Airplane/Advance_Airplane"
+    },
+    {
+      "airplaneName": "Elite Airplane",
+      "airplaneType": "Elite_Airplane",
+      "duration": 6,
+      "damage": 700,
+      "price": 6000,
+      "airplanePrefab": "Prefab/Airplane/Elite_Airplane"
+    },
+    {
+      "airplaneName": "Epic Airplane",
+      "airplaneType": "Epic_Airplane",
+      "duration": 4,
+      "damage": 1000,
+      "price": 8000,
+      "airplanePrefab": "Prefab/Airplane/Epic_Airplane"
+    }
+  ]
+}

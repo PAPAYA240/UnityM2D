@@ -1,0 +1,17 @@
+{
+  "weaponName": "None Weapon",
+  "weaponPrefab": "WeaponPrefab/None_Weapon",
+  "weaponType": "None_Weapon",
+  "attackStrategyType": "BasicAttack",
+  "baseDamage": 10,
+  "attackRange": 1.5,
+  "projectilePrefab": null,
+  "projectileSpeed": 15.0,
+  "attackSpeed": 1.0,
+  "openWeaponLimit": 50,
+  "addedPrice": 10,
+  "reactionTime": {
+    "x": 0.1,
+    "y": 0.2
+  }
+}

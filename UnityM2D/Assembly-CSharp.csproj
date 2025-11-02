@@ -64,17 +64,20 @@
     <Compile Include="Assets\Script\Controller\PlayerSkill\Player_Ultimate.cs" />
     <Compile Include="Assets\Script\Weapon\Bomber.cs" />
     <Compile Include="Assets\Script\Controller\PlayerSkill\BomberMachine.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_Title.cs" />
     <Compile Include="Assets\Script\Manager\Particle_Manager.cs" />
     <Compile Include="Assets\Script\UI\UI_Base.cs" />
     <Compile Include="Assets\Script\Controller\PlayerSkill\Skill.cs" />
     <Compile Include="Assets\Script\Controller\BaseController.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_Timer.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet.cs" />
+    <Compile Include="Assets\Script\Data\WeaponData\WeaponData.cs" />
     <Compile Include="Assets\Script\Manager\Input_Manager.cs" />
     <Compile Include="Assets\Script\Weapon\IAttackStrategy.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_LevelUp.cs" />
     <Compile Include="Assets\Script\Manager\ObjectPool_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Resource_Manager.cs" />
-    <Compile Include="Assets\Script\UI\UI_Title.cs" />
-    <Compile Include="Assets\Script\Data\WeaponStrategyFactory.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_WeaponItem.cs" />
     <Compile Include="Assets\Script\Controller\PlayerController.cs" />
     <Compile Include="Assets\Script\Weapon\Weapon.cs" />
     <Compile Include="Assets\Script\Controller\AirplaneController.cs" />
@@ -82,24 +85,22 @@
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\Data\PlayerDataFile.cs" />
     <Compile Include="Assets\Asset\Bolt 2D LittleWars VE3\ReadMe\Scripts\ReadmeVE3.cs" />
-    <Compile Include="Assets\Script\UI\UI_LevelUp.cs" />
     <Compile Include="Assets\Script\Manager\Data_Manager.cs" />
-    <Compile Include="Assets\Script\UI\UI_Dead.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_CheckBossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_UltimateButton.cs" />
     <Compile Include="Assets\Script\Manager\Managers.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_BossFolder.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_FixFolder.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_Dead.cs" />
     <Compile Include="Assets\Script\UI\UI_Slide.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_WeaponFolder.cs" />
-    <Compile Include="Assets\Script\UI\UI_Timer.cs" />
     <Compile Include="Assets\Script\Controller\PlayerSkill\Pet.cs" />
-    <Compile Include="Assets\Script\Data\WeaponData.cs" />
     <Compile Include="Assets\Script\UI\UI_Folder\UI_AdsFolder.cs" />
+    <Compile Include="Assets\Script\Data\WeaponData\WeaponStrategyFactory.cs" />
     <Compile Include="Assets\Script\Manager\UI_Manager.cs" />
     <Compile Include="Assets\Script\Default\Setting.cs" />
     <Compile Include="Assets\Script\Default\Defines.cs" />
-    <Compile Include="Assets\Script\UI\UI_CheckBossFolder.cs" />
-    <Compile Include="Assets\Script\UI\UI_WeaponItem.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_Story.cs" />
     <Compile Include="Assets\Script\Manager\Scene_Manager.cs" />
     <Compile Include="Assets\Script\Scene\BaseScene.cs" />
     <Compile Include="Assets\Script\Data\GameManager_Ex.cs" />
@@ -642,6 +643,10 @@
     </Reference>
     <Reference Include="GoogleMobileAds.Unity">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

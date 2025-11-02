@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static Defines;
 
 
 public class Weapon : MonoBehaviour
 {
-    private WeaponData MyData;
+    public WeaponData MyData;
     private IAttackStrategy CurrentAttackStrategy;
     public BaseController Owner { get; private set; }
 
@@ -19,13 +20,15 @@ public class Weapon : MonoBehaviour
     private float Interp = 0.03f;
     bool bMove = false;
 
+    public WeaponType MyWeaponType { get; private set; }
+
     Coroutine currentCoroutine = null;
     public BaseController GetOwner()
     {
         return Owner;
     }
 
-    public void Init(WeaponData _data, BaseController _owner, GameObject _weaponSoket)
+    public void Init(WeaponData _data, BaseController _owner, GameObject _weaponSoket, WeaponType weapon)
     {
         if (_data == null || _owner == null)
         {
@@ -33,6 +36,7 @@ public class Weapon : MonoBehaviour
             return;
         }
 
+        MyWeaponType = weapon;
         MyData = _data;
         Owner = _owner;
         name = MyData.weaponName;
@@ -131,7 +135,9 @@ public class Weapon : MonoBehaviour
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-        StartCoroutine(bulletScript.Fire());
+        Vector3 targetPosition = Owner.TargetObject.transform.position;
+
+        StartCoroutine(bulletScript.Fire(0, targetPosition));
     }
 
     private bool IsGun()

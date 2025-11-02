@@ -20,7 +20,7 @@ public class Managers : MonoBehaviour
     private static UI_Manager s_UIManager = new UI_Manager();
     private static Transform_Manager s_TransformManager = new Transform_Manager();
     private static Timer_Manager s_TimerManager = new Timer_Manager();
-    private static WeaponLoader Weapon { get { return s_WeaponLoader; } }
+    private static WeaponDataLoader Weapon { get { return s_WeaponLoader; } }
     private static TurnManager s_TurnManager = new TurnManager();   
     private static ObjectPool_Manager s_ObjectPoolManager = new ObjectPool_Manager();
     private static Data_Manager s_DataManager = new Data_Manager(); 
@@ -28,8 +28,10 @@ public class Managers : MonoBehaviour
     private static AdsManager s_AdsManager = new AdsManager();  
 
     // Data Loader
-    private static WeaponLoader s_WeaponLoader = new WeaponLoader();
-
+    private static WeaponDataLoader s_WeaponLoader = new WeaponDataLoader();
+    private static PetDataLoad s_PetLoader = new PetDataLoad();
+    private static AirplaneDataLoad s_AirplaneLoader = new AirplaneDataLoad();
+    
     // For. Getter Setter
     public static Input_Manager Input {  get { return s_InputManager; } }   
     public static Resource_Manager Resource { get { return s_ResourceManager; } }
@@ -39,11 +41,15 @@ public class Managers : MonoBehaviour
     public static Timer_Manager TimerManager { get { return s_TimerManager; } }
     public static TurnManager TurnManager { get { return s_TurnManager;  } }      
     public static ObjectPool_Manager ObjectPoolManager { get {return s_ObjectPoolManager; } }
-    public static Data_Manager DataManager { get { return s_DataManager; } }   
-    public static WeaponLoader WeaponLoader { get { return s_WeaponLoader; } }
-    public static Particle_Manager ParticleManager { get { return s_ParticleManager; } }    
-    public static AdsManager Ads {  get { return s_AdsManager; } }  
 
+    public static Particle_Manager ParticleManager { get { return s_ParticleManager; } }    
+    public static AdsManager Ads {  get { return s_AdsManager; } }
+
+
+    public static Data_Manager DataManager { get { return s_DataManager; } }
+    public static WeaponDataLoader WeaponLoader { get { return s_WeaponLoader; } }
+    public static PetDataLoad PetLoader { get { return s_PetLoader; } }
+    public static AirplaneDataLoad AirplaneLoader { get { return s_AirplaneLoader; } }
     public static float PlayTime { get; set; }
 
 
@@ -63,7 +69,10 @@ public class Managers : MonoBehaviour
             s_Instance = Setting.GetOrAddComponent<Managers>(gameObject);
             DontDestroyOnLoad(gameObject);
 
+            s_PetLoader.Init();
             s_WeaponLoader.Init();
+            s_AirplaneLoader.Init();
+
             s_DataManager.Init();
 
             Application.targetFrameRate = 60;

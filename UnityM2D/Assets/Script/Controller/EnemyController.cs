@@ -25,13 +25,15 @@ public class EnemyController : BaseController
     private Vector3         originScaled;
     private const float     upgradeScaled = 1f;
 
+    private GameObject _coinPrefab = null;
+    private GameObject _healPrefab = null;
+
     // ======== WaitForSeconds ========
     const float waitDeadEnemy = 1f;
     const float waitChangeEnemy = 0.6f;
     #endregion
 
     private void Start() => Init();
-    UI_Base _uiCoin;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -48,16 +50,27 @@ public class EnemyController : BaseController
         EquipWeapon(WeaponType.None_Weapon);
 
         Managers.TimerManager.OnTimeNext += HandleTimerNext;
-        
-        _uiCoin = Managers.UIManager.ShowUI<UI_Base>("UI_Coin");
-        _uiCoin.gameObject.SetActive(false);
 
+        _coinPrefab = Managers.Resource.Instantiate(strCoinPath);
+        if (_coinPrefab == null)
+            return false;
+        _coinPrefab.gameObject.SetActive(false);
+
+        _healPrefab = Managers.Resource.Instantiate(strHealPath);
+        if (_healPrefab == null)
+            return false;
+        _healPrefab.gameObject.SetActive(false);
         return true; 
     }
 
     private void Update()
     {
-        if(Managers.Scene.CurrentSceneType == Defines.Scene.InGame)
+        if (TargetObject == null)
+        {
+            TargetObject = GameObject.Find(strPlayerObject);
+        }
+
+        if (Managers.Scene.CurrentSceneType == Defines.Scene.InGame)
              moveTable[MyAnimState].Invoke(TargetObject);
     }
 
@@ -78,6 +91,7 @@ public class EnemyController : BaseController
         // 타이머 종료 순간의 공간
     }
 
+    bool _bRewardHealPack = false;
     protected override void Dead()
     {
         AnimState = AnimState.Dead;
@@ -86,21 +100,149 @@ public class EnemyController : BaseController
         if(player != null)
             player.data.LevelCount += monsterDataManager.Level;
 
+        _coinPrefab.transform.position = this.transform.position;
         StartCoroutine(DefeatedCoin());
+
+        // 2/1 확률로 힐팩 떨어짐
+        if (UnityEngine.Random.value < 0.5f)
+        {
+            _bRewardHealPack = true;
+            _healPrefab.transform.position = this.transform.position;
+            StartCoroutine(DefeatedHealPack());
+        }
+
+        KillReward();
+
         StartCoroutine(NextEnemy());
     }
     #endregion
 
-    // 몬스터 처치 시 코인 얻기
-    private IEnumerator DefeatedCoin()
+    public override int GetAttackPower()
     {
-        _uiCoin.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
         PlayerController player = TargetObject.GetComponent<PlayerController>();
         if (player != null)
-            player.data.Money += 500; 
-        _uiCoin.gameObject.SetActive(false);
+        {
+            // 몬스터 공격력 증가율 (레벨당 10% 증가)
+            const float GROWTH_RATE = 0.1f;
 
+            float levelMultiplier = 1.0f + (GROWTH_RATE * (player.data.Level - 1));
+
+            float finalAttackFloat = data.AttackPower * levelMultiplier;
+
+            return (int)Math.Round(finalAttackFloat);
+        }
+        return 0;
+    }
+
+    public override int GetDefence()
+    {
+        return 0;
+    }
+    // 몬스터 처치 시 코인 얻기
+    Vector3 _startPosition = Vector3.zero;
+    private IEnumerator DefeatedCoin()
+    {
+        _coinPrefab.gameObject.SetActive(true);
+        _startPosition = _coinPrefab.transform.position;
+
+        yield return StartCoroutine(MoveCoinAnimation(1.0f));
+
+        PlayerController player = TargetObject.GetComponent<PlayerController>();
+        if (player != null)
+            player.data.Money += 500;
+        _coinPrefab.gameObject.SetActive(false);
+    }
+
+    private IEnumerator DefeatedHealPack()
+    {
+        _healPrefab.gameObject.SetActive(true);
+        _startPosition = _healPrefab.transform.position;
+
+        yield return StartCoroutine(MoveHealAnimation(1.0f, 0.4f));
+
+        _healPrefab.gameObject.SetActive(false);
+    }
+
+    private void KillReward()
+    {
+        PlayerController player = TargetObject.GetComponent<PlayerController>();
+        if (player == null)
+            return;
+
+        player.data.Money += 500;
+        if (_bRewardHealPack)
+        {
+            player.SetHeal(player.data.Heal);
+            _bRewardHealPack = false;
+        }
+    }
+    private IEnumerator MoveCoinAnimation(float duration, float readyDuration = 0)
+    {
+        yield return new WaitForSeconds(readyDuration);
+
+        float elapsed = 0f;
+        Vector3 currentPos = _startPosition;
+
+        Vector3 peakPos = _startPosition + Vector3.up * 2f;
+
+        float upDuration = duration * 0.6f;
+        float downDuration = duration * 0.3f;
+
+        while (elapsed < upDuration)
+        {
+            float t = elapsed / upDuration; 
+            _coinPrefab.transform.position = Vector3.Lerp(_startPosition, peakPos, t);
+
+            elapsed += Time.deltaTime;
+            yield return null; 
+        }
+
+        _coinPrefab.transform.position = peakPos;
+
+        elapsed = 0f; 
+        while (elapsed < downDuration)
+        {
+            float t = elapsed / downDuration; 
+            _coinPrefab.transform.position = Vector3.Lerp(peakPos, _startPosition, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        _coinPrefab.transform.position = _startPosition;
+    }
+    private IEnumerator MoveHealAnimation(float duration, float readyDuration = 0.4f)
+    {
+        yield return new WaitForSeconds(readyDuration);
+
+        float elapsed = 0f;
+        Vector3 currentPos = _startPosition;
+
+        Vector3 peakPos = _startPosition + Vector3.up * 2f;
+
+        float upDuration = duration * 0.3f;
+        float downDuration = duration * 0.1f;
+
+        while (elapsed < upDuration)
+        {
+            float t = elapsed / upDuration;
+            _healPrefab.transform.position = Vector3.Lerp(_startPosition, peakPos, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _healPrefab.transform.position = peakPos;
+
+        elapsed = 0f;
+        while (elapsed < downDuration)
+        {
+            float t = elapsed / downDuration;
+            _healPrefab.transform.position = Vector3.Lerp(peakPos, _startPosition, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        _healPrefab.transform.position = _startPosition;
     }
     #region Load Change Enemy
     private void HandleTimerNext()
@@ -254,13 +396,13 @@ public class EnemyController : BaseController
     }
     private void ApplyAnimator(RuntimeAnimatorController controller)
     {
-        if (myAnim != null && controller != null)
+        if (_myAnimation != null && controller != null)
         {
-            myAnim.runtimeAnimatorController = controller;
+            _myAnimation.runtimeAnimatorController = controller;
         }
         else
         {
-            if (myAnim == null) Debug.LogError("애니메이터를 적용할 수 없습니다: Animator 컴포넌트가 null입니다.");
+            if (_myAnimation == null) Debug.LogError("애니메이터를 적용할 수 없습니다: Animator 컴포넌트가 null입니다.");
             if (controller == null) Debug.LogWarning("애니메이터를 적용할 수 없습니다: 제공된 컨트롤러가 null입니다.");
         }
     }
@@ -298,8 +440,8 @@ public class EnemyController : BaseController
     #region Initialize
     private bool InitAnimation()
     {
-        myAnim = GetComponent<Animator>();
-        if (myAnim == null)
+        _myAnimation = GetComponent<Animator>();
+        if (_myAnimation == null)
             return false;
 
         SettingAnimation();

@@ -6,47 +6,45 @@ public class Bullet : Base
 {
     BaseController attacker = null;
     GameObject targeter = null;
-
+    public int _attackPower = 30;
     void Start()
     {
         FindObject();
     }
 
-    public IEnumerator Fire()
+    public IEnumerator Fire(float waitduration, Vector3 targetLastPosition)
     {
-        yield return new WaitForSeconds(0.5f);
-
+        yield return new WaitForSeconds(waitduration);
         if (FindObject() == false)
         {
             Debug.LogWarning("Failed Load Player && Enemy : Bullet");
             yield break;
         }
 
-        while(Vector3.Distance(transform.position, targeter.transform.position) > 0.1f)
-        {
-            Vector3 startPos = transform.position;
-            Vector3 endPos = targeter.transform.position;
+       Vector3 startPos = transform.position;
+       Vector3 endPos = targetLastPosition;
 
-            float duration = attacker.data.AttackSpeed * 0.03f;
+       float duration = attacker.data.AttackSpeed * 0.03f;
 
-            float elapsedTime = 0f;
-            while (elapsedTime < duration)
-            {
-                float t = elapsedTime / duration;
-                transform.position = Vector3.Lerp(startPos, endPos, t);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-        }
+       float elapsedTime = 0f;
+       while (elapsedTime < duration)
+       {
+           float t = elapsedTime / duration;
+           transform.position = Vector3.Lerp(startPos, endPos, t);
+           elapsedTime += Time.deltaTime;
+           yield return null;
+       }
+        yield return new WaitForSeconds(0.25f);
+        Managers.ObjectPoolManager.ReturnObject(this.gameObject);
     }
-
+  
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == targeter)
         {
-            BaseController baseTargeter = targeter.GetComponent<BaseController>();
-            if(baseTargeter != null)
-                baseTargeter.TakeDamage(attacker.data.AttackPower);
+            BaseController bc = targeter.GetComponent<BaseController>();
+            if(bc != null)
+                bc.TakeDamage(bc.GetAttackPower());
 
             this.transform.position = this.transform.parent.position;
             Managers.ObjectPoolManager.ReturnObject(this.gameObject);
@@ -77,7 +75,7 @@ public class Bullet : Base
         }
 
         attacker = potentialAttacker.GetOwner();
-        targeter = attacker.GetTargetObject();
+        targeter = attacker.TargetObject;
 
         return true;
     }

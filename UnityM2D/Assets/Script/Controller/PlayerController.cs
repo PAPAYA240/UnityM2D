@@ -1,8 +1,6 @@
-using GoogleMobileAds.Api;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 using static Defines;
@@ -17,11 +15,11 @@ public class PlayerController : BaseController
         StateText,
     }
 
-
     // ============ Player Information ============ 
     private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
     public PlayerData playerData => data as PlayerData;
     GameObject[] PlayerSkills;
+    Vector3 initPosition = new Vector3(-396.6545f, -995.24f, 0);
 
     protected override ICharacterManager GetCharacterDataManager()
     {
@@ -55,15 +53,19 @@ public class PlayerController : BaseController
         Managers.TimerManager.OnTimeOver += HandleTimerOver;
         Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
-        data.Money = 1000; // 디버그용
+       // transform.position = initPosition;
+        data.Money = 100000000; // 디버그용
+        data.Hp = 1;
         return true;
     }
 
-
+    
     private void Update()
     {
+        if(TargetObject == null)
+            TargetObject = GameObject.Find(strEnemyObject);
 
-        if(TargetObject != null)
+        if (TargetObject != null)
             moveTable[MyAnimState].Invoke(TargetObject);
     }
 
@@ -115,6 +117,9 @@ public class PlayerController : BaseController
         }
         else
         {
+            if (!TargetObject)
+                return;
+
             EnemyController enemy = TargetObject.GetComponent<EnemyController>();
             if (enemy != null)
                 playerDataManager.LevelCount += enemy.data.LevelCount;
@@ -196,11 +201,28 @@ public class PlayerController : BaseController
     }
     #endregion
 
+    public void UpgradeHeal(int add)
+    {
+        data.Heal += add;
+        Debug.Log($"{data.Heal} 힐");
+    }
+    public override int GetAttackPower()
+    {
+        return data.AttackPower;
+    }
+
+    public void SetHeal(int heal)
+    {
+        data.Hp += heal;
+        if(data.Hp > data.MaxHp)
+            data.Hp = data.MaxHp;
+    }
+
     #region Initialize
     private bool InitAnimation()
     {
-        myAnim = GetComponent<Animator>();
-        if (myAnim == null)
+        _myAnimation = GetComponent<Animator>();
+        if (_myAnimation == null)
             return false;
 
         // # Animation Setting 후 State 교체해야 합니다.
@@ -217,8 +239,9 @@ public class PlayerController : BaseController
         TargetObject = GameObject.Find(strEnemyObject);
         if (TargetObject == null)
         {
-            TargetObject = Managers.Resource.Instantiate(strEnemyPath);
-            TargetObject.name = strEnemyObject;
+            GameObject enemy = Managers.Resource.Instantiate(strEnemyPath);
+            enemy.name = strEnemyObject;
+            TargetObject = enemy;
         }
 
         if (rangeArea == null)

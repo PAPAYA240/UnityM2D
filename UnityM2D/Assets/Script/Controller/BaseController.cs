@@ -7,24 +7,26 @@ using static Defines;
 
 public abstract  class BaseController : Base, ITurnParticipant
 {
-    #region Value
+    #region Enum
     enum GameObjects
     {
         None,
         WeaponSocket,
         HP_Position,
     }
+    #endregion 
 
+    #region Value
     // ============ Strategy Attack ============
     protected Weapon EquippedWeapon = null;
-    protected GameObject TargetObject = null;
+    public GameObject TargetObject = null;
     protected GameObject bomberObject = null;
 
     // ============ Character Information ============
     protected virtual CharacterManager<CharacterData> Data() { return null;  }
     public bool isAlive => IsAlive();
 
-    protected Animator myAnim = null;
+    protected Animator _myAnimation = null;
     protected AnimState MyAnimState = AnimState.None;
 
     protected Dictionary<AnimState, Action<Animator>> animTable = null;
@@ -54,7 +56,7 @@ public abstract  class BaseController : Base, ITurnParticipant
         set
         {
             MyAnimState = value;
-            animTable[MyAnimState].Invoke(myAnim);
+            animTable[MyAnimState].Invoke(_myAnimation);
             OnStateChanged?.Invoke(MyAnimState);
         }
     }
@@ -62,18 +64,15 @@ public abstract  class BaseController : Base, ITurnParticipant
     {
         return this;
     }
-    public GameObject GetTargetObject()
-    {
-        return TargetObject;
-    }
     #endregion
+    private SpriteRenderer myRenderer;
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
         characterDataManager = GetCharacterDataManager();
-
+        myRenderer = GetComponent<SpriteRenderer>();
         if (!InitBind())
             Debug.Log("Failed Bind : BaseController");
 
@@ -92,6 +91,8 @@ public abstract  class BaseController : Base, ITurnParticipant
     {
         if (MyAnimState == AnimState.Dead) return;
 
+        StartCoroutine(ObjectDamageColor());
+
         if (_amount < 0) _amount = 0;
         data.Hp -= _amount;
         if(data.Hp < 0) data.Hp = 0;
@@ -100,18 +101,24 @@ public abstract  class BaseController : Base, ITurnParticipant
             Dead();
     }
 
-    protected virtual IEnumerator Attack(GameObject _target)
+    IEnumerator ObjectDamageColor()
+    {
+        myRenderer.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+        yield return new WaitForSeconds(0.3f);
+        myRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+    protected virtual IEnumerator Attack(GameObject target)
     {
         // 공격 시작 시 호출할 함수
 
         if (!IsAlive())
             yield break;
 
-        if (_target == null)
+        if (target == null)
             yield break;
 
         if (EquippedWeapon != null)
-            yield return StartCoroutine(EquippedWeapon.PerformAttack(this.gameObject, _target));
+            yield return StartCoroutine(EquippedWeapon.PerformAttack(this.gameObject, target));
     }
 
     protected IEnumerator ExecuteTurnAttack()
@@ -175,14 +182,28 @@ public abstract  class BaseController : Base, ITurnParticipant
 
             ReactionWeapon();
 
-            BaseController targetCon = _target.GetComponent<BaseController>();
-            if (targetCon != null)
-                targetCon.TakeDamage(data.AttackPower);
+            // 플레이어 데미지
+            BaseController bc = _target.GetComponent<BaseController>();
+            if (bc != null)
+            {
+                int damage = GetAttackPower();
+                Debug.Log($"{damage}");
+                bc.TakeDamage(damage);
+            }
 
             transform.position = targetPosition;
             yield return null;
         }
         transform.position = finalTargetPosition;
+    }
+
+    public virtual int GetAttackPower()
+    {
+        return 0;
+    }
+    public virtual int GetDefence()
+    {
+        return 0;
     }
 
     /// <summary>
@@ -218,7 +239,7 @@ public abstract  class BaseController : Base, ITurnParticipant
             if (EquippedWeapon == null)
             {
                 EquippedWeapon = WeaponModel.AddComponent<Weapon>();
-                EquippedWeapon.Init(weaponData, this, socketObject);
+                EquippedWeapon.Init(weaponData, this, socketObject, _weaponType);
             }
         }
         else

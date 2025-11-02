@@ -24,7 +24,11 @@ public class TurnManager
 
     private List<ITurnParticipant> _turnOrder;
     private int _currentParticipantIndex;
-
+    public void Clear()
+    {
+        _turnOrder = new List<ITurnParticipant>();
+        CurrentTurnState = TurnState.Ready;
+    }
     public TurnManager()
     {
         _turnOrder = new List<ITurnParticipant>();
@@ -52,6 +56,15 @@ public class TurnManager
         _currentParticipantIndex = 0;
         CurrentTurnState = TurnState.Ready; 
         Debug.Log("[TurnManager] 전투 시작 준비!");
+
+        // 플레이어 첫 턴 우선권
+        if (_turnOrder[0] is EnemyController)
+        {
+            ITurnParticipant tmp = _turnOrder[0];
+            _turnOrder[0] = _turnOrder[1];
+            _turnOrder[1] = tmp;
+        }
+
         StartNextTurn(); // 첫 턴 시작
     }
 
@@ -154,9 +167,8 @@ public class TurnManager
         {
             ITurnParticipant participant = _turnOrder[_currentParticipantIndex];
             if (participant.isAlive)
-            {
                 return participant; 
-            }
+
             _currentParticipantIndex = (_currentParticipantIndex + 1) % _turnOrder.Count;
         }
         return null; 

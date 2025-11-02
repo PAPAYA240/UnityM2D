@@ -23,11 +23,10 @@ public class UI_WeaponFolder : UI_Base
     }
 
     PlayerController Player = null;
-    WeaponType weaponType = WeaponType.Basic_Weapon;
+    WeaponType _weaponType = WeaponType.Basic_Weapon;
 
-    private int OpenWeaponLimit = 700;
-    private int CurrentWeaponFigure = 0;
     private bool bLock = false;
+    int reinforcement_bonus = 3;
 
     public GameObject MyLockObject { get; private set; }
     public GameObject NextLockObject { private get; set; }
@@ -45,7 +44,9 @@ public class UI_WeaponFolder : UI_Base
 
         MyLockObject = GetObject(GameObjects.UI_Lock);
 
-        CurrentWeaponFigure = 100;
+        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
+        if(weaponData)
+            GetText(Texts.Attack_Text).text = String.Format($"{10} >> {10 + weaponData.addedAttack}");
 
         return true;    
     }
@@ -55,15 +56,7 @@ public class UI_WeaponFolder : UI_Base
         Init();
 
         Player = _player;
-        weaponType = _statType;
-        OpenWeaponLimit = _openFigure;
-
-        int _cnt = (int)weaponType - 1;
-        if(_cnt != 0)
-        { 
-            CurrentWeaponFigure = (_cnt * 700) + 100;
-            ChangeText(_cnt * 700);
-        }
+        _weaponType = _statType;
     }
 
     void OnUpgradeButtonClick()
@@ -71,31 +64,45 @@ public class UI_WeaponFolder : UI_Base
         if (IsLock())
             return;
 
-        int costText = CurrentWeaponFigure * 10;
+        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
+        if (!weaponData)
+            return;
+        int costText = _currentPrice + weaponData.addedPrice;
+
         if (Player.data.Money < costText)
         {
-            Console.WriteLine("돈이 부족합니다.");
-            Console.WriteLine($"Mony : { Player.data.Money }");
+            Console.WriteLine("무기 살 돈이 부족합니다.");
             return;
         }
 
+        // 구매
         Player.data.Money -= costText;
-        Player.data.AttackPower = CurrentWeaponFigure;
-        CurrentWeaponFigure = CurrentWeaponFigure + 100;
-
-        ChangeText(Player.data.AttackPower);
+        Player.data.AttackPower = Player.data.AttackPower + weaponData.addedAttack;
+        Debug.Log($"구매 : {Player.data.AttackPower}");
+        ChangeText();
         IsLock();
     }
-
-    void ChangeText(int _currentPower)
+    private int _currentPrice = 0;
+    void ChangeText()
     {
         // 가격
-        GetText(Texts.Cost_Text).text = String.Format($"{CurrentWeaponFigure * 10}");
-        if (OpenWeaponLimit > CurrentWeaponFigure)
-            GetText(Texts.Attack_Text).text = String.Format($"{_currentPower} >> {CurrentWeaponFigure}");
+        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
+        if (!weaponData)
+            return;
+
+        int nextAttackDamage = Player.data.AttackPower + weaponData.addedAttack;
+        int nextPrice = _currentPrice + weaponData.addedPrice;
+        if (weaponData.openWeaponLimit > Player.data.AttackPower)
+        {
+            GetText(Texts.Cost_Text).text = String.Format($"{nextPrice}"); // next Price
+            GetText(Texts.Attack_Text).text = String.Format($"{Player.data.AttackPower} >> {nextAttackDamage}"); // nextAttack
+            _currentPrice = _currentPrice + weaponData.addedPrice;
+        }
         else
         {
-            GetText(Texts.Attack_Text).text = String.Format($"{OpenWeaponLimit} ATTACK!");
+            GetText(Texts.Cost_Text).text = String.Format("NEXT");
+            GetText(Texts.Attack_Text).text = String.Format($"{weaponData.openWeaponLimit} ATTACK CLEAR!");
+            IsLock();
         }
     }
 
@@ -107,16 +114,15 @@ public class UI_WeaponFolder : UI_Base
         if (Player == null)
             return false;
 
-        if (OpenWeaponLimit <= Player.data.AttackPower)
+        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
+        if (weaponData.openWeaponLimit <= Player.data.AttackPower)
         {
             if (NextLockObject != null)
                 NextLockObject.SetActive(false);
 
             // 무기 변경
-            WeaponType nextWeapon = weaponType + 1;
+            WeaponType nextWeapon = _weaponType + 1;
             Player.EquipWeapon(nextWeapon);
-
-            GetText(Texts.Upgrade).text = String.Format("CLEAR!");
 
             bLock = true;
             return true; 

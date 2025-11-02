@@ -12,6 +12,10 @@ public class Timer_Manager : MonoBehaviour
 
     private int Timer = 30;
 
+    public void Clear()
+    {
+        Wave = 0;
+    }
     private void Start()
     {
         Wave = 0;
