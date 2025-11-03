@@ -1,6 +1,4 @@
-using Mono.Cecil;
 using UnityEngine;
-using UnityEngine.UI;
 using static Defines;
 
 public class UI_BossFolder : UI_Base

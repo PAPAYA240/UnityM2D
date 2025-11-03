@@ -1,0 +1,3 @@
+C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt
+C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

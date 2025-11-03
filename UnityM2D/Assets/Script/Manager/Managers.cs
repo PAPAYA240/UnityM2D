@@ -1,12 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 using static Defines;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Managers : MonoBehaviour
 {

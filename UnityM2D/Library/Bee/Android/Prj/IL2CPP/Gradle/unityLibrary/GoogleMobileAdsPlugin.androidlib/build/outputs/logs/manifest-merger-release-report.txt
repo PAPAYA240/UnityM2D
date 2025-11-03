@@ -1,0 +1,42 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:1-9:12
+INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:1-9:12
+	package
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:70-100
+		INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:101-126
+	xmlns:android
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:2:127-150
+uses-sdk
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:3:3-42
+INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:3:3-42
+INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:3:3-42
+	android:targetSdkVersion
+		INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:3:13-39
+		INJECTED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml
+application
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:4:3-8:17
+uses-library#org.apache.http.legacy
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:5:5-84
+	android:required
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:5:19-43
+	android:name
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:5:44-81
+meta-data#com.google.android.gms.ads.APPLICATION_ID
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:6:5-130
+	android:value
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:6:73-127
+	android:name
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:6:16-72
+meta-data#com.google.unity.ads.UNITY_VERSION
+ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:7:5-95
+	android:value
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:7:66-92
+	android:name
+		ADDED from C:\Users\Naong\Documents\GitHub\UnityM2D\UnityM2D\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml:7:16-65

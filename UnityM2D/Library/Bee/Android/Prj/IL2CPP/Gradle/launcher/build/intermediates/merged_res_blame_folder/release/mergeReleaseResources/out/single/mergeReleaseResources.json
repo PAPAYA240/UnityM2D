@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xhdpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xhdpi/app_icon_round.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xxhdpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xxhdpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xxhdpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xxhdpi/app_icon_round.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xxxhdpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xxxhdpi/app_icon_round.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-hdpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-hdpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-mdpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-mdpi/app_icon_round.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-ldpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-ldpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-mdpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xhdpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xhdpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-xxxhdpi_app_icon.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-xxxhdpi/app_icon.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-ldpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-ldpi/app_icon_round.png"
+    },
+    {
+        "merged": "com.UNDEAD_SURVIVOR.apptest.launcher-release-31:/mipmap-hdpi_app_icon_round.png.flat",
+        "source": "com.UNDEAD_SURVIVOR.apptest.launcher-main-32:/mipmap-hdpi/app_icon_round.png"
+    }
+]

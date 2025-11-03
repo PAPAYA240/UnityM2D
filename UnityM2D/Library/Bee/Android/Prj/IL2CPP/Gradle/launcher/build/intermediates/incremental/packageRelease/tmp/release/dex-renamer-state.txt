@@ -1,0 +1,7 @@
+#Mon Nov 03 01:05:52 KST 2025
+base.1=C\:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+path.1=classes2.dex
+base.0=C\:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
