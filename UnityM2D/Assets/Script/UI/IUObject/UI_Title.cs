@@ -53,8 +53,9 @@ public class UI_Title : UI_Base
         playerController.AnimState = AnimState.Run;
 
         GameObject storyUI = GameObject.Find("UI_Story");
-        if(storyUI)
-            Destroy(storyUI);
+        GameObject exitUI = GameObject.Find("UI_Exit");
+        if (storyUI) Destroy(storyUI);
+        if (exitUI) Destroy(exitUI);
 
         Setting_InGameUI();
 

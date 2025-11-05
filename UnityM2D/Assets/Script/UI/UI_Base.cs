@@ -18,7 +18,7 @@ public class UI_Base : Base
 
     private CanvasScaler canvasScaler;
     public Vector2 referenceResolution = new Vector2(1920f, 1080f);
-    public float matchValue = 0.5f;
+    public float matchValue = 0.4f;
     #endregion
 
     private void Start() =>Init();
@@ -28,9 +28,8 @@ public class UI_Base : Base
             return false;
 
         canvasScaler = GetComponent<CanvasScaler>();
-
         if (canvasScaler == null)
-            return false;
+            return true;
 
         SetCanvasScalerSettings();
 

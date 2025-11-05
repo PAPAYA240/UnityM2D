@@ -14,7 +14,10 @@ public class UI_Dead : UI_Base
     {
         ContinueButton,
     }
-
+    enum ImageType
+    {
+        Dead_Icon,
+    }
     private void Start() => Init();
     public override bool Init()
     {
@@ -28,6 +31,7 @@ public class UI_Dead : UI_Base
 
         BindButton(typeof(ButtonType));
         BindText(typeof(TextType));
+        BindImage(typeof(ImageType));
 
         GameObject button = GetButton(ButtonType.ContinueButton).gameObject;
         BindEvent(button, () => ContinueButton());
@@ -37,7 +41,13 @@ public class UI_Dead : UI_Base
         GetText(TextType.Text_Level).text = String.Format($"LEVEL {Player?.data.Level} CLEAR!");
         return true;
     }
-
+    float _timer = 0f;
+    void Update()
+    {
+        _timer+= Time.deltaTime;
+        if(_timer >= 2.0f)
+            GetImage(ImageType.Dead_Icon).gameObject.SetActive(false);
+    }
     private void ContinueButton()
     {
         // Manager -> Player/Monster -> UI 순
@@ -70,6 +80,8 @@ public class UI_Dead : UI_Base
         uiStart.name = "Start_UI";
         GameObject uiStory = Managers.Resource.Instantiate($"UI/UI_Story");
         uiStory.name = "UI_Story";
+        GameObject uiExit = Managers.Resource.Instantiate($"UI/UI_Exit");
+        uiStory.name = "UI_Exit";
 
         Destroy(gameObject);
         Managers.Scene.ChangeScene(Defines.Scene.None);

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 6461191711059390810}
   - component: {fileID: 4450060311818744763}
   - component: {fileID: 4340715469828643076}
+  - component: {fileID: -5516579850408597200}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adceeb9dfe68bc449b73e5397df94bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetObject: {fileID: 0}
   convertedEnemyType: 1
 --- !u!70 &4450060311818744763
 CapsuleCollider2D:
@@ -236,6 +238,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-5516579850408597200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963658515270348148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8622e4e68c2c34d8dc088daf9d1ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8182381904386835868
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4461353934205805188}
+  - component: {fileID: 3799742614803753359}
   m_Layer: 8
   m_Name: HP_Position
   m_TagString: Untagged
@@ -267,3 +282,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2225061016531444395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3799742614803753359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182381904386835868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8622e4e68c2c34d8dc088daf9d1ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

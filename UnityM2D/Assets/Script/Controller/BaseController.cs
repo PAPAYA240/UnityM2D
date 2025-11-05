@@ -281,6 +281,7 @@ public abstract  class BaseController : Base, ITurnParticipant
         float maxX = bounds.max.x;
         float minY = bounds.min.y;
         float maxY = bounds.max.y;
+
         Vector3 resultPos = new Vector3();
         resultPos.x = UnityEngine.Random.Range(minX, maxX);
         resultPos.y = UnityEngine.Random.Range(minY, maxY);

@@ -72,12 +72,14 @@
     <Compile Include="Assets\Script\UI\IUObject\UI_Timer.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet.cs" />
     <Compile Include="Assets\Script\Data\WeaponData\WeaponData.cs" />
+    <Compile Include="Assets\Script\Controller\PlatformPositionAdjuster.cs" />
     <Compile Include="Assets\Script\Manager\Input_Manager.cs" />
     <Compile Include="Assets\Script\Weapon\IAttackStrategy.cs" />
     <Compile Include="Assets\Script\UI\IUObject\UI_LevelUp.cs" />
     <Compile Include="Assets\Script\Manager\ObjectPool_Manager.cs" />
     <Compile Include="Assets\Script\Manager\Resource_Manager.cs" />
     <Compile Include="Assets\Script\UI\IUObject\UI_WeaponItem.cs" />
+    <Compile Include="Assets\Script\UI\IUObject\UI_Exit.cs" />
     <Compile Include="Assets\Script\Controller\PlayerController.cs" />
     <Compile Include="Assets\Script\Weapon\Weapon.cs" />
     <Compile Include="Assets\Script\Controller\AirplaneController.cs" />

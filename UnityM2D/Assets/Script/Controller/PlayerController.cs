@@ -250,7 +250,7 @@ public class PlayerController : BaseController
             rangeArea.name = strPlayerArea;
         }
 
-        if (rangeArea == null && rangeArea == null)
+        if (rangeArea == null)
             return false;
 
          _UILevelUp = Managers.UIManager.ShowUI<UI_LevelUp>("UI_LevelUp");

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4671286396110292912}
   - component: {fileID: 6467419333972366814}
+  - component: {fileID: 1957949024838881992}
   m_Layer: 0
   m_Name: EnemyArea
   m_TagString: Untagged
@@ -78,3 +79,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.96, y: 0.21}
   m_EdgeRadius: 0
+--- !u!114 &1957949024838881992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212533174040301736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8622e4e68c2c34d8dc088daf9d1ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidOffset: {x: 0, y: 0, z: 0}
+  iosOffset: {x: 0, y: 0, z: 0}
+  defaultOffset: {x: 0, y: 0, z: 0}

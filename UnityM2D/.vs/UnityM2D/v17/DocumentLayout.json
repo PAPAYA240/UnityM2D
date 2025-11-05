@@ -3,6 +3,54 @@
   "WorkspaceRootPath": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|c:\\users\\naong\\documents\\github\\unitym2d\\unitym2d\\assets\\script\\controller\\platformpositionadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\platformpositionadjuster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|c:\\users\\naong\\documents\\github\\unitym2d\\unitym2d\\assets\\script\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\ui_folder\\ui_fixfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_folder\\ui_fixfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\ui_folder\\ui_bossfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_folder\\ui_bossfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\iuobject\\ui_dead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\iuobject\\ui_dead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\controller\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\default\\defines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\default\\defines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\iuobject\\ui_title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\iuobject\\ui_title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\PetData\\Pet.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Resources\\PetData\\Pet.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\resources\\data\\datatransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\resources\\data\\datatransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\weapon\\bomber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\bomber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\ui_folder\\ui_bossfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_folder\\ui_bossfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\manager\\ui_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,24 +75,8 @@
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\manager\\managers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|c:\\users\\naong\\documents\\github\\unitym2d\\unitym2d\\assets\\script\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|c:\\users\\naong\\documents\\github\\unitym2d\\unitym2d\\assets\\script\\ui\\iuobject\\ui_dead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\iuobject\\ui_dead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\controller\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\manager\\turn_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\manager\\turn_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\controller\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\manager\\timer_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,14 +85,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\iuobject\\ui_timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\iuobject\\ui_timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\default\\defines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\default\\defines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\manager\\resource_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,20 +99,8 @@
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_folder\\ui_folder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\iuobject\\ui_title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\iuobject\\ui_title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\PetData\\Pet.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Resources\\PetData\\Pet.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\ui_folder\\ui_fixfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_folder\\ui_fixfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\default\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -193,10 +201,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\manager\\particle_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\manager\\particle_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19CB813D-9391-2951-DD83-DEC04534E4BB}|Assembly-CSharp.csproj|C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\assets\\script\\ui\\iuobject\\ui_checkbossfolder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -307,12 +311,12 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 438,
+          "DockedWidth": 335,
           "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 11,
               "Title": "Pet.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\PetData\\Pet.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\PetData\\Pet.json",
@@ -325,33 +329,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UI_Manager.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\UI_Manager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Manager\\UI_Manager.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\UI_Manager.cs",
-              "RelativeToolTip": "Assets\\Script\\Manager\\UI_Manager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "DocumentIndex": 12,
+              "Title": "DataTransformer.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\DataTransformer.cs",
+              "RelativeDocumentMoniker": "Assets\\Resources\\Data\\DataTransformer.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\DataTransformer.cs",
+              "RelativeToolTip": "Assets\\Resources\\Data\\DataTransformer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T03:28:57.89Z",
+              "WhenOpened": "2025-06-24T05:20:51.094Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Bomber.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Bomber.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Bomber.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Bomber.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Bomber.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "Base.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Base.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Base.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Base.cs",
+              "RelativeToolTip": "Assets\\Script\\Base.cs",
+              "ViewState": "AQIAAEQAAAAAAAAAAIA+wFMAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T07:12:17.739Z",
+              "WhenOpened": "2025-06-09T06:47:28.063Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "UI_Base.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Base.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Base.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Base.cs",
+              "RelativeToolTip": "Assets\\Script\\UI\\UI_Base.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAmwCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T10:27:03.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Script\\Controller\\PlayerController.cs",
+              "ViewState": "AQIAAOwAAAAAAAAAAAAhwPcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T07:37:36.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Bullet.cs",
@@ -364,20 +394,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataTransformer.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\DataTransformer.cs",
-              "RelativeDocumentMoniker": "Assets\\Resources\\Data\\DataTransformer.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\DataTransformer.cs",
-              "RelativeToolTip": "Assets\\Resources\\Data\\DataTransformer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAXAAAA",
+              "DocumentIndex": 10,
+              "Title": "UI_Title.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Title.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_Title.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Title.cs",
+              "RelativeToolTip": "Assets\\Script\\UI\\IUObject\\UI_Title.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T05:20:51.094Z",
+              "WhenOpened": "2025-11-02T08:38:37.041Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
+              "Title": "Bomber.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Bomber.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Bomber.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Bomber.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Bomber.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T07:12:17.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UI_Manager.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\UI_Manager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Manager\\UI_Manager.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\UI_Manager.cs",
+              "RelativeToolTip": "Assets\\Script\\Manager\\UI_Manager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:28:57.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "ObjectPool_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\ObjectPool_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\ObjectPool_Manager.cs",
@@ -390,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "Managers.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Managers.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Managers.cs",
@@ -403,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "Resource_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Resource_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Resource_Manager.cs",
@@ -415,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "Turn_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Turn_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Turn_Manager.cs",
@@ -423,24 +479,12 @@
               "RelativeToolTip": "Assets\\Script\\Manager\\Turn_Manager.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAArwGwAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T22:31:25.908Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Script\\Controller\\PlayerController.cs",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAjwHYAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T07:37:36.995Z",
+              "WhenOpened": "2025-06-17T22:31:25.908Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "Timer_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Timer_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Timer_Manager.cs",
@@ -448,35 +492,12 @@
               "RelativeToolTip": "Assets\\Script\\Manager\\Timer_Manager.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAwwB0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T10:31:42.021Z"
+              "WhenOpened": "2025-06-15T10:31:42.021Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Base.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Base.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Base.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Base.cs",
-              "RelativeToolTip": "Assets\\Script\\Base.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwCEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T06:47:28.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UI_Title.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Title.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_Title.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Title.cs",
-              "RelativeToolTip": "Assets\\Script\\UI\\IUObject\\UI_Title.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAjwDYAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T08:38:37.041Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "Setting.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Default\\Setting.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Default\\Setting.cs",
@@ -488,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "PlayerDataFile.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Data\\PlayerDataFile.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Data\\PlayerDataFile.cs",
@@ -500,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "PlayerData.xml",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\PlayerData.xml",
               "RelativeDocumentMoniker": "Assets\\Resources\\Data\\PlayerData.xml",
@@ -512,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "UI_WeaponFolder.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_WeaponFolder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_WeaponFolder.cs",
@@ -524,7 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "Mythic_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\Mythic_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\Mythic_Weapon.json",
@@ -536,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "WeaponData.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Data\\WeaponData\\WeaponData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Data\\WeaponData\\WeaponData.cs",
@@ -548,7 +569,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "Input_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Input_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Input_Manager.cs",
@@ -560,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "Elite_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\Elite_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\Elite_Weapon.json",
@@ -572,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Advanced_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\Advanced_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\Advanced_Weapon.json",
@@ -584,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "UI_AdsFolder.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_AdsFolder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_AdsFolder.cs",
@@ -596,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "AdsManager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\AdsManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\AdsManager.cs",
@@ -608,7 +629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "AirplaneData.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\AirplaneData\\AirplaneData.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\AirplaneData\\AirplaneData.json",
@@ -620,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "Pet.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerSkill\\Pet.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerSkill\\Pet.cs",
@@ -632,7 +653,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "Airplane.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\AirportData\\Airplane.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\AirportData\\Airplane.json",
@@ -644,7 +665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "AirportData.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\AirportData\\AirportData.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\AirportData\\AirportData.json",
@@ -656,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "UI_Slide.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Slide.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Slide.cs",
@@ -668,7 +689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "None_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\None_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\None_Weapon.json",
@@ -680,7 +701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "WeaponStrategyFactory.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Data\\WeaponData\\WeaponStrategyFactory.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Data\\WeaponData\\WeaponStrategyFactory.cs",
@@ -692,7 +713,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "BomberMachine.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerSkill\\BomberMachine.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerSkill\\BomberMachine.cs",
@@ -704,7 +725,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "UI_Popup.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Popup.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Popup.cs",
@@ -716,7 +737,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "Particle_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Particle_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Particle_Manager.cs",
@@ -728,19 +749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "UI_Base.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Base.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Base.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Base.cs",
-              "RelativeToolTip": "Assets\\Script\\UI\\UI_Base.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAzwAQAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T10:27:03.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "UI_CheckBossFolder.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_CheckBossFolder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_CheckBossFolder.cs",
@@ -752,7 +761,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "BaseScene.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Scene\\BaseScene.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Scene\\BaseScene.cs",
@@ -764,7 +773,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "Data_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Data_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Data_Manager.cs",
@@ -776,7 +785,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "BackGroundScroll.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Envirment\\BackGroundScroll.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Envirment\\BackGroundScroll.cs",
@@ -788,7 +797,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "Skill.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerSkill\\Skill.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerSkill\\Skill.cs",
@@ -800,7 +809,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "Player_Ultimate.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlayerSkill\\Player_Ultimate.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlayerSkill\\Player_Ultimate.cs",
@@ -812,7 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "UI_Story.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Story.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Story.cs",
@@ -824,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "UI_UltimateButton.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_UltimateButton.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_UltimateButton.cs",
@@ -836,7 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "UI_Title.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Title.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Title.cs",
@@ -848,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "Scene_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Scene_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Scene_Manager.cs",
@@ -860,7 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "PetData.xml",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\PetData.xml",
               "RelativeDocumentMoniker": "Assets\\Resources\\Data\\PetData.xml",
@@ -872,7 +881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "Transform_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\Transform_Manager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\Transform_Manager.cs",
@@ -884,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "UI_Timer.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Timer.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Timer.cs",
@@ -896,7 +905,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "Skill.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\Skill.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\Skill.cs",
@@ -908,7 +917,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "UI_WeaponItem.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_WeaponItem.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_WeaponItem.cs",
@@ -920,7 +929,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "TMP_SDF.shader",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF.shader",
               "RelativeDocumentMoniker": "Assets\\TextMesh Pro\\Shaders\\TMP_SDF.shader",
@@ -932,7 +941,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "IAttackStrategy.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\Weapon\\IAttackStrategy.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\Weapon\\IAttackStrategy.cs",
@@ -944,7 +953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "Bullet.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\Weapon\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\Weapon\\Bullet.cs",
@@ -956,7 +965,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "PlayerDataXML.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\Data\\PlayerDataXML.cs",
               "RelativeDocumentMoniker": "Assets\\Resources\\Data\\PlayerDataXML.cs",
@@ -968,7 +977,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "DebugUpdater.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\UnityM2D\\Library\\PackageCache\\com.unity.render-pipelines.core@a2ee32414adf\\Runtime\\Debugging\\DebugUpdater.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\UnityM2D\\Library\\PackageCache\\com.unity.render-pipelines.core@a2ee32414adf\\Runtime\\Debugging\\DebugUpdater.cs",
@@ -980,7 +989,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "AssetUtility.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Spine\\Editor\\spine-unity\\Editor\\Utility\\AssetUtility.cs",
               "RelativeDocumentMoniker": "Assets\\Spine\\Editor\\spine-unity\\Editor\\Utility\\AssetUtility.cs",
@@ -992,7 +1001,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "GameManager_Ex.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Manager\\GameManager_Ex.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Manager\\GameManager_Ex.cs",
@@ -1004,7 +1013,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "IAttackStrategy.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\UnityM2D\\Assets\\Script\\Controller\\IAttackStrategy.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\UnityM2D\\Assets\\Script\\Controller\\IAttackStrategy.cs",
@@ -1016,7 +1025,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "ComponentHolderProtocol.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Library\\PackageCache\\com.unity.visualscripting@6279e2b7c485\\Runtime\\VisualScripting.Core\\Utilities\\ComponentHolderProtocol.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.visualscripting@6279e2b7c485\\Runtime\\VisualScripting.Core\\Utilities\\ComponentHolderProtocol.cs",
@@ -1028,7 +1037,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "SkeletonGraphic.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Spine\\Runtime\\spine-unity\\Components\\SkeletonGraphic.cs",
               "RelativeDocumentMoniker": "Assets\\Spine\\Runtime\\spine-unity\\Components\\SkeletonGraphic.cs",
@@ -1041,18 +1050,18 @@
           ]
         },
         {
-          "DockedWidth": 264,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 367,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "UI_Dead.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Dead.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_Dead.cs",
               "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Dead.cs",
               "RelativeToolTip": "Assets\\Script\\UI\\IUObject\\UI_Dead.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAowBIAAAAfAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAzwAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-02T08:42:01.801Z",
               "IsPinned": true,
@@ -1060,92 +1069,122 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EnemyController.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\EnemyController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\EnemyController.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\EnemyController.cs",
-              "RelativeToolTip": "Assets\\Script\\Controller\\EnemyController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAjwEYAAAAJAAAA",
+              "DocumentIndex": 2,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\BaseController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\BaseController.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\BaseController.cs",
+              "RelativeToolTip": "Assets\\Script\\Controller\\BaseController.cs",
+              "ViewState": "AQIAAAsBAAAAAAAAAAAAABMBAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T17:11:55.388Z"
+              "WhenOpened": "2025-11-02T03:57:33.374Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UI_BossFolder.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_BossFolder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_BossFolder.cs",
               "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_BossFolder.cs",
               "RelativeToolTip": "Assets\\Script\\UI\\UI_Folder\\UI_BossFolder.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAVAAAA",
+              "ViewState": "AQIAAEMAAAAAAAAAAAASwFAAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T23:33:15.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\BaseController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\BaseController.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\BaseController.cs",
-              "RelativeToolTip": "Assets\\Script\\Controller\\BaseController.cs",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAUwNUAAAAIAAAA",
+              "DocumentIndex": 1,
+              "Title": "PlatformPositionAdjuster.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlatformPositionAdjuster.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\PlatformPositionAdjuster.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\PlatformPositionAdjuster.cs",
+              "RelativeToolTip": "Assets\\Script\\Controller\\PlatformPositionAdjuster.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAvwBUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T03:57:33.374Z"
+              "WhenOpened": "2025-11-04T14:23:45.096Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UI_Timer.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
-              "RelativeToolTip": "Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAMBAwBwAAAAmAAAA",
+              "DocumentIndex": 4,
+              "Title": "UI_FixFolder.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
+              "RelativeToolTip": "Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAApwE0AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T09:54:56.941Z"
+              "WhenOpened": "2025-06-28T16:57:27.627Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 8,
+              "Title": "EnemyController.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\EnemyController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Controller\\EnemyController.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\EnemyController.cs",
+              "RelativeToolTip": "Assets\\Script\\Controller\\EnemyController.cs",
+              "ViewState": "AQIAAMIBAAAAAAAAAAASwM8BAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T17:11:55.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Defines.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Default\\Defines.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Default\\Defines.cs",
               "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Default\\Defines.cs",
               "RelativeToolTip": "Assets\\Script\\Default\\Defines.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAjwBYAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:53:15.945Z"
+              "WhenOpened": "2025-06-28T16:53:15.945Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
+              "Title": "UI_Timer.cs",
+              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
+              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
+              "RelativeToolTip": "Assets\\Script\\UI\\IUObject\\UI_Timer.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAlwBwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T09:54:56.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "GameManager_Ex.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Data\\GameManager_Ex.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Data\\GameManager_Ex.cs",
               "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Data\\GameManager_Ex.cs",
               "RelativeToolTip": "Assets\\Script\\Data\\GameManager_Ex.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAWwIAAAAAvAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAMBWwIAAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T19:33:24.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "UI_Folder.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_Folder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_Folder.cs",
               "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_Folder.cs",
               "RelativeToolTip": "Assets\\Script\\UI\\UI_Folder\\UI_Folder.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAWwEgAAAAZAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAABTwEgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T17:43:39.233Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Weapon\\Weapon.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Weapon.cs",
@@ -1157,19 +1196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "UI_FixFolder.cs",
-              "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
-              "ToolTip": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
-              "RelativeToolTip": "Assets\\Script\\UI\\UI_Folder\\UI_FixFolder.cs",
-              "ViewState": "AQIAAIIAAAAAAAAAAAAWwIYAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:57:27.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Basic_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\Basic_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\Basic_Weapon.json",
@@ -1181,7 +1208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "AirplaneController.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\Controller\\AirplaneController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Controller\\AirplaneController.cs",
@@ -1193,7 +1220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "Epic_Weapon.json",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Resources\\WeaponData\\Epic_Weapon.json",
               "RelativeDocumentMoniker": "Assets\\Resources\\WeaponData\\Epic_Weapon.json",
@@ -1205,7 +1232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "UI_WeaponItem.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\IUObject\\UI_WeaponItem.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\IUObject\\UI_WeaponItem.cs",
@@ -1217,7 +1244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "UI_LevelUp.cs",
               "DocumentMoniker": "C:\\Users\\Naong\\Documents\\GitHub\\UnityM2D\\UnityM2D\\Assets\\Script\\UI\\UI_LevelUp.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\UI\\UI_LevelUp.cs",

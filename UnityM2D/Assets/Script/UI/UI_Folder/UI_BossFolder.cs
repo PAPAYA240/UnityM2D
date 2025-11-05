@@ -34,7 +34,7 @@ public class UI_BossFolder : UI_Base
 
     #endregion
 
-    private void Start() => Init();
+    private void Awake() => Init();
     public override bool Init()
     {
         if (base.Init() == false)
