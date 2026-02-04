@@ -3,7 +3,7 @@
   "weaponPrefab": "WeaponPrefab/Epic_Weapon",
   "weaponType": "Basic_Weapon",
   "attackStrategyType": "BasicAttack",
-  "baseDamage": 10,
+  "baseDamage": 100,
   "attackRange": 1.5,
   "projectilePrefab": "WeaponPrefab/Bullet",
   "projectileSpeed": 15.0,

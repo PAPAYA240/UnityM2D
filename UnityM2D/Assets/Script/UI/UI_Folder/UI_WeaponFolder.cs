@@ -48,6 +48,8 @@ public class UI_WeaponFolder : UI_Base
         if(weaponData)
             GetText(Texts.Attack_Text).text = String.Format($"{10} >> {10 + weaponData.addedAttack}");
 
+        _currentPrice = weaponData.addedPrice;
+        GetText(Texts.Cost_Text).text = String.Format($"{_currentPrice}"); // next Price
         return true;    
     }
 
@@ -67,7 +69,7 @@ public class UI_WeaponFolder : UI_Base
         WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
         if (!weaponData)
             return;
-        int costText = _currentPrice + weaponData.addedPrice;
+        int costText = _currentPrice/* + weaponData.addedPrice*/;
 
         if (Player.data.Money < costText)
         {
@@ -96,7 +98,7 @@ public class UI_WeaponFolder : UI_Base
         {
             GetText(Texts.Cost_Text).text = String.Format($"{nextPrice}"); // next Price
             GetText(Texts.Attack_Text).text = String.Format($"{Player.data.AttackPower} >> {nextAttackDamage}"); // nextAttack
-            _currentPrice = _currentPrice + weaponData.addedPrice;
+            _currentPrice = nextPrice;
         }
         else
         {

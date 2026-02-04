@@ -3,15 +3,23 @@ using UnityEngine.UIElements;
 
 public class BackGroundScroll : MonoBehaviour
 {
-    float Speed = 5;
+    float Speed = 3;
 
     float leftPosX = 0f;
     float rightPosX = 0f;
+    private float spriteWidth;
+    private float screenWidth;
+
     void Start()
     {
+        float screenHeight = Camera.main.orthographicSize * 2f;
+        screenWidth = screenHeight * Camera.main.aspect;
+
         float length = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        leftPosX = -length;
-        rightPosX = length;
+        leftPosX = -length + (screenWidth / 2);
+        rightPosX = length - (screenWidth / 2);
+
+
     }
 
     void Update()

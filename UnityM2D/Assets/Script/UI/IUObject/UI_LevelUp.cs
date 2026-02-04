@@ -12,51 +12,52 @@ public class UI_LevelUp : UI_Base
     }
 
 
-    private Vector3 _origionPosition = new Vector3();
-    PlayerController Player = null;
+    private PlayerController Player = null;
+    [SerializeField] Animator _animator;
+    private Camera _mainCamera = null; // 카메라 캐싱용
+
+    void Start() => Init();
 
     public override bool Init()
     {
-        if (base.Init() == false)
-            return false;
+        if (base.Init() == false) return false; // base.Init 실패 시 중단
 
         BindText();
+
+        // strPlayerObject가 정의되어 있다고 가정
         GameObject PlayerObject = GameObject.Find(strPlayerObject);
-        Player = PlayerObject.GetComponent<PlayerController>();
-        _origionPosition = transform.position;
+        if (PlayerObject != null)
+            Player = PlayerObject.GetComponent<PlayerController>();
+
+        _animator = GetComponentInChildren<Animator>();
+        _mainCamera = Camera.main; // 카메라 미리 찾아놓기
+
         return true;
+    }
+    Vector3 offset = new Vector3(0, 1.0f,0);
+    void Update()
+    {
+        GetText(TextType.StateText).transform.position =
+            Camera.main.WorldToScreenPoint(_parentObject.transform.position + offset);
     }
     public void Invoke(float duration)
     {
         gameObject.SetActive(true);
-         StartCoroutine(Active_LevelUI(duration));
+
+        if (_animator == null)
+            _animator = GetComponentInChildren<Animator>();
+
+        // 코루틴 시작
+        StartCoroutine(Active_LevelUI(duration));
     }
+
     private IEnumerator Active_LevelUI(float duration)
     {
-        if (Player == null)
-        {
-            GameObject PlayerObject = GameObject.Find(strPlayerObject);
-            Player = PlayerObject.GetComponent<PlayerController>();
-            if(Player ==null)
-                yield return null;
-        }
-        gameObject.SetActive(true);
+       yield return new WaitForSeconds(duration); 
 
-        float elapsedTime = 0f;
-        Vector3 startPosition = _origionPosition;
-        Vector3 endPosition = _origionPosition + new Vector3(0.0f, 250f, 0.0f);
-        while (elapsedTime < duration)
-        {
-            float t = elapsedTime / duration;
-            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
-
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
         gameObject.SetActive(false);
-        transform.position = _origionPosition;
     }
+
     private bool BindText()
     {
         BindText(typeof(TextType));

@@ -30,7 +30,7 @@ public class CharacterData : ScriptableObject
 	[XmlAttribute]
     public int AttackPower = 10;
 	[XmlAttribute]
-    public int Money = 0;
+    public int Money = 500;
 
 	[XmlAttribute]
     public int BulletSpeed = 10;

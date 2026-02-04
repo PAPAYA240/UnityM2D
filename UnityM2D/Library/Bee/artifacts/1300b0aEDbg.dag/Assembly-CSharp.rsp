@@ -458,7 +458,6 @@
 "Assets/Script/Controller/AirplaneController.cs"
 "Assets/Script/Controller/BaseController.cs"
 "Assets/Script/Controller/EnemyController.cs"
-"Assets/Script/Controller/PlatformPositionAdjuster.cs"
 "Assets/Script/Controller/PlayerController.cs"
 "Assets/Script/Controller/PlayerSkill/BomberMachine.cs"
 "Assets/Script/Controller/PlayerSkill/Pet.cs"

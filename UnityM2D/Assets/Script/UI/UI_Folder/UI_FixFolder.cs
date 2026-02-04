@@ -63,7 +63,11 @@ public class UI_FixFolder : UI_Base
                 break;
 
             case FixType.Bomber_Fix:
-                StartCoroutine(Player.UseSkill(FixType.Bomber_Fix));
+                if (Player.data.Money < 2000)
+                    return;
+                Player.data.Money -= 2000;
+                StartCoroutine(Player.UseSkill(FixType.Bomber_Fix, true));
+                GetText(Texts.Cnt_Text).text = String.Format($"{Player.bomberDuration} DURATION" );
                 break;
 
             case FixType.Heal_Fix:
@@ -75,7 +79,11 @@ public class UI_FixFolder : UI_Base
                 Change_HealInformation();
                 break;
             case FixType.Airplane_Fix:
-                if(myAirplane == null)
+                if (Player.data.Money < 5000)
+                    return;
+                Player.data.Money -= 5000;
+
+                if (myAirplane == null)
                 {
                     myAirplane = Managers.Resource.Instantiate("Prefab/Airplane/Airplane");
                     myAirplane.AddComponent<Airplane>();
@@ -116,12 +124,12 @@ public class UI_FixFolder : UI_Base
         // 힐 추가해주고
         int addHeal = 10;
         Player.UpgradeHeal(addHeal);
-        GetText(Texts.Cnt_Text).text = String.Format($"{Player.data.Heal} >> {Player.data.Heal + addHeal}");
+        GetText(Texts.Cnt_Text).text = String.Format($"10 UPGRADE");
 
        if (Player.data.Heal >= Player.data.MaxHeal)
         {
             Player.data.Heal = Player.data.MaxHeal;
-            GetText(Texts.Cnt_Text).text = String.Format($"{Player.data.Heal} >> MAX HEAL!");
+            GetText(Texts.Cnt_Text).text = String.Format($"MAX HEAL!");
             GetText(Texts.Cost_Text).text = String.Format("MAX");
         }
     }

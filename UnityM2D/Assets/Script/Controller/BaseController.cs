@@ -187,7 +187,6 @@ public abstract  class BaseController : Base, ITurnParticipant
             if (bc != null)
             {
                 int damage = GetAttackPower();
-                Debug.Log($"{damage}");
                 bc.TakeDamage(damage);
             }
 
@@ -206,9 +205,6 @@ public abstract  class BaseController : Base, ITurnParticipant
         return 0;
     }
 
-    /// <summary>
-    /// 호출 시 지정된 자리로 돌아갈 함수
-    /// </summary>
     protected void ReturnToPosition()
     {
         transform.position = Managers.TransformManager.MoveToTarget(transform.position, RunAreaPosition, data.AttackSpeed);
@@ -295,7 +291,7 @@ public abstract  class BaseController : Base, ITurnParticipant
     {
         GameObject hpObj = GetObject(GameObjects.HP_Position);
         if (hpObj == null)
-            return false;
+            return true;
 
         UI_Base HpUI = Managers.UIManager.ShowUI<UI_Slide>(CreateHpBar, GetObject(GameObjects.HP_Position).gameObject.transform);
         if (HpUI == null)

@@ -108,6 +108,7 @@ public class EnemyController : BaseController
         {
             _bRewardHealPack = true;
             _healPrefab.transform.position = this.transform.position;
+            player.SetHeal(player.data.Heal);
             StartCoroutine(DefeatedHealPack());
         }
 
@@ -172,8 +173,9 @@ public class EnemyController : BaseController
         player.data.Money += 500;
         if (_bRewardHealPack)
         {
-            player.SetHeal(player.data.Heal);
             _bRewardHealPack = false;
+            player.SetHeal(player.data.Heal);
+            player.UpgradeHeal(2);
         }
     }
     private IEnumerator MoveCoinAnimation(float duration, float readyDuration = 0)
@@ -342,7 +344,12 @@ public class EnemyController : BaseController
         LoadData(convertedEnemyType);
 
         if (monsterData.enemyType >= EnemyType.Zombi_Boss)
+        {
             this.transform.localScale = new Vector3(upgradeScaled, upgradeScaled, 1);
+            data.MaxHp = 10000;
+            data.Hp = 10000;
+            data.AttackPower = 70;
+        }
         else
             this.transform.localScale = originScaled;
 
@@ -376,8 +383,11 @@ public class EnemyController : BaseController
         if(bChangeAnim == true)
             LoadAnimator();
 
+        PlayerController player = TargetObject.GetComponent<PlayerController>();
+        int addHp = player.data.LevelCount + 5;
+        monsterData.Hp += addHp;
+        monsterData.MaxHp += addHp;
     }
-
     private RuntimeAnimatorController LoadAnimator()
     {
         RuntimeAnimatorController loadedController;

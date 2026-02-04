@@ -8,7 +8,7 @@ public class UI_Folder : UI_Popup
     enum TextType
     {
         CostText,
-        SpeedText,
+        HealText,
         AttackText,
     }
     enum ButtonType
@@ -88,6 +88,8 @@ public class UI_Folder : UI_Popup
     {
         GetText(TextType.CostText).SetText(Player?.data.Money.ToString());
 
+        GetText(TextType.HealText).SetText(Player?.data.Heal.ToString());
+
         GetText(TextType.AttackText).text = String.Format($"{Player.data.AttackPower}");
     }
 
@@ -150,7 +152,7 @@ public class UI_Folder : UI_Popup
             if (item != null)
             {
                 item.SetInfo(
-                    (Defines.EnemyType)(boss.transform.GetSiblingIndex() + (int)Defines.EnemyType.Zombi_Boss),
+                    (Defines.EnemyType)(boss.transform.GetSiblingIndex() + (int)Defines.EnemyType.Skeleton_Boss),
                     _checkBossFolderUI,
                     TargetEnemyController 
                 );

@@ -18,16 +18,17 @@ public class PlayerController : BaseController
     // ============ Player Information ============ 
     private CharacterManager<PlayerData> playerDataManager = new CharacterManager<PlayerData>();
     public PlayerData playerData => data as PlayerData;
-    GameObject[] PlayerSkills;
+    public GameObject[] PlayerSkills;
     Vector3 initPosition = new Vector3(-396.6545f, -995.24f, 0);
+
 
     protected override ICharacterManager GetCharacterDataManager()
     {
         return playerDataManager;
     }
     #endregion
+    public float bomberDuration = 15.0f;
 
-    
     private void Start() => Init();
 
     public override bool Init()
@@ -53,13 +54,12 @@ public class PlayerController : BaseController
         Managers.TimerManager.OnTimeOver += HandleTimerOver;
         Managers.TimerManager.OnTimeNext += HandleTimerEndWave;
 
-       // transform.position = initPosition;
-        data.Money = 100000000; // 디버그용
-        data.Hp = 1;
+        data.Hp = data.MaxHp;
+        data.Money = 500;
         return true;
     }
 
-    
+    private float _bomberTimer = 0f;
     private void Update()
     {
         if(TargetObject == null)
@@ -67,25 +67,47 @@ public class PlayerController : BaseController
 
         if (TargetObject != null)
             moveTable[MyAnimState].Invoke(TargetObject);
+
+        _bomberTimer += Time.deltaTime;
+
+        // 2. 누적된 시간이 설정한 주기(bomberDuration)보다 커지면 실행합니다.
+        if (_bomberTimer >= bomberDuration)
+        {
+            StartCoroutine(UseSkill(FixType.Bomber_Fix));
+
+            // 3. 실행 후 타이머를 0으로 초기화합니다.
+            _bomberTimer = 0f;
+        }
     }
 
 
-    public IEnumerator UseSkill(FixType _skillType)
+    public IEnumerator UseSkill(FixType _skillType, bool bUpgrade = false)
     {
-        if (PlayerSkills[(int)_skillType] == null)
+        if (bUpgrade)
         {
-            Install(_skillType);
+            if (PlayerSkills[(int)_skillType] == null)
+                Install(_skillType);
+            else
+                bomberDuration -= 1.0f;
+
+            if (bomberDuration <= 3)
+                bomberDuration = 3;
+        }
+        else
+        {
+            if (PlayerSkills[(int)_skillType] == null)
+                yield break;
+
+            bool usedSkill = false;
+            while (!usedSkill)
+            {
+                usedSkill = PlayerSkills[(int)_skillType].GetComponent<Skill>().ExecuteSkill(this.gameObject, TargetObject);
+
+                yield return null;
+            }
+
             yield break;
         }
-
-        bool usedSkill = false;
-        while(!usedSkill)
-        {
-            usedSkill = PlayerSkills[(int)_skillType].GetComponent<Skill>().ExecuteSkill(this.gameObject, TargetObject); 
-
-            yield return null;
-        }
-        yield break;
     }
 
     private void Install(FixType _skillType)
@@ -106,6 +128,14 @@ public class PlayerController : BaseController
         }
     }
 
+    void OnDestroy()
+    {
+        for(int i = 0; i < PlayerSkills.Length; i++)
+        {
+            if (PlayerSkills[i] != null)
+                Managers.Resource.Destroy(PlayerSkills[i]);
+        }
+    }
     #region Change State
     private void HandleTimerEndWave()
     {
@@ -204,7 +234,6 @@ public class PlayerController : BaseController
     public void UpgradeHeal(int add)
     {
         data.Heal += add;
-        Debug.Log($"{data.Heal} 힐");
     }
     public override int GetAttackPower()
     {
@@ -253,11 +282,9 @@ public class PlayerController : BaseController
         if (rangeArea == null)
             return false;
 
-         _UILevelUp = Managers.UIManager.ShowUI<UI_LevelUp>("UI_LevelUp");
-        if (_UILevelUp == null)
-            return false;
-        else
-            _UILevelUp.gameObject.SetActive(false); 
+         _UILevelUp = gameObject.GetComponentInChildren<UI_LevelUp>();
+         _UILevelUp.gameObject.SetActive(false);
+         _UILevelUp.SetInfo(gameObject, true);
 
         RunAreaPosition = SettingAreaCollider();
 

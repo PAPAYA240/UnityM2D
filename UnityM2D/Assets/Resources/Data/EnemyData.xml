@@ -4,7 +4,7 @@
     <name />
     <hideFlags>None</hideFlags>
   </MonsterData>
-  <MonsterData Name="Zombi_Boss" myAnimControllerPath="Prefab/Animation/Zombi_Boss/ZombiBossAnim" Level="1" LevelCount="50" Hp="300" MaxHp="300" Hill="30" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Zombi_Boss">
+  <MonsterData Name="Zombi_Boss" myAnimControllerPath="Prefab/Animation/Zombi_Boss/ZombiBossAnim" Level="1" LevelCount="50" Hp="10000" MaxHp="10000" Hill="30" Exp="0" AttackPower="70" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Zombi_Boss">
     <name />
     <hideFlags>None</hideFlags>
   </MonsterData>
@@ -12,7 +12,7 @@
     <name />
     <hideFlags>None</hideFlags>
   </MonsterData>
-  <MonsterData Name="Skeleton_Boss" myAnimControllerPath="Prefab/Animation/Skeleton_Boss/SkeletonBossAnim" Level="1" LevelCount="100" Hp="600" MaxHp="600" Hill="50" Exp="0" AttackPower="10" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Skeleton_Boss">
+  <MonsterData Name="Skeleton_Boss" myAnimControllerPath="Prefab/Animation/Skeleton_Boss/SkeletonBossAnim" Level="1" LevelCount="100" Hp="20000" MaxHp="20000" Hill="50" Exp="0" AttackPower="70" Money="100000" BulletSpeed="10" AttackSpeed="7" Speed="5" enemyType="Skeleton_Boss">
     <name />
     <hideFlags>None</hideFlags>
   </MonsterData>

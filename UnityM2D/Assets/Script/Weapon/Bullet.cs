@@ -42,8 +42,9 @@ public class Bullet : Base
         if (collision.gameObject == targeter)
         {
             BaseController bc = targeter.GetComponent<BaseController>();
+            GameObject TargetObject = GameObject.Find("Player");
             if(bc != null)
-                bc.TakeDamage(bc.GetAttackPower());
+                bc.TakeDamage(TargetObject.GetComponent<PlayerController>().GetAttackPower());
 
             this.transform.position = this.transform.parent.position;
             Managers.ObjectPoolManager.ReturnObject(this.gameObject);

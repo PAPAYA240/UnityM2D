@@ -17,8 +17,8 @@ public class Pet : BaseController
     private const float JUMP_DURATION = 0.7f;
     private const float JUMP_HEIGHT = 2f;
     private const float JUMP_COOLDOWN = 10f;
-    private const float MIN_RANDOM_X = 0.5f;
-    private const float MAX_RANDOM_X = 1.5f;
+    private const float MIN_RANDOM_X = 0.1f;
+    private const float MAX_RANDOM_X = 0.4f;
     #endregion
 
     private Vector3 _spawnPosition;
@@ -34,8 +34,7 @@ public class Pet : BaseController
   
     public override bool Init()
     {
-        if (!base.Init())
-            return false;
+        base.Init();
 
         if (!InitializeComponents())
             return false;
@@ -52,7 +51,10 @@ public class Pet : BaseController
         {
             PlayerController playerController = playerObj.GetComponent<PlayerController>();
             if (playerController != null)
+            {
                 transform.position = playerController.SettingAreaCollider();
+                playerController.PlayerSkills[(int)FixType.Pet_Fix] = this.gameObject;
+            }
         }
 
         // 스포너 위치로 최종 설정
@@ -69,9 +71,7 @@ public class Pet : BaseController
         _myAnimation = GetComponent<Animator>();
 
         if (_petDataManager.Data == null)
-        {
             _petDataManager.Data = new PetData();
-        }
 
         return (_spriteRenderer != null && _myAnimation != null);
     }
@@ -84,25 +84,22 @@ public class Pet : BaseController
     #region Jump Animation
     private IEnumerator AutoJumpSequence()
     {
-        // 무한 반복 점프 시퀀스
         while (true)
         {
             Vector3 startPos = transform.position;
             Vector3 targetPos = GetNextJumpTarget(startPos);
-
+     
             yield return StartCoroutine(PerformJump(startPos, targetPos, JUMP_DURATION));
 
-            _shouldReturnToSpawn = !_shouldReturnToSpawn;
             yield return new WaitForSeconds(JUMP_COOLDOWN);
         }
     }
     private Vector3 GetNextJumpTarget(Vector3 currentPos)
     {
-        if (_shouldReturnToSpawn)
-            return _spawnPosition;
+        float randomX = Random.Range(-MAX_RANDOM_X, MAX_RANDOM_X);
 
-        float randomX = Random.Range(MIN_RANDOM_X, MAX_RANDOM_X);
-        return currentPos + new Vector3(randomX, 0, 0);
+        // 기준 위치 + 랜덤 오프셋을 반환합니다.
+        return _spawnPosition + new Vector3(randomX, 0, 0);
     }
 
     private IEnumerator PerformJump(Vector3 startPosition, Vector3 endPosition, float duration)
@@ -158,7 +155,7 @@ public class Pet : BaseController
     {
         PetData data = Managers.PetLoader.GetPetDataByType(_petType);
         owner.data.Money -= data.price;
-            Debug.Log($"펫 값으로 {data.price} 사라짐");
+        Debug.Log($"펫 값으로 {data.price} 사라짐");
 
         LoadPetData(_petType);
         _petType = _petType + 1;
