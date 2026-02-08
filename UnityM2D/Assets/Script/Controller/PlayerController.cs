@@ -211,6 +211,7 @@ public class PlayerController : BaseController
     #endregion
 
     #region Animation
+    // NOTE. 상태별 행동 로직을 if문으로 검사하지 않고, Dictionary/Delegate를 활용해 매핑했습니다.
     protected override void SettingAnimation()
     {
         animTable = new()

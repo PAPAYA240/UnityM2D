@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectPool_Manager : MonoBehaviour
 {
     private Dictionary<GameObject, Queue<GameObject>> poolDictionary = new Dictionary<GameObject, Queue<GameObject>>();
-    // 인스턴스를 원본 prefab 키로 매핑
     private Dictionary<GameObject, GameObject> prefabMap = new Dictionary<GameObject, GameObject>();
 
 
@@ -22,19 +21,16 @@ public class ObjectPool_Manager : MonoBehaviour
             obj.SetActive(false);
             objectQueue.Enqueue(obj);
 
-            // 매핑 추가
             prefabMap[obj] = prefab;
         }
 
         poolDictionary[prefab] = objectQueue;
-        Debug.Log($"Pool for {prefab.name} created ({count})");
     }
 
     public GameObject GetObjectKey(GameObject prefab, Vector3 pos, Quaternion rot, Transform _transform = null)
     {
         if (!poolDictionary.TryGetValue(prefab, out var queue))
         {
-            Debug.LogWarning($"Pool for {prefab.name} not found!");
             return Instantiate(prefab, pos, rot, _transform);
         }
 
@@ -42,8 +38,7 @@ public class ObjectPool_Manager : MonoBehaviour
         if (queue.Count == 0)
         {
             obj = Instantiate(prefab, _transform);
-            Debug.LogWarning($"Pool empty for {prefab.name}, instantiating extra.");
-            prefabMap[obj] = prefab; // 매핑 추가
+            prefabMap[obj] = prefab; 
         }
         else
         {

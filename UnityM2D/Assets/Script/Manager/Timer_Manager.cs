@@ -51,7 +51,6 @@ public class Timer_Manager : MonoBehaviour
         }
     }
 
-    // 구독 해지 작업
     public void Dispose()
     {
         OnTimeOver = null;
