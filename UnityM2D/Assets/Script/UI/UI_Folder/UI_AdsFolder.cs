@@ -36,8 +36,8 @@ public class UI_AdsFolder : UI_Base
         GameObject button = GetButton(Buttons.Button).gameObject;
         if (button == null)
             return false;
-        BindEvent(button, OnShowAdsClick);
 
+        BindEvent(button, OnShowAdsClick);
         GameObject PlayerObject = GameObject.Find(strPlayerObject);
         playerController =PlayerObject.GetComponent<PlayerController>();
         if (playerController == null)

@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Diagnostics;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -33,12 +29,8 @@ public abstract class Base : MonoBehaviour
         return _init = true;
     }
 
-    /// <summary>
-    /// enum에 정의된 이름을 기준으로 현재 게임 오브젝트의 자식에서 원하는 타입의 컴포넌트를 찾아 바인딩합니다.
-    /// </summary>
     private void BindByEnum<T>(Type enumType) where T : UnityEngine.Object
     {
-        // enum의 모든 값을 가져옵니다.
         Array enumValues = Enum.GetValues(enumType);
 
         foreach (Enum key in enumValues)
@@ -46,7 +38,6 @@ public abstract class Base : MonoBehaviour
             string name = key.ToString();
             T obj = null;
 
-            // 타입에 따라 GameObject와 그 외 컴포넌트 검색 분기
             if (typeof(T) == typeof(GameObject))
                 obj = Setting.FindChild(gameObject, name, true) as T;
             else
@@ -54,7 +45,7 @@ public abstract class Base : MonoBehaviour
 
             if (obj == null)
             {
-                Debug.Log($"[BindByEnum] Failed BindByEnum :  {name}");
+                return;
             }
             else
             {
@@ -63,9 +54,6 @@ public abstract class Base : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 바인딩된 UI 오브젝트를 enum 키를 통해 가져옵니다.
-    /// </summary>
     private T GetByEnum<T>(Enum key) where T : UnityEngine.Object
     {
         if (_uiObjects.TryGetValue(key, out UnityEngine.Object obj))
@@ -73,7 +61,6 @@ public abstract class Base : MonoBehaviour
 
         return null;
     }
-
 
     protected GameObject GetObject(Enum _enum) { return GetByEnum<GameObject>(_enum); }
     protected TextMeshProUGUI GetText(Enum _enum) { return GetByEnum<TextMeshProUGUI>(_enum); }
