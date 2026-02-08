@@ -68,7 +68,7 @@ public abstract  class BaseController : Base, ITurnParticipant
     private SpriteRenderer myRenderer;
     public override bool Init()
     {
-        if (base.Init() == false)
+        if (!base.Init())
             return false;
 
         characterDataManager = GetCharacterDataManager();

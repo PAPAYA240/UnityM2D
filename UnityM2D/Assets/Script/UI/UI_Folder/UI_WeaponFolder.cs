@@ -4,33 +4,25 @@ using static Defines;
 
 public class UI_WeaponFolder : UI_Base
 {
-    enum Buttons
-    {
-        Upgrade_Button,
-    }
-
+    enum Buttons { Upgrade_Button }
     enum Texts
     {
-        Cost_Text, // Upgrade 비용
-        Attack_Text, // 다음 올릴 Attack
-        Weapon_Name, // 무기 이름
-        Upgrade, // 만료 시 Clear로 바꿀 예정
+        Cost_Text,   
+        Attack_Text,
+        Weapon_Name,
+        Upgrade,
     }
+    enum GameObjects { UI_Lock }
 
-    enum GameObjects
-    {
-        UI_Lock,
-    }
+    private PlayerController _player = null;
+    private WeaponType _weaponType = WeaponType.Basic_Weapon;
 
-    PlayerController Player = null;
-    WeaponType _weaponType = WeaponType.Basic_Weapon;
-
-    private bool bLock = false;
-    int reinforcement_bonus = 3;
+    private bool _isLocked = false;
+    private int _currentPrice = 0;
 
     public GameObject MyLockObject { get; private set; }
     public GameObject NextLockObject { private get; set; }
-    
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -41,95 +33,71 @@ public class UI_WeaponFolder : UI_Base
         BindText(typeof(Texts));
 
         GetButton(Buttons.Upgrade_Button).gameObject.BindEvent(OnUpgradeButtonClick, Defines.Input.Click);
-
         MyLockObject = GetObject(GameObjects.UI_Lock);
 
-        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
-        if(weaponData)
-            GetText(Texts.Attack_Text).text = String.Format($"{10} >> {10 + weaponData.addedAttack}");
-
-        _currentPrice = weaponData.addedPrice;
-        GetText(Texts.Cost_Text).text = String.Format($"{_currentPrice}"); // next Price
-        return true;    
+        return true;
     }
 
-    public void SetInfo(PlayerController _player, WeaponType _statType, int _openFigure)
+    public void SetInfo(PlayerController player, WeaponType weaponType)
     {
-        Init();
+        if (_init == false) Init();
 
-        Player = _player;
-        _weaponType = _statType;
+        _player = player;
+        _weaponType = weaponType;
+
+        RefreshUI();
     }
 
     void OnUpgradeButtonClick()
     {
-        if (IsLock())
-            return;
+        if (_isLocked) return;
 
         WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
-        if (!weaponData)
-            return;
-        int costText = _currentPrice/* + weaponData.addedPrice*/;
+        if (weaponData == null || _player == null) return;
 
-        if (Player.data.Money < costText)
-        {
-            Console.WriteLine("무기 살 돈이 부족합니다.");
+        if (_player.data.Money < _currentPrice)
             return;
-        }
 
-        // 구매
-        Player.data.Money -= costText;
-        Player.data.AttackPower = Player.data.AttackPower + weaponData.addedAttack;
-        Debug.Log($"구매 : {Player.data.AttackPower}");
-        ChangeText();
-        IsLock();
+        _player.data.Money -= _currentPrice;
+        _player.data.AttackPower += weaponData.addedAttack;
+
+        RefreshUI();
     }
-    private int _currentPrice = 0;
-    void ChangeText()
-    {
-        // 가격
-        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
-        if (!weaponData)
-            return;
 
-        int nextAttackDamage = Player.data.AttackPower + weaponData.addedAttack;
-        int nextPrice = _currentPrice + weaponData.addedPrice;
-        if (weaponData.openWeaponLimit > Player.data.AttackPower)
+    void RefreshUI()
+    {
+        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
+        if (weaponData == null) return;
+
+        int nextAttack = _player.data.AttackPower + weaponData.addedAttack;
+        int nextPrice = (_currentPrice == 0 ? weaponData.addedPrice : _currentPrice + weaponData.addedPrice); // 로직에 따라 초기값 조정 필요
+
+        if (_player.data.AttackPower >= weaponData.openWeaponLimit)
         {
-            GetText(Texts.Cost_Text).text = String.Format($"{nextPrice}"); // next Price
-            GetText(Texts.Attack_Text).text = String.Format($"{Player.data.AttackPower} >> {nextAttackDamage}"); // nextAttack
-            _currentPrice = nextPrice;
+            SetCompletedState(weaponData.openWeaponLimit);
         }
         else
         {
-            GetText(Texts.Cost_Text).text = String.Format("NEXT");
-            GetText(Texts.Attack_Text).text = String.Format($"{weaponData.openWeaponLimit} ATTACK CLEAR!");
-            IsLock();
+            _currentPrice = nextPrice;
+            GetText(Texts.Cost_Text).text = $"{_currentPrice}";
+            GetText(Texts.Attack_Text).text = $"{_player.data.AttackPower} >> {nextAttack}";
         }
     }
 
-    private bool IsLock()
+    private void SetCompletedState(int maxLimit)
     {
-        if (bLock == true)
-            return true;
+        GetText(Texts.Cost_Text).text = "NEXT";
+        GetText(Texts.Attack_Text).text = $"{maxLimit} ATTACK CLEAR!";
 
-        if (Player == null)
-            return false;
+        _isLocked = true;
 
-        WeaponData weaponData = Managers.WeaponLoader.GetWeaponData(_weaponType);
-        if (weaponData.openWeaponLimit <= Player.data.AttackPower)
+        if (NextLockObject != null)
+            NextLockObject.SetActive(false);
+
+        if (_player != null)
         {
-            if (NextLockObject != null)
-                NextLockObject.SetActive(false);
-
-            // 무기 변경
             WeaponType nextWeapon = _weaponType + 1;
-            Player.EquipWeapon(nextWeapon);
-
-            bLock = true;
-            return true; 
+            _player.EquipWeapon(nextWeapon);
         }
-
-        return false;
     }
 }

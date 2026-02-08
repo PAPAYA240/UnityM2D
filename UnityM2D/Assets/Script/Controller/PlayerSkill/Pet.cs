@@ -137,15 +137,14 @@ public class Pet : BaseController
         PetData data = Managers.PetLoader.GetPetDataByType(_petType);
         if (data == null)
             return false;
+
         if (data.price > owner.data.Money)
         {
-            Debug.Log("펫 살 돈이 없음");
             return false;
         }
 
         if (_petType >= PetType.EarthPet)
         {
-            Debug.Log("이미 FULL Level 임");
             return false;
         }
         return true;

@@ -5,6 +5,7 @@ using static Defines;
 
 public class UI_Folder : UI_Popup
 {
+    #region Enums
     enum TextType
     {
         CostText,
@@ -41,193 +42,170 @@ public class UI_Folder : UI_Popup
         Boss,
         Shop
     }
+#endregion
 
-    PlayTab TabType = PlayTab.None;
-    PlayerController Player = null;
-
-    private List<UI_WeaponFolder> weaponFolder = new List<UI_WeaponFolder>();
-    private List<UI_BossFolder> bossFolder = new List<UI_BossFolder>();
-    private List<UI_FixFolder> fixFolder = new List<UI_FixFolder>();
-    private List<UI_AdsFolder> shopFolder = new List<UI_AdsFolder>();
-
+    private PlayTab _currentTab = PlayTab.None;
+    private PlayerController _player = null;
     public EnemyController TargetEnemyController { get; private set; }
+
+    private List<UI_WeaponFolder> _weaponFolder = new List<UI_WeaponFolder>();
+    private List<UI_BossFolder> _bossFolder = new List<UI_BossFolder>();
+    private List<UI_FixFolder> _fixFolder = new List<UI_FixFolder>();
+    private List<UI_AdsFolder> _shopFolder = new List<UI_AdsFolder>();
+
     private UI_CheckBossFolder _checkBossFolderUI;
-    private EnemyType enemyType;
 
 
     void Start() => Init();
 
     public override bool Init()
     {
-        if (base.Init() == false)
+        if (!base.Init())
             return false;
 
-        if(!InitBind())
-            Debug.Log("Failed Bind : UI_Folder()");
+        if (!InitBind())
+            return false;
+
+        GameObject playerObj = GameObject.Find(strPlayerObject);
+        if (playerObj != null)
+            _player = playerObj.GetComponent<PlayerController>();
+
+        GameObject enemyObj = GameObject.Find(strEnemyObject);
+        if (enemyObj != null)
+            TargetEnemyController = enemyObj.GetComponent<EnemyController>();
+
+        if (_player == null || TargetEnemyController == null)
+            return false;
+
+        RegisterWeaponFolder();
+        RegisterBossFolder();
+        RegisterFixFolder();
+        RegisterAdsFolder();
 
         ChangeTab(PlayTab.Weapon);
 
-        GameObject PlayerObject = GameObject.Find(strPlayerObject);
-        Player = PlayerObject.GetComponent<PlayerController>();
-        if (!Player)
-            return false;
-
-        TargetEnemyController = GameObject.Find(strEnemyObject)?.GetComponent<EnemyController>();
-        if (!TargetEnemyController)
-            return false;
-
-        // 하위 폴더 모음
-        Register_WeaponFolder();
-        Register_BossFolder();
-        Register_FixFolder();
-        Register_AdsFolder();
-
         return true;
- }
+    }
     void Update()
     {
-        GetText(TextType.CostText).SetText(Player?.data.Money.ToString());
+        if (_player == null) 
+            return;
 
-        GetText(TextType.HealText).SetText(Player?.data.Heal.ToString());
+        // TODO: 최적화를 위해 데이터가 변경될 때만 갱신하는 이벤트 방식으로 변경 권장
+        GetText(TextType.CostText).SetText(_player?.data.Money.ToString());
+        GetText(TextType.HealText).SetText(_player?.data.Heal.ToString());
+        GetText(TextType.AttackText).text = String.Format($"{_player.data.AttackPower}");
+    }
+    public void ChangeTab(PlayTab tab)
+    {
+        if (_currentTab == tab)
+            return;
 
-        GetText(TextType.AttackText).text = String.Format($"{Player.data.AttackPower}");
+        _currentTab = tab;
+
+        GetObject(GameObjects.WeaponTab).SetActive(false);
+        GetObject(GameObjects.FixTab).SetActive(false);
+        GetObject(GameObjects.BossTab).SetActive(false);
+        GetObject(GameObjects.ShopTab).SetActive(false);
+
+        switch (_currentTab)
+        {
+            case PlayTab.Weapon: GetObject(GameObjects.WeaponTab).SetActive(true); break;
+            case PlayTab.Fix: GetObject(GameObjects.FixTab).SetActive(true); break;
+            case PlayTab.Boss: GetObject(GameObjects.BossTab).SetActive(true); break;
+            case PlayTab.Shop: GetObject(GameObjects.ShopTab).SetActive(true); break;
+        }
     }
 
     #region Weapon Folder
-    private void Register_WeaponFolder()
+    private void RegisterWeaponFolder()
     {
         GameObject parent = GetObject(GameObjects.Weapon_Item);
-
-        List<GameObject> childobj = new List<GameObject>();
-        childobj = Setting.FindChildList(parent, "Weapon_Type");
+        List<GameObject> childobj = Setting.FindChildList(parent, "Weapon_Type");
 
         for (int i = 0; i < childobj.Count; i++)
         {
             UI_WeaponFolder item = Setting.GetOrAddComponent<UI_WeaponFolder>(childobj[i].gameObject);
-
-            item.SetInfo(Player, WeaponType.Basic_Weapon + i, (i + 1) * 10);
+            item.SetInfo(_player, WeaponType.Basic_Weapon + i);
 
             if (i > 0) 
-                weaponFolder[i - 1].NextLockObject = item.MyLockObject;
+                _weaponFolder[i - 1].NextLockObject = item.MyLockObject;
 
-            weaponFolder.Add(item);
+            _weaponFolder.Add(item);
         }
     }
     #endregion
 
     #region Fix Folder
-    private void Register_FixFolder()
+    private void RegisterFixFolder()
     {
         GameObject parent = GetObject(GameObjects.Fix_Item);
-
-        List<GameObject> childobj = new List<GameObject>();
-        childobj = Setting.FindChildList(parent, "Fix_Type");
+        List<GameObject>  childobj = Setting.FindChildList(parent, "Fix_Type");
 
         for (int i = 0; i < childobj.Count; i++)
         {
             UI_FixFolder item = Setting.GetOrAddComponent<UI_FixFolder>(childobj[i].gameObject);
-
             item.SetInfo((FixType) i + 1);
-
-            fixFolder.Add(item);
+            _fixFolder.Add(item);
         }
     }
     #endregion
 
     #region Boss Folder
-    private void Register_BossFolder()
+    private void RegisterBossFolder()
    {
-        // 보스 몹 시작 UI
         _checkBossFolderUI = Managers.UIManager.ShowUI<UI_CheckBossFolder>("UI_CheckBossFolder", this.gameObject.transform);
         _checkBossFolderUI.gameObject.SetActive(false);
 
         GameObject parent = GetObject(GameObjects.Boss_Item);
+        List<GameObject> childobj = Setting.FindChildList(parent, "Boss_Type");
 
-        List<GameObject> childobj = new List<GameObject>();
-        childobj = Setting.FindChildList(parent, "Boss_Type");
-
-        foreach (GameObject boss in childobj)
+        foreach (GameObject bossObj in childobj)
         {
-            UI_BossFolder item = Setting.GetOrAddComponent<UI_BossFolder>(boss);
+            UI_BossFolder item = Setting.GetOrAddComponent<UI_BossFolder>(bossObj);
             if (item != null)
             {
                 item.SetInfo(
-                    (Defines.EnemyType)(boss.transform.GetSiblingIndex() + (int)Defines.EnemyType.Skeleton_Boss),
+                    (Defines.EnemyType)(bossObj.transform.GetSiblingIndex() + (int)Defines.EnemyType.Skeleton_Boss),
                     _checkBossFolderUI,
                     TargetEnemyController 
                 );
-                bossFolder.Add(item); 
+                _bossFolder.Add(item); 
             }
         }
     }
-
     #endregion
 
     #region Ads Folder
-    private void Register_AdsFolder()
+    private void RegisterAdsFolder()
     {
         GameObject parent = GetObject(GameObjects.ShopItem);
-
-        List<GameObject> childobj = new List<GameObject>();
-        childobj = Setting.FindChildList(parent, "Ads_Type");
+        List<GameObject> childobj = Setting.FindChildList(parent, "Ads_Type");
 
         for (int i = 0; i < childobj.Count; i++)
         {
             UI_AdsFolder item = Setting.GetOrAddComponent<UI_AdsFolder>(childobj[i].gameObject);
             item.SetInfo((UI_AdsFolder.RewardType)i);
-            shopFolder.Add(item);
+            _shopFolder.Add(item);
         }
     }
     #endregion
 
-    public void ChangeTab(PlayTab _tab)
-    {
-        if (TabType == _tab)
-            return;
-
-        GetObject(GameObjects.WeaponTab).gameObject.SetActive(false);
-        GetObject(GameObjects.FixTab).gameObject.SetActive(false);
-        GetObject(GameObjects.BossTab).gameObject.SetActive(false);
-        GetObject(GameObjects.ShopTab).gameObject.SetActive(false);
-
-        TabType = _tab;
-        switch (TabType)
-        {
-            case PlayTab.Weapon:
-                GetObject(GameObjects.WeaponTab).gameObject.SetActive(true);
-                break;
-            case PlayTab.Fix:
-                GetObject(GameObjects.FixTab).gameObject.SetActive(true);
-            break;
-            case PlayTab.Boss:
-                GetObject(GameObjects.BossTab).gameObject.SetActive(true);
-            break;
-            case PlayTab.Shop:
-                GetObject(GameObjects.ShopTab).gameObject.SetActive(true);
-            break;
-            default:
-                break;
-        }
-    }
 
     #region Initialize
     private bool InitBind()
     {
-        Managers.UIManager.ShowUI<UI_UltimateButton>("UI_UltimateButton", this.gameObject.transform);
+        Managers.UIManager.ShowUI<UI_UltimateButton>("UI_UltimateButton", transform);
 
         BindText(typeof(TextType));
         BindButton(typeof(ButtonType));
         BindObject(typeof(GameObjects));
 
-        GameObject weaponButtonGO = GetButton(ButtonType.Weapon_Button).gameObject;
-        GameObject FixButtonGO = GetButton(ButtonType.Fix_Button).gameObject;
-        GameObject BossButtonGO = GetButton(ButtonType.Boss_Button).gameObject;
-        GameObject shopButtonGO = GetButton(ButtonType.Shop_Button).gameObject;
+        BindEvent(GetButton(ButtonType.Weapon_Button).gameObject, () => ChangeTab(PlayTab.Weapon));
+        BindEvent(GetButton(ButtonType.Fix_Button).gameObject, () => ChangeTab(PlayTab.Fix));
+        BindEvent(GetButton(ButtonType.Boss_Button).gameObject, () => ChangeTab(PlayTab.Boss));
+        BindEvent(GetButton(ButtonType.Shop_Button).gameObject, () => ChangeTab(PlayTab.Shop));
 
-        BindEvent(weaponButtonGO, () => ChangeTab(PlayTab.Weapon));
-        BindEvent(FixButtonGO, () => ChangeTab(PlayTab.Fix));
-        BindEvent(BossButtonGO, () => ChangeTab(PlayTab.Boss));
-        BindEvent(shopButtonGO, () => ChangeTab(PlayTab.Shop));
         return true;
     }
     #endregion

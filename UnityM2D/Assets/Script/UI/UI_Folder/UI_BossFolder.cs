@@ -3,45 +3,26 @@ using static Defines;
 
 public class UI_BossFolder : UI_Base
 {
-    #region 변수
-    enum Buttons
-    {
-        Boss_Type,
-    }
+    enum Buttons { Boss_Type }
+    enum Texts { Boss_Name, Boss_Hp }
+    enum Images { Boss_Icon, ProjectCoolTime }
 
-    enum Texts
-    {
-        Boss_Name,
-        Boss_Hp,
-    }
-    enum Images
-    {
-        Boss_Icon,
-        ProjectCoolTime,
-    }
+    private EnemyType _bossType = EnemyType.Zombi_Boss;
+    private UI_CheckBossFolder _checkBossPopup;
+    private EnemyController _targetEnemyController;
 
-    private EnemyType bossType = EnemyType.Zombi_Boss;
-    private UI_CheckBossFolder checkBossFolderUI;
-    private RuntimeAnimatorController pendingLoadAnim;
-
-    // ======= getter/setter =======
-    public RuntimeAnimatorController PendingLoadAnim
-    {
-        get { return pendingLoadAnim; }
-        set { pendingLoadAnim = value; }
-    }
-    public EnemyController targetEnemyController { get; set; }
-
-    #endregion
+    // 프로퍼티
+    public RuntimeAnimatorController PendingLoadAnim { get; set; }
 
     private void Awake() => Init();
+
     public override bool Init()
     {
-        if (base.Init() == false)
+        if (!base.Init())
             return false;
 
-        if(!InitBind())
-            Debug.Log("Failed Bind : UI_BossFolder");
+        if (!InitBind())
+            return false;
 
         return true;
     }
@@ -52,40 +33,44 @@ public class UI_BossFolder : UI_Base
         GetImage(Images.ProjectCoolTime).fillAmount = 1.0f - ratio;
     }
 
+    public void SetInfo(EnemyType type, UI_CheckBossFolder checkPopup, EnemyController enemyController)
+    {
+        _bossType = type;
+        _checkBossPopup = checkPopup;
+        _targetEnemyController = enemyController;
+    }
+
     void OnSelectBossClick()
     {
+        // 쿨타임 중이면 리턴
         if (GetImage(Images.ProjectCoolTime).fillAmount > 0)
             return;
 
-        if(checkBossFolderUI != null)
-            checkBossFolderUI.ActiveCheckBossFolder(
-                () => {
-                    targetEnemyController.convertedEnemyType = bossType;
-                    LastProjectTime = Managers.PlayTime;
-                });
+        if (_checkBossPopup != null)
+        {
+            _checkBossPopup.ActiveCheckBossFolder(() =>
+            {
+                if (_targetEnemyController != null)
+                {
+                    _targetEnemyController.convertedEnemyType = _bossType;
+                    LastProjectTime = Managers.PlayTime; 
+                }
+            });
+        }
     }
 
-    public void SetInfo(Defines.EnemyType type, UI_CheckBossFolder checkFolderUI, EnemyController enemyController)
-    {
-        bossType = type;
-        checkBossFolderUI = checkFolderUI;
-        targetEnemyController = enemyController;
-    }
-
-
-    #region Initialize
     private bool InitBind()
     {
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
-        GameObject bossButton = GetButton(Buttons.Boss_Type).gameObject;
-        if (bossButton == null)
+        GameObject bossBtn = GetButton(Buttons.Boss_Type).gameObject;
+        if (bossBtn != null)
+            BindEvent(bossBtn, OnSelectBossClick);
+        else
             return false;
-        BindEvent(bossButton, OnSelectBossClick);
 
         return true;
     }
-    #endregion
 }

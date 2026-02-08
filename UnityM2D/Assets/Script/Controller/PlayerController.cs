@@ -33,7 +33,7 @@ public class PlayerController : BaseController
 
     public override bool Init()
     {
-        if (base.Init() == false)
+        if (!base.Init())
             return false;
 
         if (!InitBind())

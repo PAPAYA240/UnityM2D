@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public abstract class Base : MonoBehaviour
 {
-    // Enum 키로 dictionary 정의
     protected Dictionary<Enum, UnityEngine.Object> _uiObjects = new Dictionary<Enum, UnityEngine.Object>();
     protected bool _init = false;
 
@@ -43,11 +42,7 @@ public abstract class Base : MonoBehaviour
             else
                 obj = Setting.FindChild<T>(gameObject, name, true);
 
-            if (obj == null)
-            {
-                return;
-            }
-            else
+            if (obj != null)
             {
                 _uiObjects[key] = obj;
             }
