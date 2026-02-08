@@ -54,10 +54,7 @@ public class UI_Manager : MonoBehaviour
             return;
 
         if(uiStack.Peek() != ui)
-        {
-            System.Console.WriteLine($"Failed Close : {ui.ToString()}");
             return;
-        }
 
         CloseUI();
     }

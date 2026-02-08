@@ -32,7 +32,6 @@ public class Weapon : MonoBehaviour
     {
         if (_data == null || _owner == null)
         {
-            Console.WriteLine("Failed Init : Weapon()");
             return;
         }
 
@@ -42,8 +41,6 @@ public class Weapon : MonoBehaviour
         name = MyData.weaponName;
 
         CurrentAttackStrategy = WeaponStrategyFactor.CreateStrategy(MyData);
-        if (CurrentAttackStrategy == null)
-            Console.WriteLine("Failed Load CurrentAttackStrategy : Weapon()");
 
         // 총알 저장
         if (IsGun())
@@ -153,7 +150,6 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Cannot perform attack: No valid strategy or weapon data.");
             yield break;
         }
     }
