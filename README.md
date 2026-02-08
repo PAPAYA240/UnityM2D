@@ -28,8 +28,8 @@
 
 | 🗡️ **전투** | ⌛ **시스템** | 🗂️ **Folder 관리** | 🔖 **UI/최적화** | 
 | :--- | :--- | :--- | :--- |
-| **무기 교체** : 무기 교체 <br> [코드 보러가기](https://gist.github.com/PAPAYA240/54bad1b52e12d4adc0ff4f87fbc204fb) | **웨이브기반 턴 변경** <br> [코드 보러가기](주소) | **Folder 아키텍처** <br> [코드 보러가기](주소) | **UI 자동 Binding** <br> [내용 보기](https://gist.github.com/PAPAYA240/f1a468c050e7f40a784a2c4056dcce27) |
-| **몬스터 추적** <br> [코드 보러가기](주소) | **레벨 업** : 옵저버 <br> [코드 보러가기](주소) | **Google AdMob** <br> [코드 보러가기](주소) | **Object Pooling** <br> [코드 보러가기](주소) |
-| **런타임 데이터 반영** <br> [코드 보러가기](주소) | **전투 매커니즘** <br> [코드 보러가기](주소) | |  |
+| **무기 교체** : 디자인 패턴  <br> [코드 보러가기](https://gist.github.com/PAPAYA240/54bad1b52e12d4adc0ff4f87fbc204fb) | **상태 패턴 행동 테이블** <br> [코드 보러가기](주소) | **모듈형 상점 시스템** <br> [코드 보러가기](https://gist.github.com/PAPAYA240/42505db2e29dc34e7d5a2d2a4aeeadda) | **UI 자동 Binding** <br> [내용 보기](https://gist.github.com/PAPAYA240/f1a468c050e7f40a784a2c4056dcce27) |
+
+<br><br><br>
 
 
